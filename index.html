@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- BASE:START (managed by Coding Agent — do not edit) -->
+<base href="/nabd-landing-page/">
+<!-- BASE:END -->
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  
+  
+  <meta property="og:url" content="https://paymegpt.com/p/gjEnuuq5" />
+  
+  
+  
+  
+
+<!-- SEO Meta Tags -->
+<title>National Association of Black Defenders | Human Rights · Civil Rights · Equal Justice</title>
+<meta property="og:title" content="National Association of Black Defenders | Human Rights · Civil Rights · Equal Justice" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="National Association of Black Defenders | Human Rights · Civil Rights · Equal Justice" />
+<!-- End SEO Meta Tags -->
+
+<script data-field-replace>
+(function(){
+  var params=new URLSearchParams(window.location.search);
+  var fields={};
+  var paramMap={
+    'first_name':'firstName','last_name':'lastName','full_name':'fullName',
+    'email':'email','phone':'phone','company':'company',
+    'city':'city','state':'state','country':'country'
+  };
+  var skipTags={'SCRIPT':1,'STYLE':1,'NOSCRIPT':1,'TEXTAREA':1,'CODE':1,'PRE':1};
+  var hasUrlFields=false;
+  for(var p in paramMap){
+    var v=params.get(p);
+    if(v){fields[paramMap[p]]=v;hasUrlFields=true;}
+  }
+  var contactId=params.get('contact_id');
+  function esc(s){
+    if(!s)return s;
+    var d=document.createElement('div');
+    d.appendChild(document.createTextNode(s));
+    return d.innerHTML;
+  }
+  function doReplace(data){
+    var r={};
+    r['{{full_name}}']=esc(((data.firstName||'')+' '+(data.lastName||'')).trim()||((data.fullName||data.name)||''));
+    r['{{first_name}}']=esc(data.firstName||(data.name?data.name.split(' ')[0]:'')||'');
+    r['{{last_name}}']=esc(data.lastName||(data.name&&data.name.indexOf(' ')>-1?data.name.substring(data.name.indexOf(' ')+1):'')||'');
+    r['{{email}}']=esc(data.email||'');
+    r['{{phone}}']=esc(data.phone||'');
+    r['{{company}}']=esc(data.company||'');
+    r['{{city}}']=esc(data.city||'');
+    r['{{state}}']=esc(data.state||'');
+    r['{{country}}']=esc(data.country||'');
+    r['{{date}}']=new Date().toLocaleDateString();
+    r['{{time}}']=new Date().toLocaleTimeString();
+    r['{{location}}']=[data.city,data.state,data.country].filter(Boolean).join(', ');
+    r['{{tracking_id}}']=esc(data.trackingId||'');
+    r['{{lastClickedProduct}}']=esc(data.lastClickedProduct||'');
+    r['{{lastProductClickDate}}']=esc(data.lastProductClickDate||'');
+    r['{{lastClickedProductPrice}}']=esc(data.lastClickedProductPrice||'');
+    r['{{lastClickedProductURL}}']=esc(data.lastClickedProductURL||'');
+    r['{{productsClickedCount}}']=esc(data.productsClickedCount||'0');
+    r['{{ip_address}}']=esc(data.ipAddress||'');
+    r['{{ip}}']=esc(data.ipAddress||'');
+    if(data.customFields){
+      for(var k in data.customFields){
+        r['{{'+k+'}}']=esc(String(data.customFields[k]||''));
+      }
+    }
+    params.forEach(function(v,k){
+      if(!paramMap[k]&&k!=='contact_id'&&k!=='page_id'&&k.indexOf('utm_')!==0){
+        r['{{'+k+'}}']=esc(v);
+      }
+    });
+    var hasValues=false;
+    for(var key in r){if(r[key]){hasValues=true;break;}}
+    if(!hasValues)return;
+    var walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT,{
+      acceptNode:function(n){
+        var p=n.parentNode;
+        if(p&&skipTags[p.nodeName])return NodeFilter.FILTER_REJECT;
+        return NodeFilter.FILTER_ACCEPT;
+      }
+    });
+    var node;
+    while(node=walker.nextNode()){
+      var txt=node.nodeValue;
+      if(txt&&txt.indexOf('{{')>-1){
+        var changed=txt;
+        for(var ph in r){
+          if(r[ph]&&changed.indexOf(ph)>-1){
+            changed=changed.split(ph).join(r[ph]);
+          }
+        }
+        if(changed!==txt)node.nodeValue=changed;
+      }
+    }
+    var attrs=['value','placeholder','content','alt','title'];
+    attrs.forEach(function(attr){
+      var els=document.querySelectorAll('['+attr+'*="{{"]');
+      for(var i=0;i<els.length;i++){
+        var tag=els[i].tagName;
+        if(skipTags[tag])continue;
+        var val=els[i].getAttribute(attr);
+        if(val){
+          var nv=val;
+          for(var ph in r){
+            if(r[ph]&&nv.indexOf(ph)>-1){
+              nv=nv.split(ph).join(r[ph]);
+            }
+          }
+          if(nv!==val)els[i].setAttribute(attr,nv);
+        }
+      }
+    });
+  }
+  function run(){
+    if(contactId){
+      var xhr=new XMLHttpRequest();
+      xhr.open('GET','https://paymegpt.com/api/landing/context/'+encodeURIComponent(contactId)+'?page_id=3384');
+      xhr.onload=function(){
+        if(xhr.status===200){
+          try{
+            var resp=JSON.parse(xhr.responseText);
+            if(resp.success&&resp.contact){
+              var merged=resp.contact;
+              for(var k in fields){merged[k]=fields[k];}
+              doReplace(merged);
+              return;
+            }
+          }catch(e){}
+        }
+        if(hasUrlFields)doReplace(fields);
+      };
+      xhr.onerror=function(){if(hasUrlFields)doReplace(fields);};
+      xhr.send();
+    }else if(hasUrlFields){
+      doReplace(fields);
+    }
+  }
+  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',run);}
+  else{run();}
+})();
+</script>
+<script data-payment>
+(function(){
+  var slug='gjEnuuq5';
+  var apiBase='https://paymegpt.com';
+  function findEmail(){
+    var ids=['email','emailAddress','buyer-email','buyerEmail','user-email','userEmail','checkout-email','customer-email','contact-email'];
+    for(var i=0;i<ids.length;i++){var el=document.getElementById(ids[i]);if(el&&el.value&&el.value.includes('@'))return el.value.trim();}
+    var inputs=document.querySelectorAll('input[type="email"],input[name*="email"],input[placeholder*="email"],input[placeholder*="Email"]');
+    for(var j=0;j<inputs.length;j++){if(inputs[j].value&&inputs[j].value.includes('@'))return inputs[j].value.trim();}
+    return '';
+  }
+  function findName(){
+    var ids=['name','fullName','full-name','buyer-name','buyerName','customer-name','userName','user-name'];
+    for(var i=0;i<ids.length;i++){var el=document.getElementById(ids[i]);if(el&&el.value)return el.value.trim();}
+    var inputs=document.querySelectorAll('input[name*="name"]:not([name*="email"]):not([type="email"]),input[placeholder*="name"]:not([placeholder*="email"]):not([type="email"]),input[placeholder*="Name"]:not([type="email"])');
+    for(var j=0;j<inputs.length;j++){if(inputs[j].value)return inputs[j].value.trim();}
+    return '';
+  }
+  var __realProcessPayment=function(a,b,c,d,e){
+    var amountCents,email,productName,productDescription,customerName,quantity;
+    if(a&&typeof a==='object'){
+      amountCents=a.amountCents;email=a.email;productName=a.productName;
+      productDescription=a.productDescription||'';customerName=a.name||'';quantity=a.quantity||1;
+    }else{
+      amountCents=typeof a==='number'?a:0;productName=typeof b==='string'?b:'';
+      productDescription=typeof c==='string'?c:'';email='';customerName='';quantity=1;
+    }
+    if(!email)email=findEmail();
+    if(!customerName)customerName=findName();
+    if(!productName){alert('Product name is required.');return Promise.reject('no_product_name');}
+    if(!amountCents||amountCents<100){alert('Amount must be at least $1.00');return Promise.reject('invalid_amount');}
+    if(!email){alert('Please enter your email address.');return Promise.reject('no_email');}
+    var successBase=window.location.href.split('?')[0];
+    return fetch(apiBase+'/api/landing-pages/public/'+slug+'/payment/checkout',{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({email:email,name:customerName,amountCents:amountCents,productName:productName,productDescription:productDescription,quantity:quantity,successUrl:successBase+'?payment=success&product='+encodeURIComponent(productName)+'&session_id={CHECKOUT_SESSION_ID}',cancelUrl:successBase+'?payment=cancelled'})
+    }).then(function(r){return r.json();}).then(function(d){
+      if(d.checkoutUrl){window.location.href=d.checkoutUrl;}
+      else{alert(d.error||'Failed to process payment');throw new Error(d.error);}
+    });
+  };
+  Object.defineProperty(window,'__processPayment',{value:__realProcessPayment,writable:false,configurable:false});
+  document.addEventListener('DOMContentLoaded',function(){
+    var urlParams=new URLSearchParams(window.location.search);
+    if(urlParams.get('payment')==='success'){
+      var pName=urlParams.get('product')||'your item';
+      var overlay=document.createElement('div');overlay.id='payment-success-overlay';
+      overlay.style.cssText='position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;z-index:999999;font-family:system-ui,-apple-system,sans-serif;';
+      overlay.innerHTML='<div style="background:white;border-radius:16px;padding:40px;max-width:420px;width:90%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.15);"><div style="width:64px;height:64px;border-radius:50%;background:#dcfce7;margin:0 auto 20px;display:flex;align-items:center;justify-content:center;"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><h2 style="margin:0 0 12px;font-size:24px;font-weight:700;color:#111827;">Payment Successful!</h2><p style="margin:0 0 24px;color:#6b7280;font-size:16px;">Thank you for purchasing '+pName.replace(/</g,'&lt;').replace(/>/g,'&gt;')+'.</p><button onclick="document.getElementById(\'payment-success-overlay\').remove();window.history.replaceState({},\'\',window.location.pathname);" style="padding:12px 32px;font-size:16px;font-weight:600;background:#16a34a;color:white;border:none;border-radius:8px;cursor:pointer;">Continue</button></div>';
+      document.body.appendChild(overlay);
+    }
+  });
+})();
+</script>  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<nav data-section="navbar" style="z-index:9999;">
+  <div class="nav-inner">
+    <a href="#" class="nav-brand">
+      <img src="https://storage.googleapis.com/wttus/assets/1605006/images/NABD_newlogo.jpg" alt="NABD Logo">
+      <div class="nav-brand-text">
+        <span class="org-abbr">NABD</span>
+        <span class="org-full">National Association of Black Defenders</span>
+      </div>
+    </a>
+    <div class="nav-links">
+      <a href="#mission">Mission</a><a href="#services">Services</a><a href="#events">Events</a>
+      <a href="#appointments">Appointments</a><a href="#support">Support</a><a href="#contact">Contact</a>
+    </div>
+    <div style="display:flex;align-items:center;">
+      <a href="tel:2026746428" class="nav-phone">(202) 674-6428</a>
+      <a href="#contact" class="btn btn-gold" style="font-size:12px;padding:8px 16px;">Get In Touch</a>
+    </div>
+  </div>
+</nav>
+<section data-section="hero" class="hero" style="padding-top: 1.5rem;">
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <div class="hero-tag">Est. Washington D.C. &nbsp;·&nbsp; 501(c)(3) Nonprofit</div>
+        <h1>Defending <em>rights.</em><br>Demanding <em>justice.</em></h1>
+        <p class="hero-sub">The National Association of Black Defenders advances human rights, civil rights protections, legal advocacy, voting rights, and environmental justice — with clarity, compassion, and conviction.</p>
+        <div class="hero-divider"></div>
+        <div class="hero-actions">
+          <a href="#contact" class="btn btn-gold">Connect With NABD</a>
+          <a href="#services" class="btn btn-outline">Explore Our Work</a>
+        </div>
+        <div class="hero-pillars">
+          <span class="pillar">Human Rights</span><span class="pillar">Civil Rights</span>
+          <span class="pillar">Equal Justice</span><span class="pillar">Public Education</span>
+        </div>
+      </div>
+      <div class="hero-card reveal">
+        <div class="hero-card-header">
+          <div class="card-label">Official Organization Contact</div>
+          <div class="card-org">National Association of Black Defenders, Inc.</div>
+        </div>
+        <div class="contact-list">
+          <div class="contact-item"><div class="contact-icon">📞</div><div><div class="contact-item-label">Phone</div><div class="contact-item-value"><a href="tel:2026746428" class="phone-link">(202) 674-6428</a></div></div></div>
+          <div class="contact-item"><div class="contact-icon">✉️</div><div><div class="contact-item-label">Email</div><div class="contact-item-value"><a href="mailto:info@nabd-justice.org">info@nabd-justice.org</a></div></div></div>
+          <div class="contact-item"><div class="contact-icon">📍</div><div><div class="contact-item-label">Office</div><div class="contact-item-value">1717 Pennsylvania Ave NW, Suite 1025<br>Washington, DC 20006</div></div></div>
+          <div class="contact-item"><div class="contact-icon">👤</div><div><div class="contact-item-label">Leadership</div><div class="contact-item-value">Dr. Michael McCorvey, CEO &amp; Founder</div></div></div>
+        </div>
+        <div class="hero-card-footer">
+          <div class="chat-cta-inline"><div class="chat-pulse"></div><div class="chat-cta-text">AI Concierge <span>Online</span> — Ask us anything</div></div>
+          <a href="https://paymegpt.com/agents/23228416" target="_blank" class="chat-link">Chat Now →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div data-section="mission-strip" class="mission-strip" aria-hidden="true">
+  <div style="overflow:hidden;"><div class="mission-strip-inner">
+    <span class="mission-strip-item"><span class="mission-strip-dot"></span>Human Rights Advocacy</span>
+    <span class="mission-strip-item"><span class="mission-strip-dot"></span>Civil Rights Protection</span>
+    <span class="mission-strip-item"><span class="mission-strip-dot"></span>Equal Justice Under Law</span>
+    <span class="mission-strip-item"><span class="mission-strip-dot"></span>Voting Rights Awareness</span>
+    <span class="mission-strip-item"><span class="mission-strip-dot"></span>Environmental Justice</span>
+    <span class="mission-strip-item"><span class="mission-strip-dot"></span>Attorney Referral Pathways</span>
+    <span class="mission-strip-item"><span class="mission-strip-dot"></span>Public Education</span>
+    <span class="mission-strip-item"><span class="mission-strip-dot"></span>Community Empowerment</span>
+    <span class="mission-strip-item"><span class="mission-strip-dot"></span>Human Rights Advocacy</span>
+    <span class="mission-strip-item"><span class="mission-strip-dot"></span>Civil Rights Protection</span>
+    <span class="mission-strip-item"><span class="mission-strip-dot"></span>Equal Justice Under Law</span>
+    <span class="mission-strip-item"><span class="mission-strip-dot"></span>Voting Rights Awareness</span>
+    <span class="mission-strip-item"><span class="mission-strip-dot"></span>Environmental Justice</span>
+    <span class="mission-strip-item"><span class="mission-strip-dot"></span>Attorney Referral Pathways</span>
+    <span class="mission-strip-item"><span class="mission-strip-dot"></span>Public Education</span>
+    <span class="mission-strip-item"><span class="mission-strip-dot"></span>Community Empowerment</span>
+  </div></div>
+</div>
+<section data-section="mission" class="section mission-section" id="mission">
+  <div class="container">
+    <div class="mission-grid">
+      <div class="reveal">
+        <div class="mission-quote">
+          <blockquote>"Equal justice under law is not merely a caption on the facade of the Supreme Court — it is perhaps the most inspiring ideal of our society."</blockquote>
+          <cite>— Lewis F. Powell Jr., Associate Justice</cite>
+        </div>
+      </div>
+      <div class="mission-text reveal">
+        <div class="eyebrow">Mission &amp; Purpose</div>
+        <h2>A national voice for advocacy, education, and equal protection under the law.</h2>
+        <p>NABD exists to advance civil and human rights, support public education, strengthen civic participation, promote environmental justice awareness, and help people navigate appropriate support pathways — with dignity and clarity.</p>
+        <p>We are a mission-driven organization committed to fair treatment, community empowerment, and principled public engagement for individuals and communities impacted by systemic inequity.</p>
+        <div class="mission-pillars">
+          <div class="mission-pillar"><span class="mission-pillar-icon">🏛</span><div><div class="mission-pillar-label">Institutional Credibility</div><div class="mission-pillar-desc">Purpose-built for public trust and mission-centered engagement.</div></div></div>
+          <div class="mission-pillar"><span class="mission-pillar-icon">📚</span><div><div class="mission-pillar-label">Educational Advocacy</div><div class="mission-pillar-desc">Helping communities understand rights and resources.</div></div></div>
+          <div class="mission-pillar"><span class="mission-pillar-icon">🤝</span><div><div class="mission-pillar-label">Community Impact</div><div class="mission-pillar-desc">Focused on fairness, equal justice, and civic participation.</div></div></div>
+          <div class="mission-pillar"><span class="mission-pillar-icon">🗺</span><div><div class="mission-pillar-label">Referral Pathways</div><div class="mission-pillar-desc">Directing people toward qualified support when needed.</div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section data-section="services" class="section services-section" id="services">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="eyebrow">How NABD Serves</div>
+      <h2>Mission-centered support for individuals, communities, and the public good.</h2>
+      <p>Six areas where NABD takes direct action — from advocacy and education to attorney referral pathways and environmental justice.</p>
+    </div>
+    <div class="services-grid reveal">
+      <div class="service-tile"><div class="service-icon">✊</div><h3>Human Rights Advocacy</h3><p>NABD elevates human rights concerns through public education, organized advocacy, and mission-driven support that helps people understand pathways toward protection, accountability, and fair treatment.</p><span class="service-tag">Core Mission</span></div>
+      <div class="service-tile"><div class="service-icon">⚖️</div><h3>Civil Rights Protection</h3><p>Through education, advocacy, and public-facing support, NABD helps individuals and communities better understand civil rights concerns while promoting equal justice and stronger protections against discrimination.</p><span class="service-tag">Equal Justice</span></div>
+      <div class="service-tile"><div class="service-icon">📖</div><h3>Legal Advocacy &amp; Training</h3><p>NABD offers advocacy-centered education and training that help communities build awareness, navigate concerns more confidently, and connect with informed support structures.</p><span class="service-tag">Education</span></div>
+      <div class="service-tile"><div class="service-icon">🗳</div><h3>Voting Rights &amp; Civic Voice</h3><p>NABD supports awareness around voting rights and civic participation, helping people understand the value of lawful advocacy, community voice, and informed action in protecting democratic access.</p><span class="service-tag">Civic Rights</span></div>
+      <div class="service-tile"><div class="service-icon">🌿</div><h3>Environmental Justice</h3><p>NABD recognizes that environmental harm often falls hardest on underserved communities and promotes advocacy, awareness, and justice-focused attention to those inequities at local and national levels.</p><span class="service-tag">Community</span></div>
+      <div class="service-tile"><div class="service-icon">🔗</div><h3>Attorney Referrals &amp; Pathways</h3><p>When appropriate, NABD helps point individuals toward attorney referral and support pathways so they can seek qualified guidance while understanding the organization does not itself provide legal advice.</p><span class="service-tag">Referrals</span></div>
+    </div>
+    <div class="chat-feature reveal">
+      <div class="chat-feature-grid">
+        <div class="chat-feature-copy">
+          <div class="eyebrow">AI Concierge</div>
+          <h2>Get answers to your questions — instantly.</h2>
+          <p>NABD's AI assistant is available 24/7 to help you understand your rights, explore available resources, and connect with the right support pathway.</p>
+          <div class="chat-feature-bullets">
+            <div class="chat-bullet">Ask about civil rights and advocacy resources</div>
+            <div class="chat-bullet">Understand attorney referral pathways</div>
+            <div class="chat-bullet">Learn about voting rights and civic participation</div>
+            <div class="chat-bullet">Get connected to the right next step</div>
+          </div>
+          <a href="https://paymegpt.com/agents/23228416" target="_blank" class="btn btn-gold">Start a Conversation →</a>
+        </div>
+        <div class="chat-feature-visual">
+          <div class="chat-bubble-demo">
+            <div class="chat-bubble user">How can NABD help with civil rights issues?</div>
+            <div class="chat-bubble bot">NABD provides <strong>education, advocacy, and referral support</strong> for civil rights concerns. I can help you understand your options.</div>
+            <div class="chat-typing"><span></span><span></span><span></span></div>
+          </div>
+          <a href="https://paymegpt.com/agents/23228416" target="_blank" class="chat-open-btn">💬 Chat with NABD</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section data-section="events" class="section calendar-section" id="events">
+  <div class="container">
+    <div class="reveal">
+      <div class="eyebrow">Upcoming Events</div>
+      <h2 style="font-size:clamp(1.75rem,3vw,2.4rem);color:var(--ivory);margin-bottom:1.75rem;">NABD Events &amp; Community Calendar</h2>
+    </div>
+    <div class="reveal">
+      <div class="cal-header">
+        <div class="cal-title" id="calMonthYear"></div>
+        <div class="cal-nav">
+          <button onclick="changeMonth(-1)">&#8249;</button>
+          <div class="cal-month-label" id="calNavLabel"></div>
+          <button onclick="changeMonth(1)">&#8250;</button>
+        </div>
+      </div>
+      <div class="cal-grid" id="calGrid">
+        <div class="cal-day-label">Sun</div><div class="cal-day-label">Mon</div><div class="cal-day-label">Tue</div>
+        <div class="cal-day-label">Wed</div><div class="cal-day-label">Thu</div><div class="cal-day-label">Fri</div><div class="cal-day-label">Sat</div>
+      </div>
+      <div style="margin-top:2rem;">
+        <div class="event-list-title">Scheduled Events</div>
+        <div class="event-list" id="eventList"></div>
+        <button class="add-event-btn" onclick="document.getElementById('addEventForm').classList.toggle('open')">+ Add New Event</button>
+        <div class="add-event-form" id="addEventForm">
+          <h4>Add an Event</h4>
+          <div class="form-row-3">
+            <input class="field" id="evTitle" placeholder="Event Title" style="margin-bottom:0;">
+            <input class="field" id="evDate" type="date" style="margin-bottom:0;">
+            <select class="field" id="evTime" style="margin-bottom:0;">
+              <option value="">Select Time...</option>
+              <option>8:00 AM</option><option>8:30 AM</option><option>9:00 AM</option><option>9:30 AM</option>
+              <option>10:00 AM</option><option>10:30 AM</option><option>11:00 AM</option><option>11:30 AM</option>
+              <option>12:00 PM</option><option>12:30 PM</option><option>1:00 PM</option><option>1:30 PM</option>
+              <option>2:00 PM</option><option>2:30 PM</option><option>3:00 PM</option><option>3:30 PM</option>
+              <option>4:00 PM</option><option>4:30 PM</option><option>5:00 PM</option><option>5:30 PM</option>
+              <option>6:00 PM</option>
+            </select>
+          </div>
+          <textarea class="field" id="evDesc" placeholder="Description (optional)" style="margin-top:0.75rem;min-height:70px;"></textarea>
+          <input class="field" id="evLocation" placeholder="Location (optional)">
+          <button class="form-submit" onclick="addEvent()" style="margin-top:0;">Save Event</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section data-section="appointments" class="section appt-section" id="appointments">
+  <div class="container">
+    <div class="appt-grid">
+      <div class="appt-copy reveal">
+        <div class="eyebrow">Schedule a Meeting</div>
+        <h2>Book an Appointment with NABD</h2>
+        <p>Whether you need to discuss advocacy support, legal referrals, civic education, or community partnership, our team is available to meet with you.</p>
+        <div class="appt-types">
+          <div class="appt-type"><span class="appt-type-icon">⚖️</span><div><div class="appt-type-label">Advocacy Consultation</div><div class="appt-type-desc">Discuss civil or human rights concerns with our team</div></div></div>
+          <div class="appt-type"><span class="appt-type-icon">🔗</span><div><div class="appt-type-label">Legal Referral Intake</div><div class="appt-type-desc">Get connected with qualified attorney referral pathways</div></div></div>
+          <div class="appt-type"><span class="appt-type-icon">🗳</span><div><div class="appt-type-label">Civic Education Session</div><div class="appt-type-desc">Voting rights, civic participation, and community resources</div></div></div>
+          <div class="appt-type"><span class="appt-type-icon">🤝</span><div><div class="appt-type-label">Partnership &amp; Outreach</div><div class="appt-type-desc">Community organizations, media, or partnership inquiries</div></div></div>
+        </div>
+      </div>
+      <div class="appt-form-card reveal">
+        <h3>Request an Appointment</h3>
+        <p>We'll confirm your preferred time within one business day.</p>
+        <form id="apptForm">
+          <div class="form-row">
+            <input class="field" type="text" id="apptFirst" name="firstName" placeholder="First Name" required>
+            <input class="field" type="text" id="apptLast" name="lastName" placeholder="Last Name">
+          </div>
+          <input class="field" type="email" id="apptEmail" name="contactEmail" placeholder="Email Address" required>
+          <input class="field" type="tel" id="apptPhone" name="contactPhone" placeholder="Phone Number">
+          <select class="field" id="apptService" name="service">
+            <option value="" disabled selected>Type of Appointment</option>
+            <option>Advocacy Consultation</option><option>Legal Referral Intake</option>
+            <option>Civic Education Session</option><option>Partnership &amp; Outreach</option><option>General Inquiry</option>
+          </select>
+          <div class="form-row">
+            <input class="field" type="date" id="apptDate" name="apptDate" style="margin-bottom:0;background:#ffffff;color:#333333;border:1px solid #cccccc;">
+            <select class="field" id="apptTime" name="apptTime" style="margin-bottom:0;">
+              <option value="">Select Time...</option>
+              <option>8:00 AM</option><option>8:30 AM</option><option>9:00 AM</option><option>9:30 AM</option>
+              <option>10:00 AM</option><option>10:30 AM</option><option>11:00 AM</option><option>11:30 AM</option>
+              <option>12:00 PM</option><option>12:30 PM</option><option>1:00 PM</option><option>1:30 PM</option>
+              <option>2:00 PM</option><option>2:30 PM</option><option>3:00 PM</option><option>3:30 PM</option>
+              <option>4:00 PM</option><option>4:30 PM</option><option>5:00 PM</option><option>5:30 PM</option>
+              <option>6:00 PM</option>
+            </select>
+          </div>
+          <textarea class="field" id="apptNotes" name="message" placeholder="Additional notes or questions (optional)" style="margin-top:0.75rem;"></textarea>
+          <button type="submit" class="form-submit">Request Appointment</button>
+        </form>
+        <div id="apptThanks" class="thanks-msg">
+          <div class="thanks-title">Your appointment request has been submitted!</div>
+          Thank you for your interest in NABD. A member of our team will follow up within 24 hours to confirm your appointment.
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    document.getElementById('apptForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      const form = event.target;
+      const data = {
+        firstName: form.firstName.value,
+        lastName: form.lastName.value,
+        contactEmail: form.contactEmail.value,
+        contactPhone: form.contactPhone.value,
+        service: form.service.value,
+        apptDate: form.apptDate.value,
+        apptTime: form.apptTime.value,
+        message: form.message.value
+      };
+      fetch('https://example.com/webhook', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      }).then(() => {
+        form.style.display = 'none';
+        document.getElementById('apptThanks').style.display = 'block';
+      });
+    });
+  </script>
+</section>
+<section data-section="support" class="section support-section" id="support">
+  <div class="container">
+    <div class="support-grid">
+      <div class="support-copy reveal">
+        <div class="eyebrow">Support the Mission</div>
+        <h2>Stand with NABD in advancing advocacy, education, and equal justice.</h2>
+        <p>Your support strengthens public education, community empowerment, civil rights awareness, and access to dignified support pathways for those who need it most.</p>
+        <div class="impact-list">
+          <div class="impact-item"><span class="impact-icon">🎓</span><div><div class="impact-label">Public Education</div><div class="impact-desc">Accessible programs that help communities understand their rights and available resources.</div></div></div>
+          <div class="impact-item"><span class="impact-icon">🗣</span><div><div class="impact-label">Community Advocacy</div><div class="impact-desc">Organized voices demanding accountability, fairness, and systemic change.</div></div></div>
+          <div class="impact-item"><span class="impact-icon">🔑</span><div><div class="impact-label">Access to Justice</div><div class="impact-desc">Referral pathways that connect individuals to qualified legal guidance and support.</div></div></div>
+        </div>
+      </div>
+      <div class="form-card reveal">
+        <h3>Donate or Request Information</h3>
+        <p>Complete the form below. A member of the NABD team will follow up personally.</p>
+        <form id="supportForm">
+          <div class="form-row">
+            <input class="field" type="text" id="supFirst" name="firstName" placeholder="First Name" required>
+            <input class="field" type="text" id="supLast" name="lastName" placeholder="Last Name">
+          </div>
+          <input class="field" type="email" id="supEmail" name="contactEmail" placeholder="Email Address" required>
+          <input class="field" type="tel" id="supPhone" name="contactPhone" placeholder="Phone Number">
+          <textarea class="field" id="supMessage" name="message" placeholder="How would you like to support or connect with NABD?"></textarea>
+          <button type="submit" class="form-submit">Submit Your Information</button>
+        </form>
+        <div id="supportThanks" class="thanks-msg">
+          <div class="thanks-title">Thank you for supporting NABD!</div>
+          Your submission has been received. A member of our team will be in touch within 24 hours.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section data-section="contact" class="section contact-section" id="contact">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <div class="eyebrow">Contact NABD</div>
+        <h2>Reach the organization directly.</h2>
+        <p>For questions about NABD's mission, advocacy work, public education, legal support pathways, environmental justice concerns, voting rights awareness, or attorney referrals — contact us directly.</p>
+        <div class="contact-details">
+          <div class="contact-detail"><div class="contact-detail-icon">📞</div><div><div class="contact-detail-label">Phone</div><div class="contact-detail-value"><a href="tel:2026746428" class="phone-link">(202) 674-6428</a></div></div></div>
+          <div class="contact-detail"><div class="contact-detail-icon">✉️</div><div><div class="contact-detail-label">Email</div><div class="contact-detail-value"><a href="mailto:info@nabd-justice.org">info@nabd-justice.org</a></div></div></div>
+          <div class="contact-detail"><div class="contact-detail-icon">📍</div><div><div class="contact-detail-label">Office</div><div class="contact-detail-value">1717 Pennsylvania Avenue NW, Suite 1025<br>Washington, DC 20006</div></div></div>
+          <div class="contact-detail"><div class="contact-detail-icon">👤</div><div><div class="contact-detail-label">Leadership</div><div class="contact-detail-value">Dr. Michael McCorvey, CEO &amp; Founder</div></div></div>
+        </div>
+      </div>
+      <div class="form-card reveal">
+        <h3>Send a Message</h3>
+        <p>Leave your information and a member of the organization will follow up as appropriate.</p>
+        <form id="contactForm">
+          <div class="form-row">
+            <input class="field" type="text" id="conFirstName" name="firstName" placeholder="First Name" required>
+            <input class="field" type="text" id="conLastName" name="lastName" placeholder="Last Name" required>
+          </div>
+          <input class="field" type="email" id="conEmail" name="contactEmail" placeholder="Email Address" required>
+          <input class="field" type="tel" id="conPhone" name="contactPhone" placeholder="Phone Number">
+          <textarea class="field" id="conMessage" name="message" placeholder="How can NABD assist you?"></textarea>
+          <button type="submit" class="form-submit">Send Message</button>
+        </form>
+        <div id="contactThanks" class="thanks-msg">
+          <div class="thanks-title">Your message has been submitted!</div>
+          Thank you for reaching out to NABD. A member of our team will follow up within 24 hours.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<footer data-section="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand"><div class="logo-text">NABD Inc.</div><div class="tagline">National Association of Black Defenders</div></div>
+      <div class="footer-links">
+        <a href="#mission">Mission</a><a href="#services">Services</a><a href="#events">Events</a>
+        <a href="#appointments">Appointments</a><a href="#support">Support</a><a href="#contact">Contact</a>
+        <a href="tel:2026746428">(202) 674-6428</a>
+      </div>
+    </div>
+    <div class="footer-copy">
+      Human Rights · Civil Rights · Equal Justice · Public Education · Environmental Justice · Attorney Referral Pathways<br><br>
+      © 2026 National Association of Black Defenders, Inc. · Washington, DC · <a href="mailto:info@nabd-justice.org" style="color:var(--muted);text-decoration:none;">info@nabd-justice.org</a>
+    </div>
+  </div>
+</footer>
+<script src="https://paymegpt.com/widget.js" data-widget="23228416" async></script>
+<script>
+  var today = new Date();
+  var curYear = today.getFullYear();
+  var curMonth = today.getMonth();
+  var events = [
+    { date: new Date(curYear, curMonth, 15), title: 'Civil Rights Town Hall', time: '6:00 PM', location: 'Washington, DC', desc: 'Community forum on civil rights awareness and advocacy resources.' },
+    { date: new Date(curYear, curMonth, 22), title: 'Voting Rights Workshop', time: '10:00 AM', location: 'Virtual (Zoom)', desc: 'An educational session on protecting and exercising voting rights.' },
+    { date: new Date(curYear, curMonth + 1, 5), title: 'Legal Referral Info Day', time: '1:00 PM', location: '1717 Pennsylvania Ave NW', desc: 'Learn how NABD connects community members with qualified legal support.' }
+  ];
+  function renderCalendar() {
+    var months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+    document.getElementById('calMonthYear').textContent = months[curMonth] + ' ' + curYear;
+    document.getElementById('calNavLabel').textContent = months[curMonth] + ' ' + curYear;
+    var firstDay = new Date(curYear, curMonth, 1).getDay();
+    var daysInMonth = new Date(curYear, curMonth + 1, 0).getDate();
+    var daysInPrev = new Date(curYear, curMonth, 0).getDate();
+    var grid = document.getElementById('calGrid');
+    while (grid.children.length > 7) { grid.removeChild(grid.lastChild); }
+    var totalCells = Math.ceil((firstDay + daysInMonth) / 7) * 7;
+    for (var i = 0; i < totalCells; i++) {
+      var dayNum, isCurrentMonth = true;
+      if (i < firstDay) { dayNum = daysInPrev - firstDay + i + 1; isCurrentMonth = false; }
+      else if (i >= firstDay + daysInMonth) { dayNum = i - firstDay - daysInMonth + 1; isCurrentMonth = false; }
+      else { dayNum = i - firstDay + 1; }
+      var isToday = isCurrentMonth && dayNum === today.getDate() && curMonth === today.getMonth() && curYear === today.getFullYear();
+      var cellDate = new Date(curYear, curMonth, dayNum);
+      var dayEvents = isCurrentMonth ? events.filter(function(e){ return e.date.toDateString() === cellDate.toDateString(); }) : [];
+      var cell = document.createElement('div');
+      cell.className = 'cal-cell' + (isToday ? ' today' : '') + (!isCurrentMonth ? ' other-month' : '') + (dayEvents.length ? ' has-event' : '');
+      var inner = '<div class="day-num">' + dayNum + '</div>';
+      dayEvents.forEach(function(e){ inner += '<div class="cal-event-dot">' + e.title + '</div>'; });
+      cell.innerHTML = inner;
+      grid.appendChild(cell);
+    }
+    renderEventList();
+  }
+  function renderEventList() {
+    var now = new Date(); now.setHours(0,0,0,0);
+    var upcoming = events.filter(function(e){ return e.date >= now; }).sort(function(a,b){ return a.date - b.date; }).slice(0,6);
+    var ms = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    var html = '';
+    upcoming.forEach(function(e){
+      html += '<div class="event-item"><div class="event-date-badge"><div class="ev-month">' + ms[e.date.getMonth()] + '</div><div class="ev-day">' + e.date.getDate() + '</div></div>';
+      html += '<div class="event-info"><h4>' + e.title + '</h4><p>' + e.desc + '</p><div class="event-meta">🕐 ' + e.time + (e.location ? ' &nbsp;·&nbsp; 📍 ' + e.location : '') + '</div></div></div>';
+    });
+    if (!upcoming.length) html = '<p style="color:var(--muted);font-size:0.88rem;">No upcoming events. Add one below!</p>';
+    document.getElementById('eventList').innerHTML = html;
+  }
+  function changeMonth(dir) {
+    curMonth += dir;
+    if (curMonth > 11) { curMonth = 0; curYear++; }
+    if (curMonth < 0) { curMonth = 11; curYear--; }
+    renderCalendar();
+  }
+  function addEvent() {
+    var title = document.getElementById('evTitle').value.trim();
+    var date = document.getElementById('evDate').value;
+    var time = document.getElementById('evTime').value;
+    var desc = document.getElementById('evDesc').value.trim();
+    var loc = document.getElementById('evLocation').value.trim();
+    if (!title || !date) { alert('Please enter a title and date.'); return; }
+    var p = date.split('-');
+    events.push({ date: new Date(p[0], p[1]-1, p[2]), title: title, time: time||'TBD', location: loc, desc: desc||'NABD event.' });
+    document.getElementById('evTitle').value = '';
+    document.getElementById('evDate').value = '';
+    document.getElementById('evTime').value = '';
+    document.getElementById('evDesc').value = '';
+    document.getElementById('evLocation').value = '';
+    document.getElementById('addEventForm').classList.remove('open');
+    renderCalendar();
+  }
+  renderCalendar();
+  var reveals = document.querySelectorAll('.reveal');
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry, i){ if (entry.isIntersecting){ setTimeout(function(){ entry.target.classList.add('visible'); }, i*80); obs.unobserve(entry.target); } });
+  }, { threshold: 0.08 });
+  reveals.forEach(function(el){ obs.observe(el); });
+
+  // ── NABD FORM HANDLER — POSTs to PaymeGPT Flow 2683 webhook (no CORS issues) ──
+  (function(){
+    var W='https://paymegpt.com/api/webhooks/flow/2683/f1446fe7553fe336888535803872d9111bde2c47ad90348460342ceec3ca4951';
+    var THANKS={'apptForm':'apptThanks','supportForm':'supportThanks','contactForm':'contactThanks'};
+    document.querySelectorAll('form').forEach(function(f){
+      f.addEventListener('submit',function(e){
+        e.preventDefault();
+        e.stopImmediatePropagation();
+        var d={};
+        f.querySelectorAll('input,select,textarea').forEach(function(el){
+          var k=el.name||el.id;
+          if(k&&el.type!=='hidden'&&el.type!=='submit')d[k]=el.value;
+        });
+        d.contactEmail=d.contactEmail||d.apptEmail||d.supEmail||d.conEmail||'';
+        d.contactPhone=d.contactPhone||d.apptPhone||d.supPhone||d.conPhone||'';
+        d.firstName=d.firstName||'';
+        d.lastName=d.lastName||'';
+        fetch(W,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(d)})
+          .then(function(){
+            var t=document.getElementById(THANKS[f.id]);
+            if(t){f.style.display='none';t.style.display='block';setTimeout(function(){t.style.display='none';f.style.display='block';f.reset();},4000);}
+          }).catch(function(err){console.error('Form error:',err);});
+      });
+    });
+  })();
+</script>
+</body>
+</html>
