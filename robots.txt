@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://Dwhitatl.github.io/nabd-landing-page/sitemap.xml
+Sitemap: https://nabd-justice.org/sitemap.xml
