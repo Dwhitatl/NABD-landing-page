@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<br><!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -8,6 +8,193 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
   
+
+<!-- SEO Meta Tags -->
+
+
+
+
+
+<!-- End SEO Meta Tags -->
+
+<script data-field-replace>
+(function(){
+  var params=new URLSearchParams(window.location.search);
+  var fields={};
+  var paramMap={
+    'first_name':'firstName','last_name':'lastName','full_name':'fullName',
+    'email':'email','phone':'phone','company':'company',
+    'city':'city','state':'state','country':'country'
+  };
+  var skipTags={'SCRIPT':1,'STYLE':1,'NOSCRIPT':1,'TEXTAREA':1,'CODE':1,'PRE':1};
+  var hasUrlFields=false;
+  for(var p in paramMap){
+    var v=params.get(p);
+    if(v){fields[paramMap[p]]=v;hasUrlFields=true;}
+  }
+  var contactId=params.get('contact_id');
+  function esc(s){
+    if(!s)return s;
+    var d=document.createElement('div');
+    d.appendChild(document.createTextNode(s));
+    return d.innerHTML;
+  }
+  function doReplace(data){
+    var r={};
+    r['{{full_name}}']=esc(((data.firstName||'')+' '+(data.lastName||'')).trim()||((data.fullName||data.name)||''));
+    r['{{first_name}}']=esc(data.firstName||(data.name?data.name.split(' ')[0]:'')||'');
+    r['{{last_name}}']=esc(data.lastName||(data.name&&data.name.indexOf(' ')>-1?data.name.substring(data.name.indexOf(' ')+1):'')||'');
+    r['{{email}}']=esc(data.email||'');
+    r['{{phone}}']=esc(data.phone||'');
+    r['{{company}}']=esc(data.company||'');
+    r['{{city}}']=esc(data.city||'');
+    r['{{state}}']=esc(data.state||'');
+    r['{{country}}']=esc(data.country||'');
+    r['{{date}}']=new Date().toLocaleDateString();
+    r['{{time}}']=new Date().toLocaleTimeString();
+    r['{{location}}']=[data.city,data.state,data.country].filter(Boolean).join(', ');
+    r['{{tracking_id}}']=esc(data.trackingId||'');
+    r['{{lastClickedProduct}}']=esc(data.lastClickedProduct||'');
+    r['{{lastProductClickDate}}']=esc(data.lastProductClickDate||'');
+    r['{{lastClickedProductPrice}}']=esc(data.lastClickedProductPrice||'');
+    r['{{lastClickedProductURL}}']=esc(data.lastClickedProductURL||'');
+    r['{{productsClickedCount}}']=esc(data.productsClickedCount||'0');
+    r['{{ip_address}}']=esc(data.ipAddress||'');
+    r['{{ip}}']=esc(data.ipAddress||'');
+    if(data.customFields){
+      for(var k in data.customFields){
+        r['{{'+k+'}}']=esc(String(data.customFields[k]||''));
+      }
+    }
+    params.forEach(function(v,k){
+      if(!paramMap[k]&&k!=='contact_id'&&k!=='page_id'&&k.indexOf('utm_')!==0){
+        r['{{'+k+'}}']=esc(v);
+      }
+    });
+    var hasValues=false;
+    for(var key in r){if(r[key]){hasValues=true;break;}}
+    if(!hasValues)return;
+    var walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT,{
+      acceptNode:function(n){
+        var p=n.parentNode;
+        if(p&&skipTags[p.nodeName])return NodeFilter.FILTER_REJECT;
+        return NodeFilter.FILTER_ACCEPT;
+      }
+    });
+    var node;
+    while(node=walker.nextNode()){
+      var txt=node.nodeValue;
+      if(txt&&txt.indexOf('{{')>-1){
+        var changed=txt;
+        for(var ph in r){
+          if(r[ph]&&changed.indexOf(ph)>-1){
+            changed=changed.split(ph).join(r[ph]);
+          }
+        }
+        if(changed!==txt)node.nodeValue=changed;
+      }
+    }
+    var attrs=['value','placeholder','content','alt','title'];
+    attrs.forEach(function(attr){
+      var els=document.querySelectorAll('['+attr+'*="{{"]');
+      for(var i=0;i<els.length;i++){
+        var tag=els[i].tagName;
+        if(skipTags[tag])continue;
+        var val=els[i].getAttribute(attr);
+        if(val){
+          var nv=val;
+          for(var ph in r){
+            if(r[ph]&&nv.indexOf(ph)>-1){
+              nv=nv.split(ph).join(r[ph]);
+            }
+          }
+          if(nv!==val)els[i].setAttribute(attr,nv);
+        }
+      }
+    });
+  }
+  function run(){
+    if(contactId){
+      var xhr=new XMLHttpRequest();
+      xhr.open('GET','https://paymegpt.com/api/landing/context/'+encodeURIComponent(contactId)+'?page_id=3384');
+      xhr.onload=function(){
+        if(xhr.status===200){
+          try{
+            var resp=JSON.parse(xhr.responseText);
+            if(resp.success&&resp.contact){
+              var merged=resp.contact;
+              for(var k in fields){merged[k]=fields[k];}
+              doReplace(merged);
+              return;
+            }
+          }catch(e){}
+        }
+        if(hasUrlFields)doReplace(fields);
+      };
+      xhr.onerror=function(){if(hasUrlFields)doReplace(fields);};
+      xhr.send();
+    }else if(hasUrlFields){
+      doReplace(fields);
+    }
+  }
+  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',run);}
+  else{run();}
+})();
+</script>
+<script data-payment>
+(function(){
+  var slug='gjEnuuq5';
+  var apiBase='https://paymegpt.com';
+  function findEmail(){
+    var ids=['email','emailAddress','buyer-email','buyerEmail','user-email','userEmail','checkout-email','customer-email','contact-email'];
+    for(var i=0;i<ids.length;i++){var el=document.getElementById(ids[i]);if(el&&el.value&&el.value.includes('@'))return el.value.trim();}
+    var inputs=document.querySelectorAll('input[type="email"],input[name*="email"],input[placeholder*="email"],input[placeholder*="Email"]');
+    for(var j=0;j<inputs.length;j++){if(inputs[j].value&&inputs[j].value.includes('@'))return inputs[j].value.trim();}
+    return '';
+  }
+  function findName(){
+    var ids=['name','fullName','full-name','buyer-name','buyerName','customer-name','userName','user-name'];
+    for(var i=0;i<ids.length;i++){var el=document.getElementById(ids[i]);if(el&&el.value)return el.value.trim();}
+    var inputs=document.querySelectorAll('input[name*="name"]:not([name*="email"]):not([type="email"]),input[placeholder*="name"]:not([placeholder*="email"]):not([type="email"]),input[placeholder*="Name"]:not([type="email"])');
+    for(var j=0;j<inputs.length;j++){if(inputs[j].value)return inputs[j].value.trim();}
+    return '';
+  }
+  var __realProcessPayment=function(a,b,c,d,e){
+    var amountCents,email,productName,productDescription,customerName,quantity;
+    if(a&&typeof a==='object'){
+      amountCents=a.amountCents;email=a.email;productName=a.productName;
+      productDescription=a.productDescription||'';customerName=a.name||'';quantity=a.quantity||1;
+    }else{
+      amountCents=typeof a==='number'?a:0;productName=typeof b==='string'?b:'';
+      productDescription=typeof c==='string'?c:'';email='';customerName='';quantity=1;
+    }
+    if(!email)email=findEmail();
+    if(!customerName)customerName=findName();
+    if(!productName){alert('Product name is required.');return Promise.reject('no_product_name');}
+    if(!amountCents||amountCents<100){alert('Amount must be at least $1.00');return Promise.reject('invalid_amount');}
+    if(!email){alert('Please enter your email address.');return Promise.reject('no_email');}
+    var successBase=window.location.href.split('?')[0];
+    return fetch(apiBase+'/api/landing-pages/public/'+slug+'/payment/checkout',{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({email:email,name:customerName,amountCents:amountCents,productName:productName,productDescription:productDescription,quantity:quantity,successUrl:successBase+'?payment=success&product='+encodeURIComponent(productName)+'&session_id={CHECKOUT_SESSION_ID}',cancelUrl:successBase+'?payment=cancelled'})
+    }).then(function(r){return r.json();}).then(function(d){
+      if(d.checkoutUrl){window.location.href=d.checkoutUrl;}
+      else{alert(d.error||'Failed to process payment');throw new Error(d.error);}
+    });
+  };
+  Object.defineProperty(window,'__processPayment',{value:__realProcessPayment,writable:false,configurable:false});
+  document.addEventListener('DOMContentLoaded',function(){
+    var urlParams=new URLSearchParams(window.location.search);
+    if(urlParams.get('payment')==='success'){
+      var pName=urlParams.get('product')||'your item';
+      var overlay=document.createElement('div');overlay.id='payment-success-overlay';
+      overlay.style.cssText='position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;z-index:999999;font-family:system-ui,-apple-system,sans-serif;';
+      overlay.innerHTML='<div style="background:white;border-radius:16px;padding:40px;max-width:420px;width:90%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.15);"><div style="width:64px;height:64px;border-radius:50%;background:#dcfce7;margin:0 auto 20px;display:flex;align-items:center;justify-content:center;"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><h2 style="margin:0 0 12px;font-size:24px;font-weight:700;color:#111827;">Payment Successful!</h2><p style="margin:0 0 24px;color:#6b7280;font-size:16px;">Thank you for purchasing '+pName.replace(/</g,'&lt;').replace(/>/g,'&gt;')+'.</p><button onclick="document.getElementById(\'payment-success-overlay\').remove();window.history.replaceState({},\'\',window.location.pathname);" style="padding:12px 32px;font-size:16px;font-weight:600;background:#16a34a;color:white;border:none;border-radius:8px;cursor:pointer;">Continue</button></div>';
+      document.body.appendChild(overlay);
+    }
+  });
+})();
+</script>  <link rel="stylesheet" href="styles.css">
 
 <!-- SEO Meta Tags -->
 <title>National Association of Black Defenders | Human Rights · Civil Rights · Equal Justice</title>
@@ -194,8 +381,7 @@
     }
   });
 })();
-</script>  <link rel="stylesheet" href="styles.css">
-</head>
+</script></head>
 <body>
 <nav data-section="navbar" style="z-index:9999;">
   <div class="nav-inner">
@@ -338,12 +524,10 @@
         <span class="service-tag">Referrals</span>
       </div>
     </div>
-
     <div class="legal-disclaimer-banner reveal" style="margin-top:2rem;max-width:100%;">
       <span class="disclaimer-label">⚠ Important Legal Notice</span>
       The National Association of Black Defenders, Inc. is <strong style="color:var(--ivory);">not a law firm</strong> and does not provide legal representation. We partner with civil rights and human rights attorneys nationwide to connect individuals with qualified legal support.
     </div>
-
     <div class="chat-feature reveal">
       <div class="chat-feature-grid">
         <div class="chat-feature-copy">
@@ -385,18 +569,18 @@
       </div>
       <div style="font-size:0.62rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:0.75rem;padding-bottom:0.4rem;border-bottom:1px solid rgba(201,151,58,0.2);">Step 1 — Select your membership tier</div>
       <div style="display:grid;grid-template-columns:1fr;gap:12px;margin-bottom:0.5rem;" id="mem-tier-grid">
-        <div class="mem-tier-card mem-active" id="mem-tier-adult" onclick="memSelectTier('adult')" style="background:var(--surface);border:1.5px solid var(--gold);border-radius:10px;padding:1.25rem;cursor:pointer;position:relative;transition:all 0.2s;">
-          <div id="mem-check-adult" style="position:absolute;top:10px;right:10px;width:18px;height:18px;border-radius:50%;background:var(--gold);border:1.5px solid var(--gold);display:flex;align-items:center;justify-content:center;"><span style="color:#0e0e0e;font-size:10px;font-weight:900;">✓</span></div>
+        <div class="mem-tier-card mem-active" id="mem-tier-adult" style="background:var(--surface);border:1.5px solid var(--gold);border-radius:10px;padding:1.25rem;position:relative;">
+          <div style="position:absolute;top:10px;right:10px;width:18px;height:18px;border-radius:50%;background:var(--gold);border:1.5px solid var(--gold);display:flex;align-items:center;justify-content:center;"><span style="color:#0e0e0e;font-size:10px;font-weight:900;">✓</span></div>
           <div style="font-size:0.58rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);margin-bottom:0.3rem;">Adult Membership</div>
           <div style="font-family:'DM Serif Display',serif;font-size:1.15rem;color:var(--ivory);margin-bottom:0.15rem;">Adult</div>
           <div style="font-size:0.75rem;color:var(--muted);margin-bottom:0.6rem;">Ages 18 and over</div>
           <div style="font-family:'DM Serif Display',serif;font-size:1.5rem;color:var(--gold-light);">$175 <span style="font-size:0.78rem;color:var(--muted);font-family:'Barlow',sans-serif;font-weight:400;">/ year</span></div>
         </div>
       </div>
-      <p style="font-size:0.7rem;color:var(--muted);text-align:center;margin-bottom:1.75rem;">Tap to select Adult Membership.</p>
+      <p style="font-size:0.7rem;color:var(--muted);text-align:center;margin-bottom:1.75rem;">Adult Membership — Ages 18 and over.</p>
       <div style="background:var(--surface);border:1px solid var(--border2);border-radius:12px;padding:1.75rem;margin-bottom:1.75rem;">
         <div style="font-size:0.62rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:0.75rem;padding-bottom:0.4rem;border-bottom:1px solid rgba(201,151,58,0.2);">What your membership includes</div>
-        <p style="font-size:0.88rem;color:var(--ivory-dim);line-height:1.75;margin-bottom:1.25rem;">Every NABD member — Youth and Adult — receives the full suite of benefits below, connecting you to advocacy, education, legal pathways, and a national community committed to equal justice.</p>
+        <p style="font-size:0.88rem;color:var(--ivory-dim);line-height:1.75;margin-bottom:1.25rem;">Every NABD Adult member receives the full suite of benefits below, connecting you to advocacy, education, legal pathways, and a national community committed to equal justice.</p>
         <div style="display:flex;flex-direction:column;gap:0.85rem;">
           <div style="display:flex;gap:0.9rem;align-items:flex-start;padding:0.9rem 1rem;background:var(--bg2);border:1px solid var(--border);border-radius:8px;"><span style="font-size:1rem;flex-shrink:0;">⚖️</span><div><div style="font-size:0.85rem;font-weight:700;color:var(--gold-light);margin-bottom:0.2rem;">Legal Advocacy &amp; Attorney Referral</div><div style="font-size:0.78rem;color:var(--muted);line-height:1.65;">Access NABD's network of civil rights and human rights attorneys. Members receive direct advocacy support and referral pathways to qualified legal counsel for matters brought before the organization.</div></div></div>
           <div style="display:flex;gap:0.9rem;align-items:flex-start;padding:0.9rem 1rem;background:var(--bg2);border:1px solid var(--border);border-radius:8px;"><span style="font-size:1rem;flex-shrink:0;">🤝</span><div><div style="font-size:0.85rem;font-weight:700;color:var(--gold-light);margin-bottom:0.2rem;">Work Directly with Legal Counsel</div><div style="font-size:0.78rem;color:var(--muted);line-height:1.65;">Members have the opportunity to engage directly with legal professionals through NABD's referral network — ensuring you are connected to the right support for your specific situation.</div></div></div>
@@ -407,7 +591,7 @@
           <div style="display:flex;gap:0.9rem;align-items:flex-start;padding:0.9rem 1rem;background:var(--bg2);border:1px solid var(--border);border-radius:8px;"><span style="font-size:1rem;flex-shrink:0;">📖</span><div><div style="font-size:0.85rem;font-weight:700;color:var(--gold-light);margin-bottom:0.2rem;">NABD Quality Magazine</div><div style="font-size:0.78rem;color:var(--muted);line-height:1.65;">Receive NABD's member publication featuring in-depth coverage of civil rights developments, legal advocacy news, community spotlights, and organizational updates.</div></div></div>
           <div style="display:flex;gap:0.9rem;align-items:flex-start;padding:0.9rem 1rem;background:var(--bg2);border:1px solid var(--border);border-radius:8px;"><span style="font-size:1rem;flex-shrink:0;">🎙</span><div><div style="font-size:0.85rem;font-weight:700;color:var(--gold-light);margin-bottom:0.2rem;">Monthly Podcast — American Injustice</div><div style="font-size:0.78rem;color:var(--muted);line-height:1.65;">Exclusive member access to NABD's monthly podcast series examining systemic injustice in America — featuring legal experts, advocates, and community voices on the front lines of change.</div></div></div>
         </div>
-        <div style="margin-top:1.25rem;padding-top:1rem;border-top:1px solid var(--border);font-size:0.72rem;color:var(--muted);text-align:center;line-height:1.6;">All benefits apply to both Youth ($75/yr) and Adult ($175/yr) membership tiers. Annual membership renews automatically via Stripe.</div>
+        <div style="margin-top:1.25rem;padding-top:1rem;border-top:1px solid var(--border);font-size:0.72rem;color:var(--muted);text-align:center;line-height:1.6;">Adult Membership — $175/yr. Annual membership renews automatically via Stripe.</div>
       </div>
       <div style="background:var(--surface);border:1px solid var(--border2);border-radius:12px;padding:1.75rem;margin-bottom:1.5rem;">
         <div style="font-size:0.62rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:0.85rem;padding-bottom:0.4rem;border-bottom:1px solid rgba(201,151,58,0.2);">Step 2 — Your information</div>
@@ -430,10 +614,10 @@
       <div style="background:var(--bg2);border:1px solid rgba(201,151,58,0.25);border-radius:10px;padding:1.1rem 1.25rem;margin-bottom:1.25rem;display:flex;justify-content:space-between;align-items:center;">
         <div>
           <div style="font-size:0.62rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-bottom:0.2rem;">Selected tier</div>
-          <div id="mem-summary-tier" style="font-size:0.92rem;font-weight:600;color:var(--gold-light);">Adult Membership</div>
+          <div style="font-size:0.92rem;font-weight:600;color:var(--gold-light);">Adult Membership</div>
         </div>
         <div style="text-align:right;">
-          <div id="mem-summary-amount" style="font-family:'DM Serif Display',serif;font-size:1.5rem;color:var(--ivory);">$175.00</div>
+          <div style="font-family:'DM Serif Display',serif;font-size:1.5rem;color:var(--ivory);">$175.00</div>
           <div style="font-size:0.72rem;color:var(--muted);">per year</div>
         </div>
       </div>
@@ -607,34 +791,6 @@
 
 <script src="https://paymegpt.com/widget.js" data-widget="23228416" async></script>
 <script>
-  var MEM_LINKS = {
-    youth: 'https://buy.stripe.com/aFa00jFfcx4dUaf3y2Z001',
-    adult: 'https://buy.stripe.com/3cIaEX0Kl9kS03k3kQ2Z002'
-  };
-  function memSelectTier(tier) {
-    var isYouth = tier === 'youth';
-    var youthCard = document.getElementById('mem-tier-youth');
-    var adultCard = document.getElementById('mem-tier-adult');
-    var youthCheck = document.getElementById('mem-check-youth');
-    var adultCheck = document.getElementById('mem-check-adult');
-    if (isYouth) {
-      youthCard.style.background='var(--surface)'; youthCard.style.borderColor='var(--gold)';
-      adultCard.style.background='var(--bg2)'; adultCard.style.borderColor='var(--border2)';
-      youthCheck.style.background='var(--gold)'; youthCheck.style.borderColor='var(--gold)'; youthCheck.innerHTML='<span style="color:#0e0e0e;font-size:10px;font-weight:900;">✓</span>';
-      adultCheck.style.background='transparent'; adultCheck.style.borderColor='var(--border2)'; adultCheck.innerHTML='';
-    } else {
-      adultCard.style.background='var(--surface)'; adultCard.style.borderColor='var(--gold)';
-      youthCard.style.background='var(--bg2)'; youthCard.style.borderColor='var(--border2)';
-      adultCheck.style.background='var(--gold)'; adultCheck.style.borderColor='var(--gold)'; adultCheck.innerHTML='<span style="color:#0e0e0e;font-size:10px;font-weight:900;">✓</span>';
-      youthCheck.style.background='transparent'; youthCheck.style.borderColor='var(--border2)'; youthCheck.innerHTML='';
-    }
-    document.getElementById('mem-summary-tier').textContent = isYouth ? 'Youth Membership' : 'Adult Membership';
-    document.getElementById('mem-summary-amount').textContent = isYouth ? '$75.00' : '$175.00';
-    var btn = document.getElementById('mem-pay-btn');
-    btn.href = MEM_LINKS[tier];
-    btn.textContent = isYouth ? 'Complete Registration & Pay — $75.00 / year' : 'Complete Registration & Pay — $175.00 / year';
-  }
-
   (function(){
     var isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent) || ('ontouchstart' in window && navigator.maxTouchPoints > 1);
     document.querySelectorAll('.phone-display[data-phone]').forEach(function(el){
