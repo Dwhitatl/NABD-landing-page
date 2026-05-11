@@ -384,23 +384,16 @@
         The National Association of Black Defenders, Inc. is <strong style="color:var(--ivory);">not a law firm</strong> and does not provide legal representation. We partner with civil rights and human rights attorneys nationwide to connect individuals with qualified legal support.
       </div>
       <div style="font-size:0.62rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:0.75rem;padding-bottom:0.4rem;border-bottom:1px solid rgba(201,151,58,0.2);">Step 1 — Select your membership tier</div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:0.5rem;" id="mem-tier-grid">
-        <div class="mem-tier-card mem-active" id="mem-tier-youth" onclick="memSelectTier('youth')" style="background:var(--surface);border:1.5px solid var(--gold);border-radius:10px;padding:1.25rem;cursor:pointer;position:relative;transition:all 0.2s;">
-          <div id="mem-check-youth" style="position:absolute;top:10px;right:10px;width:18px;height:18px;border-radius:50%;background:var(--gold);border:1.5px solid var(--gold);display:flex;align-items:center;justify-content:center;"><span style="color:#0e0e0e;font-size:10px;font-weight:900;">✓</span></div>
-          <div style="font-size:0.58rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);margin-bottom:0.3rem;">Youth Membership</div>
-          <div style="font-family:'DM Serif Display',serif;font-size:1.15rem;color:var(--ivory);margin-bottom:0.15rem;">Youth</div>
-          <div style="font-size:0.75rem;color:var(--muted);margin-bottom:0.6rem;">Ages 17 and under</div>
-          <div style="font-family:'DM Serif Display',serif;font-size:1.5rem;color:var(--gold-light);">$75 <span style="font-size:0.78rem;color:var(--muted);font-family:'Barlow',sans-serif;font-weight:400;">/ year</span></div>
-        </div>
-        <div class="mem-tier-card" id="mem-tier-adult" onclick="memSelectTier('adult')" style="background:var(--bg2);border:1.5px solid var(--border2);border-radius:10px;padding:1.25rem;cursor:pointer;position:relative;transition:all 0.2s;">
-          <div id="mem-check-adult" style="position:absolute;top:10px;right:10px;width:18px;height:18px;border-radius:50%;background:transparent;border:1.5px solid var(--border2);"></div>
-          <div style="font-size:0.58rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-bottom:0.3rem;">Adult Membership</div>
+      <div style="display:grid;grid-template-columns:1fr;gap:12px;margin-bottom:0.5rem;" id="mem-tier-grid">
+        <div class="mem-tier-card mem-active" id="mem-tier-adult" onclick="memSelectTier('adult')" style="background:var(--surface);border:1.5px solid var(--gold);border-radius:10px;padding:1.25rem;cursor:pointer;position:relative;transition:all 0.2s;">
+          <div id="mem-check-adult" style="position:absolute;top:10px;right:10px;width:18px;height:18px;border-radius:50%;background:var(--gold);border:1.5px solid var(--gold);display:flex;align-items:center;justify-content:center;"><span style="color:#0e0e0e;font-size:10px;font-weight:900;">✓</span></div>
+          <div style="font-size:0.58rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);margin-bottom:0.3rem;">Adult Membership</div>
           <div style="font-family:'DM Serif Display',serif;font-size:1.15rem;color:var(--ivory);margin-bottom:0.15rem;">Adult</div>
           <div style="font-size:0.75rem;color:var(--muted);margin-bottom:0.6rem;">Ages 18 and over</div>
           <div style="font-family:'DM Serif Display',serif;font-size:1.5rem;color:var(--gold-light);">$175 <span style="font-size:0.78rem;color:var(--muted);font-family:'Barlow',sans-serif;font-weight:400;">/ year</span></div>
         </div>
       </div>
-      <p style="font-size:0.7rem;color:var(--muted);text-align:center;margin-bottom:1.75rem;">Tap a tier to select — both Youth and Adult options are available.</p>
+      <p style="font-size:0.7rem;color:var(--muted);text-align:center;margin-bottom:1.75rem;">Tap to select Adult Membership.</p>
       <div style="background:var(--surface);border:1px solid var(--border2);border-radius:12px;padding:1.75rem;margin-bottom:1.75rem;">
         <div style="font-size:0.62rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:0.75rem;padding-bottom:0.4rem;border-bottom:1px solid rgba(201,151,58,0.2);">What your membership includes</div>
         <p style="font-size:0.88rem;color:var(--ivory-dim);line-height:1.75;margin-bottom:1.25rem;">Every NABD member — Youth and Adult — receives the full suite of benefits below, connecting you to advocacy, education, legal pathways, and a national community committed to equal justice.</p>
@@ -437,10 +430,10 @@
       <div style="background:var(--bg2);border:1px solid rgba(201,151,58,0.25);border-radius:10px;padding:1.1rem 1.25rem;margin-bottom:1.25rem;display:flex;justify-content:space-between;align-items:center;">
         <div>
           <div style="font-size:0.62rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-bottom:0.2rem;">Selected tier</div>
-          <div id="mem-summary-tier" style="font-size:0.92rem;font-weight:600;color:var(--gold-light);">Youth Membership</div>
+          <div id="mem-summary-tier" style="font-size:0.92rem;font-weight:600;color:var(--gold-light);">Adult Membership</div>
         </div>
         <div style="text-align:right;">
-          <div id="mem-summary-amount" style="font-family:'DM Serif Display',serif;font-size:1.5rem;color:var(--ivory);">$75.00</div>
+          <div id="mem-summary-amount" style="font-family:'DM Serif Display',serif;font-size:1.5rem;color:var(--ivory);">$175.00</div>
           <div style="font-size:0.72rem;color:var(--muted);">per year</div>
         </div>
       </div>
@@ -453,8 +446,8 @@
           <p style="font-size:0.73rem;color:var(--muted);line-height:1.6;">Clicking the button below will take you to Stripe's secure hosted payment page. Your card details are never stored by NABD. Annual membership renews automatically each year.</p>
         </div>
       </div>
-      <a href="https://buy.stripe.com/aFa00jFfcx4dUaf3y2Z001" id="mem-pay-btn" target="_blank" class="btn btn-gold" style="width:100%;justify-content:center;font-size:0.88rem;padding:1rem;border-radius:8px;text-transform:uppercase;letter-spacing:0.08em;">
-        Complete Registration &amp; Pay — $75.00 / year
+      <a href="https://buy.stripe.com/aFa28qdn03pK2eQ4nE8so01" id="mem-pay-btn" target="_blank" class="btn btn-gold" style="width:100%;justify-content:center;font-size:0.88rem;padding:1rem;border-radius:8px;text-transform:uppercase;letter-spacing:0.08em;">
+        Complete Registration &amp; Pay — $175.00 / year
       </a>
       <p style="font-size:0.7rem;color:var(--muted);text-align:center;margin-top:0.85rem;line-height:1.6;">By completing registration you agree to NABD's annual membership terms.<br>Payments processed securely by Stripe. NABD does not store payment information.</p>
     </div>
