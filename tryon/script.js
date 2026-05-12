@@ -70,12 +70,9 @@ function drawFrame(ctx,W,H){
       var rCX=rightEye.reduce(function(s,p){return s+p.x;},0)/rightEye.length;
       var rCY=rightEye.reduce(function(s,p){return s+p.y;},0)/rightEye.length;
       var eyeSpan=Math.sqrt(Math.pow(rCX-lCX,2)+Math.pow(rCY-lCY,2));
-      fw=eyeSpan*2.2;
-      fh=fw*(img.naturalHeight/img.naturalWidth);
-      var eyeCX=(lCX+rCX)/2;
-      var eyeCY=(lCY+rCY)/2;
-      fx=eyeCX-(fw/2);
-      fy=eyeCY-(fh*0.5);
+      fw=eyeSpan*2.2;fh=fw*(img.naturalHeight/img.naturalWidth);
+      var eyeCX=(lCX+rCX)/2,eyeCY=(lCY+rCY)/2;
+      fx=eyeCX-(fw/2);fy=eyeCY-(fh*0.5);
       angle=Math.atan2(rCY-lCY,rCX-lCX);
     }else{
       fw=W*0.65;fh=fw*(img.naturalHeight/img.naturalWidth);fx=(W-fw)/2;fy=H*0.30;
