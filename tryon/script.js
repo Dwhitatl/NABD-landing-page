@@ -1,120 +1,119 @@
-var frameImg = new Image();
-frameImg.crossOrigin = 'anonymous';
-frameImg.src = 'https://paymegpt.com/objects/generated-images/83/1778619918079-ee3e17e7d5ac76de.png';
+import{FaceLandmarker,FilesetResolver}from'https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.14/vision_bundle.mjs';
 
-var curColor = 'black';
-var colorFilters = {
-  black:    'brightness(0) saturate(100%)',
-  tortoise: 'sepia(1) saturate(2) hue-rotate(340deg) brightness(0.6)',
-  gold:     'sepia(1) saturate(3) hue-rotate(10deg) brightness(1.1)',
-  silver:   'grayscale(1) brightness(1.3)',
-  rosegold: 'sepia(0.5) saturate(2) hue-rotate(320deg) brightness(1.1)'
+const FRAME='https://paymegpt.com/objects/generated-images/83/1778616234545-136b0c600d7098de.png';
+const vid=document.getElementById('vid');
+const cvs=document.getElementById('cvs');
+const ctx=cvs.getContext('2d');
+const st=document.getElementById('status');
+const startBtn=document.getElementById('startBtn');
+const stopBtn=document.getElementById('stopBtn');
+
+// Preload frame — draw to offscreen canvas to strip white background
+const rawImg=new Image();
+rawImg.crossOrigin='anonymous';
+rawImg.src=FRAME;
+
+let cleanFrame=null;
+
+rawImg.onload=()=>{
+  // Create offscreen canvas and remove near-white pixels
+  const oc=document.createElement('canvas');
+  oc.width=rawImg.naturalWidth;
+  oc.height=rawImg.naturalHeight;
+  const oc2=oc.getContext('2d');
+  oc2.drawImage(rawImg,0,0);
+  const id=oc2.getImageData(0,0,oc.width,oc.height);
+  const d=id.data;
+  for(let i=0;i<d.length;i+=4){
+    const r=d[i],g=d[i+1],b=d[i+2];
+    // If pixel is near-white (all channels >230), make transparent
+    if(r>230&&g>230&&b>230) d[i+3]=0;
+  }
+  oc2.putImageData(id,0,0);
+  cleanFrame=oc;
 };
 
-var go = false;
-var lm = null;
+let lm=null,go=false,stream=null;
 
-function selectFrame(el) {
-  document.querySelectorAll('.frame-btn').forEach(function(b){ b.classList.remove('active'); });
-  el.classList.add('active');
-  frameImg = new Image();
-  frameImg.crossOrigin = 'anonymous';
-  frameImg.src = el.dataset.url;
+async function loadModel(){
+  st.textContent='Loading model…';
+  startBtn.disabled=true;
+  try{
+    const fs=await FilesetResolver.forVisionTasks('https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.14/wasm');
+    lm=await FaceLandmarker.createFromOptions(fs,{
+      baseOptions:{modelAssetPath:'https://storage.googleapis.com/mediapipe-models/face_landmarker/face_landmarker/float16/1/face_landmarker.task',delegate:'GPU'},
+      runningMode:'VIDEO',numFaces:1
+    });
+    st.textContent='Model ready — starting camera…';
+    await startCam();
+  }catch(e){
+    st.textContent='Error: '+e.message;
+    startBtn.disabled=false;
+  }
 }
 
-function selectSwatch(el) {
-  document.querySelectorAll('.swatch').forEach(function(s){ s.classList.remove('active'); });
-  el.classList.add('active');
-  curColor = el.dataset.color;
-  document.getElementById('swatchLabel').textContent = el.dataset.label;
+async function startCam(){
+  try{
+    stream=await navigator.mediaDevices.getUserMedia({video:{facingMode:'user',width:{ideal:480},height:{ideal:360}}});
+    vid.srcObject=stream;
+    vid.onloadedmetadata=()=>{
+      cvs.width=vid.videoWidth;
+      cvs.height=vid.videoHeight;
+      st.textContent='✓ Live — frames tracking your face';
+      stopBtn.style.display='block';
+      startBtn.style.display='none';
+      go=true;
+      requestAnimationFrame(loop);
+    };
+  }catch(e){
+    st.textContent='Camera error: '+e.message+' — close other apps and retry';
+    startBtn.disabled=false;
+  }
 }
 
-function setStatus(msg) {
-  document.getElementById('statusBar').textContent = msg;
+function stopCam(){
+  go=false;
+  if(stream) stream.getTracks().forEach(t=>t.stop());
+  stream=null;
+  vid.srcObject=null;
+  ctx.clearRect(0,0,cvs.width,cvs.height);
+  st.textContent='Camera stopped';
+  stopBtn.style.display='none';
+  startBtn.style.display='block';
+  startBtn.disabled=false;
 }
 
-async function startCamera() {
-  document.getElementById('startScreen').style.display = 'none';
-  setStatus('Starting camera…');
-
-  var vid = document.getElementById('vid');
-  var cvs = document.getElementById('overlay');
-  var ctx = cvs.getContext('2d');
-
-  // Size canvas to match video container
-  var wrap = document.getElementById('cameraWrap');
-  cvs.width  = wrap.offsetWidth  || 360;
-  cvs.height = wrap.offsetHeight || 480;
-
-  // Init MediaPipe FaceMesh
-  var faceMesh = new FaceMesh({locateFile: function(f){
-    return 'https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh/' + f;
-  }});
-
-  faceMesh.setOptions({
-    maxNumFaces: 1,
-    refineLandmarks: true,
-    minDetectionConfidence: 0.5,
-    minTrackingConfidence: 0.5
-  });
-
-  faceMesh.onResults(function(results) {
-    ctx.clearRect(0, 0, cvs.width, cvs.height);
-
-    if (results.multiFaceLandmarks && results.multiFaceLandmarks.length > 0 && frameImg.complete) {
-      var pts = results.multiFaceLandmarks[0];
-      var W = cvs.width, H = cvs.height;
-
-      // Key landmarks
-      var lEye = pts[33],  rEye = pts[263];
-      var lTemple = pts[234], rTemple = pts[454];
-
-      var lx = lEye.x * W,  ly = lEye.y * H;
-      var rx = rEye.x * W,  ry = rEye.y * H;
-      var ltx = lTemple.x * W, rtx = rTemple.x * W;
-
-      // Frame sizing — temple to temple
-      var fw = Math.abs(rtx - ltx) * 1.12;
-      var fh = fw * (frameImg.naturalHeight / frameImg.naturalWidth);
-
-      // Center on eye midpoint
-      var cx = (lx + rx) / 2;
-      var cy = (ly + ry) / 2;
-
-      // Rotation angle
-      var angle = Math.atan2(ry - ly, rx - lx);
-
+function loop(){
+  if(!go)return;
+  if(vid.readyState>=2&&lm&&cleanFrame){
+    const r=lm.detectForVideo(vid,performance.now());
+    ctx.clearRect(0,0,cvs.width,cvs.height);
+    if(r.faceLandmarks&&r.faceLandmarks.length>0){
+      const pts=r.faceLandmarks[0];
+      const W=cvs.width,H=cvs.height;
+      const lEye=pts[33],rEye=pts[263];
+      const lx=lEye.x*W,ly=lEye.y*H;
+      const rx=rEye.x*W,ry=rEye.y*H;
+      const eyeW=Math.abs(rx-lx);
+      const fw=eyeW*0.85;
+      const fh=fw*(cleanFrame.height/cleanFrame.width);
+      const cx=(lx+rx)/2;
+      const cy=(ly+ry)/2;
+      const angle=Math.atan2(ry-ly,rx-lx);
       ctx.save();
-      ctx.translate(cx, cy);
+      ctx.translate(cx,cy);
       ctx.rotate(angle);
-
-      // Apply color filter via CSS on offscreen canvas
-      if (curColor !== 'black') {
-        ctx.filter = colorFilters[curColor];
-      }
-
-      ctx.drawImage(frameImg, -fw/2, -fh * 0.45, fw, fh);
+      ctx.drawImage(cleanFrame,-fw/2,-fh*0.45,fw,fh);
       ctx.restore();
-
-      setStatus('Face detected ✓ · ' + (document.querySelector('.frame-btn.active .f-label') || {textContent:''}).textContent);
-    } else {
-      setStatus('Looking for face…');
     }
-  });
-
-  // Start camera
-  var camera = new Camera(vid, {
-    onFrame: async function() {
-      await faceMesh.send({image: vid});
-    },
-    width: 480,
-    height: 640
-  });
-
-  camera.start().then(function() {
-    setStatus('Camera active · Select a frame →');
-  }).catch(function(e) {
-    setStatus('Camera error: ' + e.message);
-    document.getElementById('startScreen').style.display = 'flex';
-  });
+  }
+  requestAnimationFrame(loop);
 }
+
+// Explicit start button — user controls camera
+startBtn.addEventListener('click',loadModel);
+stopBtn.addEventListener('click',stopCam);
+
+// Release camera on page unload
+window.addEventListener('beforeunload',stopCam);
+window.addEventListener('pagehide',stopCam);
