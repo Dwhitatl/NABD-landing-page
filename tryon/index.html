@@ -5,8 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,700;0,900;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/tensorflow/3.7.0/tf.min.js"></script>
-<script src="https://unpkg.com/@tensorflow-models/face-landmarks-detection@1.0.1/dist/face-landmarks-detection.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/face-api.js@0.22.2/dist/face-api.min.js"></script>
 
 
 <!-- SEO Meta Tags -->
@@ -200,22 +199,22 @@
 </script>  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<div id="loadingScreen" data-section="loading-screen">
+<div id="loadingScreen">
   <div class="load-spinner"></div>
   <div class="load-title">Loading Face Detection</div>
-  <div class="load-sub">TensorFlow.js · Runs in your browser · No data sent anywhere</div>
+  <div class="load-sub">face-api.js · Runs in your browser · No data sent anywhere</div>
   <div id="loadProgress">Initializing…</div>
 </div>
-<header data-section="navbar">
+<header>
   <div class="logo">saged<em>.ai</em></div>
   <a href="https://calendly.com/denisedwhitfield/30min" target="_blank" class="header-cta">Book a Call →</a>
 </header>
-<div class="hero-strip" data-section="hero">
+<div class="hero-strip">
   <div class="eyebrow">Virtual Try-On Demo</div>
   <h1>See Frames on <em>Your</em> Face</h1>
   <p>Upload your photo — AI detects your eye positions and places frames precisely on your face.</p>
 </div>
-<div class="app" data-section="app">
+<div class="app">
   <div>
     <div class="upload-zone" id="uploadZone">
       <input type="file" id="fileInput" accept="image/*">
@@ -265,17 +264,17 @@
     <div class="panel-section">
       <h4><span class="step-num">2</span>Choose a Color</h4>
       <div class="swatch-row">
-        <div class="swatch s-black active" data-color="black" data-label="Black" onclick="selectSwatch(this)" title="Black"></div>
-        <div class="swatch s-tortoise" data-color="tortoise" data-label="Tortoise" onclick="selectSwatch(this)" title="Tortoise"></div>
-        <div class="swatch s-gold" data-color="gold" data-label="Gold" onclick="selectSwatch(this)" title="Gold"></div>
-        <div class="swatch s-silver" data-color="silver" data-label="Silver" onclick="selectSwatch(this)" title="Silver"></div>
-        <div class="swatch s-rosegold" data-color="rosegold" data-label="Rose Gold" onclick="selectSwatch(this)" title="Rose Gold"></div>
+        <div class="swatch s-black active" data-color="black" data-label="Black" onclick="selectSwatch(this)"></div>
+        <div class="swatch s-tortoise" data-color="tortoise" data-label="Tortoise" onclick="selectSwatch(this)"></div>
+        <div class="swatch s-gold" data-color="gold" data-label="Gold" onclick="selectSwatch(this)"></div>
+        <div class="swatch s-silver" data-color="silver" data-label="Silver" onclick="selectSwatch(this)"></div>
+        <div class="swatch s-rosegold" data-color="rosegold" data-label="Rose Gold" onclick="selectSwatch(this)"></div>
       </div>
       <div class="swatch-label" id="swatchLabel">Black</div>
     </div>
   </div>
 </div>
-<footer data-section="footer">
+<footer>
   <p>© 2026 <a href="https://saged.ai">saged.ai</a> · AI Strategies LLC · Atlanta, GA · <a href="mailto:denise@saged.ai">denise@saged.ai</a></p>
 </footer>
 
