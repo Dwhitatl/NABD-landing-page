@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://nabd-justice.org/tryon/</loc>
+    <lastmod>2026-05-12T21:31:02.496Z</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
     <loc>https://nabd-justice.org/</loc>
     <lastmod>2026-05-12T21:30:51.784Z</lastmod>
     <changefreq>weekly</changefreq>
