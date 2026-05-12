@@ -1,4 +1,5 @@
-var model=null,userImage=null,scaledMesh=null;
+var MODEL_URL='https://cdn.jsdelivr.net/npm/face-api.js@0.22.2/weights';
+var userImage=null,faceData=null;
 var curFrameUrl=null,curFrameLabel='',curFrameTier='';
 var curColor='black',curColorLabel='Black';
 var colorTints={black:{r:0,g:0,b:0,a:0},tortoise:{r:120,g:55,b:5,a:0.62},gold:{r:200,g:150,b:0,a:0.52},silver:{r:180,g:180,b:180,a:0.48},rosegold:{r:200,g:100,b:110,a:0.50}};
@@ -8,19 +9,17 @@ function setStatus(id,color,text){var d=document.getElementById('dot'+id),l=docu
 async function initModel(){
   var prog=document.getElementById('loadProgress');
   try{
-    prog.textContent='Setting up WebGL…';
-    await tf.setBackend('webgl');
-    await tf.ready();
-    prog.textContent='Downloading face model…';
-    model=await faceLandmarksDetection.load(faceLandmarksDetection.SupportedPackages.mediapipeFacemesh,{maxFaces:1});
+    prog.textContent='Loading face detection model…';
+    await faceapi.nets.tinyFaceDetector.loadFromUri(MODEL_URL);
+    await faceapi.nets.faceLandmark68TinyNet.loadFromUri(MODEL_URL);
     setStatus('Model','green','Face model ready ✓');
+    prog.textContent='Ready!';
     var ls=document.getElementById('loadingScreen');
     ls.classList.add('fade');
     setTimeout(function(){ls.style.display='none';},600);
   }catch(e){
     console.error('Model error:',e);
-    prog.textContent='Model error — '+e.message;
-    setStatus('Model','orange','Model error');
+    setStatus('Model','orange','Model error — using estimate');
     setTimeout(function(){var ls=document.getElementById('loadingScreen');ls.classList.add('fade');setTimeout(function(){ls.style.display='none';},600);},2000);
   }
 }
@@ -47,14 +46,12 @@ async function detectAndDraw(){
   canvas.width=Math.round(userImage.naturalWidth*scale);
   canvas.height=Math.round(userImage.naturalHeight*scale);
   ctx.drawImage(userImage,0,0,canvas.width,canvas.height);
-  scaledMesh=null;
-  if(model){
-    try{
-      var preds=await model.estimateFaces({input:canvas});
-      if(preds&&preds.length>0){scaledMesh=preds[0].scaledMesh;setStatus('Face','green','Face detected ✓');}
-      else{setStatus('Face','orange','No face found — using estimate');}
-    }catch(e){setStatus('Face','orange','Detection error — using estimate');}
-  }else{setStatus('Face','orange','Model not loaded — using estimate');}
+  faceData=null;
+  try{
+    var detection=await faceapi.detectSingleFace(canvas,new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks(true);
+    if(detection){faceData=detection.landmarks;setStatus('Face','green','Face detected ✓');}
+    else{setStatus('Face','orange','No face found — using estimate');}
+  }catch(e){setStatus('Face','orange','Using estimate');}
   overlay.classList.remove('show');
   if(curFrameUrl)drawFrame(ctx,canvas.width,canvas.height);
 }
@@ -65,16 +62,21 @@ function drawFrame(ctx,W,H){
   img.crossOrigin='anonymous';
   img.onload=function(){
     var fx,fy,fw,fh,angle=0;
-    if(scaledMesh&&scaledMesh.length>400){
-      var lE=scaledMesh[33],rE=scaledMesh[263];
-      var eyeSpan=Math.abs(rE[0]-lE[0]);
-      fw=eyeSpan*1.5;
+    if(faceData){
+      var leftEye=faceData.getLeftEye();
+      var rightEye=faceData.getRightEye();
+      var lCX=leftEye.reduce(function(s,p){return s+p.x;},0)/leftEye.length;
+      var lCY=leftEye.reduce(function(s,p){return s+p.y;},0)/leftEye.length;
+      var rCX=rightEye.reduce(function(s,p){return s+p.x;},0)/rightEye.length;
+      var rCY=rightEye.reduce(function(s,p){return s+p.y;},0)/rightEye.length;
+      var eyeSpan=Math.sqrt(Math.pow(rCX-lCX,2)+Math.pow(rCY-lCY,2));
+      fw=eyeSpan*2.2;
       fh=fw*(img.naturalHeight/img.naturalWidth);
-      var eyeCX=(lE[0]+rE[0])/2;
-      var eyeCY=(lE[1]+rE[1])/2;
+      var eyeCX=(lCX+rCX)/2;
+      var eyeCY=(lCY+rCY)/2;
       fx=eyeCX-(fw/2);
-      fy=eyeCY-(fh*0.50);
-      angle=Math.atan2(rE[1]-lE[1],rE[0]-lE[0])*0.5;
+      fy=eyeCY-(fh*0.5);
+      angle=Math.atan2(rCY-lCY,rCX-lCX);
     }else{
       fw=W*0.65;fh=fw*(img.naturalHeight/img.naturalWidth);fx=(W-fw)/2;fy=H*0.30;
     }
@@ -111,7 +113,7 @@ function selectSwatch(el){
 }
 
 function resetAll(){
-  userImage=null;scaledMesh=null;curFrameUrl=null;
+  userImage=null;faceData=null;curFrameUrl=null;
   document.querySelectorAll('.frame-btn').forEach(function(b){b.classList.remove('active');});
   document.getElementById('uploadZone').style.display='';
   document.getElementById('canvasArea').classList.remove('visible');
