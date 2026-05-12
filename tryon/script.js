@@ -1,4 +1,4 @@
-var MODEL_URL='https://cdn.jsdelivr.net/npm/face-api.js@0.22.2/weights';
+var MODEL_URL='https://raw.githubusercontent.com/justadudewhohacks/face-api.js/master/weights';
 var userImage=null,faceData=null;
 var curFrameUrl=null,curFrameLabel='',curFrameTier='';
 var curColor='black',curColorLabel='Black';
