@@ -4,9 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,700;0,900;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh/face_mesh.js" crossorigin="anonymous"></script>
 
 
 <!-- SEO Meta Tags -->
@@ -200,105 +197,20 @@
 </script>  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
-<header>
-  <div class="logo">saged<em>.ai</em></div>
-  <a href="https://calendly.com/denisedwhitfield/30min" target="_blank" class="header-cta">Book a Call →</a>
-</header>
-
-<div class="hero">
-  <div class="eyebrow">For Independent Atlanta Opticians</div>
-  <h1>Your Patients Are Already<br>Trying On Frames <em>Online.</em><br>Just Not Yours.</h1>
-  <p>Experience the exact virtual try-on tool saged.ai deploys — live on your face, right now.</p>
-  <a href="#demo" class="btn-primary">Try It Now →</a>
+<main data-section="hero">
+<h1>See Frames on <em>Your</em> Face</h1>
+<p>Try on frames live using your camera.</p>
+<div id="wrap">
+  <video id="vid" autoplay playsinline muted></video>
+  <canvas id="cvs"></canvas>
 </div>
-
-<div class="app" id="demo">
-  <div>
-    <div class="camera-wrap" id="cameraWrap">
-      <video id="vid" playsinline muted></video>
-      <canvas id="overlay"></canvas>
-
-      <div class="start-screen" id="startScreen">
-        <div style="font-size:2.4rem;">👓</div>
-        <h3>Virtual Try-On</h3>
-        <p>Allow camera access to try frames on your live face</p>
-        <button class="btn-start" onclick="startCamera()">Allow Camera →</button>
-      </div>
-
-      <div class="status-bar" id="statusBar">Initializing…</div>
-    </div>
-  </div>
-
-  <div class="side-panel">
-    <div class="panel-section">
-      <h4><span class="step-num">1</span>Choose a Frame</h4>
-      <div class="tier-divider">Budget-Friendly</div>
-      <div class="frame-grid">
-        <div class="frame-btn active" data-url="https://paymegpt.com/objects/generated-images/83/1778619918079-ee3e17e7d5ac76de.png" onclick="selectFrame(this)">
-          <img src="https://paymegpt.com/objects/generated-images/83/1778619918079-ee3e17e7d5ac76de.png" alt="Rectangle">
-          <span class="f-label">Rectangle</span>
-        </div>
-        <div class="frame-btn" data-url="https://paymegpt.com/objects/generated-images/83/1778612164535-387273512db0e741.png" onclick="selectFrame(this)">
-          <img src="https://paymegpt.com/objects/generated-images/83/1778612164535-387273512db0e741.png" alt="Round">
-          <span class="f-label">Round</span>
-        </div>
-        <div class="frame-btn" data-url="https://paymegpt.com/objects/generated-images/83/1778612190572-fb01cddeea4fe34e.png" onclick="selectFrame(this)">
-          <img src="https://paymegpt.com/objects/generated-images/83/1778612190572-fb01cddeea4fe34e.png" alt="Cat Eye">
-          <span class="f-label">Cat Eye</span>
-        </div>
-        <div class="frame-btn" data-url="https://paymegpt.com/objects/generated-images/83/1778612214110-755233e4b05a1995.png" onclick="selectFrame(this)">
-          <img src="https://paymegpt.com/objects/generated-images/83/1778612214110-755233e4b05a1995.png" alt="Aviator">
-          <span class="f-label">Aviator</span>
-        </div>
-      </div>
-      <div class="tier-divider" style="margin-top:12px;">Designer</div>
-      <div class="frame-grid">
-        <div class="frame-btn" data-url="https://paymegpt.com/objects/generated-images/83/1778612238344-abaeb947363b17c2.png" onclick="selectFrame(this)">
-          <img src="https://paymegpt.com/objects/generated-images/83/1778612238344-abaeb947363b17c2.png" alt="Bold Square">
-          <span class="f-label">Bold Square</span>
-        </div>
-        <div class="frame-btn" data-url="https://paymegpt.com/objects/generated-images/83/1778612263155-c3cb0a81a96a95a1.png" onclick="selectFrame(this)">
-          <img src="https://paymegpt.com/objects/generated-images/83/1778612263155-c3cb0a81a96a95a1.png" alt="Rimless">
-          <span class="f-label">Rimless</span>
-        </div>
-        <div class="frame-btn" data-url="https://paymegpt.com/objects/generated-images/83/1778612287673-88b53c5efbbeaff3.png" onclick="selectFrame(this)">
-          <img src="https://paymegpt.com/objects/generated-images/83/1778612287673-88b53c5efbbeaff3.png" alt="Oversized">
-          <span class="f-label">Oversized</span>
-        </div>
-        <div class="frame-btn" data-url="https://paymegpt.com/objects/generated-images/83/1778612312179-538230a7c120d7ef.png" onclick="selectFrame(this)">
-          <img src="https://paymegpt.com/objects/generated-images/83/1778612312179-538230a7c120d7ef.png" alt="Clubmaster">
-          <span class="f-label">Clubmaster</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="panel-section">
-      <h4><span class="step-num">2</span>Choose a Color</h4>
-      <div class="swatch-row">
-        <div class="swatch s-black active" data-color="black" data-label="Black" onclick="selectSwatch(this)"></div>
-        <div class="swatch s-tortoise" data-color="tortoise" data-label="Tortoise" onclick="selectSwatch(this)"></div>
-        <div class="swatch s-gold" data-color="gold" data-label="Gold" onclick="selectSwatch(this)"></div>
-        <div class="swatch s-silver" data-color="silver" data-label="Silver" onclick="selectSwatch(this)"></div>
-        <div class="swatch s-rosegold" data-color="rosegold" data-label="Rose Gold" onclick="selectSwatch(this)"></div>
-      </div>
-      <div class="swatch-label" id="swatchLabel">Black</div>
-    </div>
-  </div>
-</div>
-
-<div class="cta-band">
-  <h2>Ready to Stop Losing Patients<br>to Online Retailers?</h2>
-  <p>We deploy this exact tool on independent Atlanta optician websites — in days, not months.</p>
-  <a href="https://calendly.com/denisedwhitfield/30min" target="_blank" class="btn-primary">Book My 15-Min Call →</a>
-</div>
-
-<footer>
-  <p>© 2026 <a href="https://saged.ai">saged.ai</a> · AI Strategies LLC · Atlanta, GA · <a href="mailto:denise@saged.ai">denise@saged.ai</a></p>
-  <p style="margin-top:6px;">Face detection runs entirely in your browser · No video is recorded or stored</p>
-</footer>
+<div id="status">Tap Start to begin</div>
+<button id="startBtn">▶ Start Try-On</button>
+<button id="stopBtn">■ Stop Camera</button>
+<a id="cta" href="https://calendly.com/denisedwhitfield/30min" target="_blank">Get This for My Practice →</a>
 
 
+</main>
   <script src="script.js"></script>
 </body>
 </html>
