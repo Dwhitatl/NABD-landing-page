@@ -4,22 +4,262 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <meta name="description" content="NABD supports human rights, civil rights, equal justice, civic education, and community advocacy." />
-  
-  
-  
-  
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Barlow:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
   
 
 <!-- SEO Meta Tags -->
-<title>National Association of Black Defenders | Human rights · Civil Rights · Equal Justice</title>
-<meta property="og:title" content="National Association of Black Defenders | Human rights · Civil Rights · Equal Justice" />
+
+
+
+
+
+<!-- End SEO Meta Tags -->
+
+<script data-field-replace>
+(function(){
+  var params=new URLSearchParams(window.location.search);
+  var fields={};
+  var paramMap={
+    'first_name':'firstName','last_name':'lastName','full_name':'fullName',
+    'email':'email','phone':'phone','company':'company',
+    'city':'city','state':'state','country':'country'
+  };
+  var skipTags={'SCRIPT':1,'STYLE':1,'NOSCRIPT':1,'TEXTAREA':1,'CODE':1,'PRE':1};
+  var hasUrlFields=false;
+  for(var p in paramMap){
+    var v=params.get(p);
+    if(v){fields[paramMap[p]]=v;hasUrlFields=true;}
+  }
+  var contactId=params.get('contact_id');
+  function esc(s){
+    if(!s)return s;
+    var d=document.createElement('div');
+    d.appendChild(document.createTextNode(s));
+    return d.innerHTML;
+  }
+  function doReplace(data){
+    var r={};
+    r['{{full_name}}']=esc(((data.firstName||'')+' '+(data.lastName||'')).trim()||((data.fullName||data.name)||''));
+    r['{{first_name}}']=esc(data.firstName||(data.name?data.name.split(' ')[0]:'')||'');
+    r['{{last_name}}']=esc(data.lastName||(data.name&&data.name.indexOf(' ')>-1?data.name.substring(data.name.indexOf(' ')+1):'')||'');
+    r['{{email}}']=esc(data.email||'');
+    r['{{phone}}']=esc(data.phone||'');
+    r['{{company}}']=esc(data.company||'');
+    r['{{city}}']=esc(data.city||'');
+    r['{{state}}']=esc(data.state||'');
+    r['{{country}}']=esc(data.country||'');
+    r['{{date}}']=new Date().toLocaleDateString();
+    r['{{time}}']=new Date().toLocaleTimeString();
+    r['{{location}}']=[data.city,data.state,data.country].filter(Boolean).join(', ');
+    r['{{tracking_id}}']=esc(data.trackingId||'');
+    r['{{lastClickedProduct}}']=esc(data.lastClickedProduct||'');
+    r['{{lastProductClickDate}}']=esc(data.lastProductClickDate||'');
+    r['{{lastClickedProductPrice}}']=esc(data.lastClickedProductPrice||'');
+    r['{{lastClickedProductURL}}']=esc(data.lastClickedProductURL||'');
+    r['{{productsClickedCount}}']=esc(data.productsClickedCount||'0');
+    r['{{ip_address}}']=esc(data.ipAddress||'');
+    r['{{ip}}']=esc(data.ipAddress||'');
+    if(data.customFields){
+      for(var k in data.customFields){
+        r['{{'+k+'}}']=esc(String(data.customFields[k]||''));
+      }
+    }
+    params.forEach(function(v,k){
+      if(!paramMap[k]&&k!=='contact_id'&&k!=='page_id'&&k.indexOf('utm_')!==0){
+        r['{{'+k+'}}']=esc(v);
+      }
+    });
+    var hasValues=false;
+    for(var key in r){if(r[key]){hasValues=true;break;}}
+    if(!hasValues)return;
+    var walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT,{
+      acceptNode:function(n){
+        var p=n.parentNode;
+        if(p&&skipTags[p.nodeName])return NodeFilter.FILTER_REJECT;
+        return NodeFilter.FILTER_ACCEPT;
+      }
+    });
+    var node;
+    while(node=walker.nextNode()){
+      var txt=node.nodeValue;
+      if(txt&&txt.indexOf('{{')>-1){
+        var changed=txt;
+        for(var ph in r){
+          if(r[ph]&&changed.indexOf(ph)>-1){
+            changed=changed.split(ph).join(r[ph]);
+          }
+        }
+        if(changed!==txt)node.nodeValue=changed;
+      }
+    }
+    var attrs=['value','placeholder','content','alt','title'];
+    attrs.forEach(function(attr){
+      var els=document.querySelectorAll('['+attr+'*="{{"]');
+      for(var i=0;i<els.length;i++){
+        var tag=els[i].tagName;
+        if(skipTags[tag])continue;
+        var val=els[i].getAttribute(attr);
+        if(val){
+          var nv=val;
+          for(var ph in r){
+            if(r[ph]&&nv.indexOf(ph)>-1){
+              nv=nv.split(ph).join(r[ph]);
+            }
+          }
+          if(nv!==val)els[i].setAttribute(attr,nv);
+        }
+      }
+    });
+  }
+  function run(){
+    if(contactId){
+      var xhr=new XMLHttpRequest();
+      xhr.open('GET','https://paymegpt.com/api/landing/context/'+encodeURIComponent(contactId)+'?page_id=3384');
+      xhr.onload=function(){
+        if(xhr.status===200){
+          try{
+            var resp=JSON.parse(xhr.responseText);
+            if(resp.success&&resp.contact){
+              var merged=resp.contact;
+              for(var k in fields){merged[k]=fields[k];}
+              doReplace(merged);
+              return;
+            }
+          }catch(e){}
+        }
+        if(hasUrlFields)doReplace(fields);
+      };
+      xhr.onerror=function(){if(hasUrlFields)doReplace(fields);};
+      xhr.send();
+    }else if(hasUrlFields){
+      doReplace(fields);
+    }
+  }
+  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',run);}
+  else{run();}
+})();
+</script>
+<script data-payment>
+(function(){
+  var slug='gjEnuuq5';
+  var apiBase='https://paymegpt.com';
+  function findEmail(){
+    var ids=['email','emailAddress','buyer-email','buyerEmail','user-email','userEmail','checkout-email','customer-email','contact-email'];
+    for(var i=0;i<ids.length;i++){var el=document.getElementById(ids[i]);if(el&&el.value&&el.value.includes('@'))return el.value.trim();}
+    var inputs=document.querySelectorAll('input[type="email"],input[name*="email"],input[placeholder*="email"],input[placeholder*="Email"]');
+    for(var j=0;j<inputs.length;j++){if(inputs[j].value&&inputs[j].value.includes('@'))return inputs[j].value.trim();}
+    return '';
+  }
+  function findName(){
+    var ids=['name','fullName','full-name','buyer-name','buyerName','customer-name','userName','user-name'];
+    for(var i=0;i<ids.length;i++){var el=document.getElementById(ids[i]);if(el&&el.value)return el.value.trim();}
+    var inputs=document.querySelectorAll('input[name*="name"]:not([name*="email"]):not([type="email"]),input[placeholder*="name"]:not([placeholder*="email"]):not([type="email"]),input[placeholder*="Name"]:not([type="email"])');
+    for(var j=0;j<inputs.length;j++){if(inputs[j].value)return inputs[j].value.trim();}
+    return '';
+  }
+  var __realProcessPayment=function(a,b,c,d,e){
+    var amountCents,email,productName,productDescription,customerName,quantity;
+    if(a&&typeof a==='object'){
+      amountCents=a.amountCents;email=a.email;productName=a.productName;
+      productDescription=a.productDescription||'';customerName=a.name||'';quantity=a.quantity||1;
+    }else{
+      amountCents=typeof a==='number'?a:0;productName=typeof b==='string'?b:'';
+      productDescription=typeof c==='string'?c:'';email='';customerName='';quantity=1;
+    }
+    if(!email)email=findEmail();
+    if(!customerName)customerName=findName();
+    if(!productName){alert('Product name is required.');return Promise.reject('no_product_name');}
+    if(!amountCents||amountCents<100){alert('Amount must be at least $1.00');return Promise.reject('invalid_amount');}
+    if(!email){alert('Please enter your email address.');return Promise.reject('no_email');}
+    var successBase=window.location.href.split('?')[0];
+    return fetch(apiBase+'/api/landing-pages/public/'+slug+'/payment/checkout',{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({email:email,name:customerName,amountCents:amountCents,productName:productName,productDescription:productDescription,quantity:quantity,successUrl:successBase+'?payment=success&product='+encodeURIComponent(productName)+'&session_id={CHECKOUT_SESSION_ID}',cancelUrl:successBase+'?payment=cancelled'})
+    }).then(function(r){return r.json();}).then(function(d){
+      if(d.checkoutUrl){window.location.href=d.checkoutUrl;}
+      else{alert(d.error||'Failed to process payment');throw new Error(d.error);}
+    });
+  };
+  Object.defineProperty(window,'__processPayment',{value:__realProcessPayment,writable:false,configurable:false});
+  document.addEventListener('DOMContentLoaded',function(){
+    var urlParams=new URLSearchParams(window.location.search);
+    if(urlParams.get('payment')==='success'){
+      var pName=urlParams.get('product')||'your item';
+      var overlay=document.createElement('div');overlay.id='payment-success-overlay';
+      overlay.style.cssText='position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;z-index:999999;font-family:system-ui,-apple-system,sans-serif;';
+      overlay.innerHTML='<div style="background:white;border-radius:16px;padding:40px;max-width:420px;width:90%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.15);"><div style="width:64px;height:64px;border-radius:50%;background:#dcfce7;margin:0 auto 20px;display:flex;align-items:center;justify-content:center;"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><h2 style="margin:0 0 12px;font-size:24px;font-weight:700;color:#111827;">Payment Successful!</h2><p style="margin:0 0 24px;color:#6b7280;font-size:16px;">Thank you for purchasing '+pName.replace(/</g,'&lt;').replace(/>/g,'&gt;')+'.</p><button onclick="document.getElementById(\'payment-success-overlay\').remove();window.history.replaceState({},\'\',window.location.pathname);" style="padding:12px 32px;font-size:16px;font-weight:600;background:#16a34a;color:white;border:none;border-radius:8px;cursor:pointer;">Continue</button></div>';
+      document.body.appendChild(overlay);
+    }
+  });
+})();
+</script>
+
+
+
+<script>
+(function(){
+  var slug='gjEnuuq5';
+  function findEmail(){
+    var ids=['email','emailAddress','buyer-email','buyerEmail','user-email','userEmail','checkout-email','customer-email','contact-email'];
+    for(var i=0;i<ids.length;i++){var el=document.getElementById(ids[i]);if(el&&el.value&&el.value.includes('@'))return el.value.trim();}
+    var inputs=document.querySelectorAll('input[type="email"],input[name*="email"],input[placeholder*="email"],input[placeholder*="Email"]');
+    for(var j=0;j<inputs.length;j++){if(inputs[j].value&&inputs[j].value.includes('@'))return inputs[j].value.trim();}
+    return '';
+  }
+  function findName(){
+    var ids=['name','fullName','full-name','buyer-name','buyerName','customer-name','userName','user-name'];
+    for(var i=0;i<ids.length;i++){var el=document.getElementById(ids[i]);if(el&&el.value)return el.value.trim();}
+    var inputs=document.querySelectorAll('input[name*="name"]:not([name*="email"]):not([type="email"]),input[placeholder*="name"]:not([placeholder*="email"]):not([type="email"]),input[placeholder*="Name"]:not([type="email"])');
+    for(var j=0;j<inputs.length;j++){if(inputs[j].value)return inputs[j].value.trim();}
+    return '';
+  }
+  var __realPay=function(a,b,c,d,e){
+    var amountCents,email,productName,productDescription,customerName,quantity;
+    if(a&&typeof a==='object'){
+      amountCents=a.amountCents;email=a.email;productName=a.productName;
+      productDescription=a.productDescription||'';customerName=a.name||'';quantity=a.quantity||1;
+    }else{
+      amountCents=typeof a==='number'?a:0;productName=typeof b==='string'?b:'';
+      productDescription=typeof c==='string'?c:'';email='';customerName='';quantity=1;
+    }
+    if(!email)email=findEmail();
+    if(!customerName)customerName=findName();
+    if(!productName){alert('Product name is required.');return Promise.reject('no_product_name');}
+    if(!amountCents||amountCents<100){alert('Amount must be at least $1.00');return Promise.reject('invalid_amount');}
+    if(!email){alert('Please enter your email address.');return Promise.reject('no_email');}
+    var successBase=window.location.href.split('?')[0];
+    return fetch('/api/landing-pages/public/'+slug+'/payment/checkout',{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({email:email,name:customerName,amountCents:amountCents,productName:productName,productDescription:productDescription,quantity:quantity,successUrl:successBase+'?payment=success&product='+encodeURIComponent(productName)+'&session_id={CHECKOUT_SESSION_ID}',cancelUrl:successBase+'?payment=cancelled'})
+    }).then(function(r){return r.json();}).then(function(d){
+      if(d.checkoutUrl){window.location.href=d.checkoutUrl;}
+      else{alert(d.error||'Failed to process payment');throw new Error(d.error);}
+    });
+  };
+  try{Object.defineProperty(window,'__processPayment',{value:__realPay,writable:false,configurable:false});}catch(e){window.__processPayment=__realPay;}
+  document.addEventListener('DOMContentLoaded',function(){
+    var urlParams=new URLSearchParams(window.location.search);
+    if(urlParams.get('payment')==='success'){
+      var pName=urlParams.get('product')||'your item';
+      var overlay=document.createElement('div');overlay.id='payment-success-overlay';
+      overlay.style.cssText='position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;z-index:999999;font-family:system-ui,-apple-system,sans-serif;';
+      overlay.innerHTML='<div style="background:white;border-radius:16px;padding:40px;max-width:420px;width:90%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.15);"><div style="width:64px;height:64px;border-radius:50%;background:#dcfce7;margin:0 auto 20px;display:flex;align-items:center;justify-content:center;"><svg width=\"32\" height=\"32\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#16a34a\" stroke-width=\"3\"><polyline points=\"20 6 9 17 4 12\"/></svg></div><h2 style="margin:0 0 12px;font-size:24px;font-weight:700;color:#111827;">Payment Successful!</h2><p style="margin:0 0 24px;color:#6b7280;font-size:16px;">Thank you for purchasing '+pName.replace(/</g,'&lt;').replace(/>/g,'&gt;')+'.</p><button onclick="document.getElementById(\'payment-success-overlay\').remove();window.history.replaceState({},\'\',window.location.pathname);" style="padding:12px 32px;font-size:16px;font-weight:600;background:#16a34a;color:white;border:none;border-radius:8px;cursor:pointer;">Continue</button></div>';
+      document.body.appendChild(overlay);
+    }
+  });
+})();
+</script>
+  
+  <meta property="og:url" content="https://paymegpt.com/p/gjEnuuq5/lp-mo7o8lzx-po1a6" />
+
+<!-- SEO Meta Tags -->
+<title>National Association of Black Defenders | Human Rights · Civil Rights · Equal Justice</title>
+<meta property="og:title" content="National Association of Black Defenders | Human Rights · Civil Rights · Equal Justice" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="National Association of Black Defenders | Human rights · Civil Rights · Equal Justice" />
+<meta name="twitter:title" content="National Association of Black Defenders | Human Rights · Civil Rights · Equal Justice" />
 <!-- End SEO Meta Tags -->
 <script data-lp-token-hydrate>
 (function(){try{
@@ -224,457 +464,459 @@
 </script>  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <nav data-section="navbar">
-    <div class="container nav-wrap">
-      <a class="brand" href="#top" aria-label="National Association of Black Defenders home">
-        <span class="brand-mark" aria-hidden="true"></span>
-        <span>NABD</span>
-      </a>
-      <div class="nav-links" aria-label="Primary navigation">
-        <a href="#mission">Mission</a>
-        <a href="#services">Services</a>
-        <a href="#membership">Membership</a>
-        <a href="#appointments">Appointments</a>
-        <a href="#support">Support</a>
-        <a href="#contact">Contact</a>
+<nav data-section="navbar" style="z-index:9999;">
+  <div class="nav-inner">
+    <a href="#" class="nav-brand">
+      <img src="https://storage.googleapis.com/wttus/assets/1605006/images/NABD_newlogo.jpg" alt="NABD Logo">
+      <div class="nav-brand-text">
+        <span class="org-abbr">NABD</span>
+        <span class="org-full">National Association of Black Defenders</span>
       </div>
+    </a>
+    <div class="nav-links">
+      <a href="#mission">Mission</a><a href="#services">Services</a>
+      <a href="#membership">Membership</a>
+      <a href="#appointments">Appointments</a><a href="#support">Support</a><a href="#contact">Contact</a>
     </div>
-  </nav>
+    <div style="display:flex;align-items:center;">
+      <span class="nav-phone phone-display" data-phone="2027703962">(202) 770-3962</span>
+      <a href="#contact" class="btn btn-gold" style="font-size:12px;padding:8px 16px;">Get In Touch</a>
+    </div>
+  </div>
+</nav>
 
-  <header data-section="hero" class="hero" id="top">
-    <div class="container hero-grid">
-      <div>
-        <p class="section-kicker">Human Rights · Civil Rights · Equal Justice</p>
-        <h1>National Association of Black Defenders</h1>
-        <p>
-          NABD stands with individuals and communities seeking fair treatment, civic empowerment, and access to trusted advocacy support.
-          We help connect people to resources, education, referrals, and mission-aligned assistance.
-        </p>
+<div data-section="legal-disclaimer-bar" style="background:#0a0a0a;border-bottom:2px solid rgba(201,151,58,0.35);padding:0.9rem 0;">
+  <div class="container">
+    <div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap;">
+      <div style="display:flex;align-items:center;gap:0.5rem;flex-shrink:0;">
+        <span style="font-size:0.95rem;">⚖️</span>
+        <span style="font-size:0.62rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);white-space:nowrap;">Legal Notice</span>
+      </div>
+      <div style="width:1px;height:16px;background:rgba(201,151,58,0.3);flex-shrink:0;display:inline-block;"></div>
+      <p style="font-size:0.82rem;color:var(--ivory-dim);line-height:1.55;margin:0;flex:1;min-width:260px;">The National Association of Black Defenders, Inc. is <strong style="color:var(--ivory);font-weight:700;">not a law firm</strong> and does not provide legal representation. We partner with civil rights and human rights attorneys nationwide to connect individuals with qualified legal support.</p>
+    </div>
+  </div>
+</div>
+
+<section data-section="hero" class="hero" style="padding-top: 1.5rem;">
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <div class="hero-tag">Est. Washington D.C. &nbsp;·&nbsp; 501(c)(3) Nonprofit</div>
+        <h1>Defending <em>rights.</em><br>Demanding <em>justice.</em></h1>
+        <p class="hero-sub">The National Association of Black Defenders advances human rights, civil rights protections, legal advocacy, voting rights, and environmental justice — with clarity, compassion, and conviction.</p>
+        <div class="hero-divider"></div>
         <div class="hero-actions">
-          <a class="btn primary" href="#appointments">Request an Appointment</a>
-          <a class="btn" href="tel:+12027703962">(202) 770-3962</a>
+          <a href="#contact" class="btn btn-gold">Connect With NABD</a>
+          <a href="#services" class="btn btn-outline">Explore Our Work</a>
         </div>
+        
       </div>
-      <div class="hero-card panel">
-        <div class="stat">
-          <div class="stat-box">
-            <strong>4</strong>
-            <span>Core service pathways</span>
-          </div>
-          <div class="stat-box">
-            <strong>24/7</strong>
-            <span>Access to information</span>
-          </div>
-          <div class="stat-box">
-            <strong>202</strong>
-            <span>Washington, D.C. support reach</span>
-          </div>
-          <div class="stat-box">
-            <strong>202</strong>
-            <span>Phone: (202) 770-3962</span>
-          </div>
+      <div class="hero-card reveal">
+        <div class="hero-card-header">
+          <div class="card-label">Official Organization Contact</div>
+          <div class="card-org">National Association of Black Defenders, Inc.</div>
+        </div>
+        <div class="contact-list">
+          <div class="contact-item"><div class="contact-icon">📞</div><div><div class="contact-item-label">Phone</div><div class="contact-item-value"><span class="phone-display" data-phone="2027703962">(202) 770-3962</span></div></div></div>
+          <div class="contact-item"><div class="contact-icon">✉️</div><div><div class="contact-item-label">Email</div><div class="contact-item-value"><a href="mailto:info@nabd-justice.org">info@nabd-justice.org</a></div></div></div>
+          <div class="contact-item"><div class="contact-icon">📍</div><div><div class="contact-item-label">Office</div><div class="contact-item-value">1717 Pennsylvania Ave NW, Suite 1025<br>Washington, DC 20006</div></div></div>
+          <div class="contact-item"><div class="contact-icon">👤</div><div><div class="contact-item-label">Leadership</div><div class="contact-item-value">Dr. Michael McCorvey, CEO &amp; Founder</div></div></div>
+        </div>
+        <div class="hero-card-footer">
+          <div class="chat-cta-inline"><div class="chat-pulse"></div><div class="chat-cta-text">AI Concierge <span>Online</span> — Ask us anything</div></div>
+          <a href="https://paymegpt.com/agents/23228416" target="_blank" class="chat-link">Chat Now →</a>
         </div>
       </div>
     </div>
-  </header>
+  </div>
+</section>
 
-  <section data-section="mission-strip" class="mission-strip">
-    <div class="container">
-      Advocating for civil rights, human rights, and empowered communities through education, referrals, and responsive support.
-    </div>
-  </section>
+<div data-section="mission-strip" class="mission-strip" aria-hidden="true">
+  <div style="overflow:hidden;"><div class="mission-strip-inner">
+    <span class="mission-strip-item"><span class="mission-strip-dot"></span>Human Rights Advocacy</span>
+    <span class="mission-strip-item"><span class="mission-strip-dot"></span>Civil Rights Protection</span>
+    <span class="mission-strip-item"><span class="mission-strip-dot"></span>Equal Justice Under Law</span>
+    <span class="mission-strip-item"><span class="mission-strip-dot"></span>Voting Rights Awareness</span>
+    <span class="mission-strip-item"><span class="mission-strip-dot"></span>Environmental Justice</span>
+    <span class="mission-strip-item"><span class="mission-strip-dot"></span>Attorney Referral Pathways</span>
+    <span class="mission-strip-item"><span class="mission-strip-dot"></span>Public Education</span>
+    <span class="mission-strip-item"><span class="mission-strip-dot"></span>Community Empowerment</span>
+    <span class="mission-strip-item"><span class="mission-strip-dot"></span>Human Rights Advocacy</span>
+    <span class="mission-strip-item"><span class="mission-strip-dot"></span>Civil Rights Protection</span>
+    <span class="mission-strip-item"><span class="mission-strip-dot"></span>Equal Justice Under Law</span>
+    <span class="mission-strip-item"><span class="mission-strip-dot"></span>Voting Rights Awareness</span>
+    <span class="mission-strip-item"><span class="mission-strip-dot"></span>Environmental Justice</span>
+    <span class="mission-strip-item"><span class="mission-strip-dot"></span>Attorney Referral Pathways</span>
+    <span class="mission-strip-item"><span class="mission-strip-dot"></span>Public Education</span>
+    <span class="mission-strip-item"><span class="mission-strip-dot"></span>Community Empowerment</span>
+  </div></div>
+</div>
 
-  <section data-section="mission" id="mission">
-    <div class="container grid-2">
-      <div>
-        <p class="section-kicker">Our Mission</p>
-        <h2 class="section-title">Equal justice through advocacy, education, and community partnership.</h2>
+<section data-section="mission" class="section mission-section" id="mission">
+  <div class="container">
+    <div class="mission-grid">
+      <div class="reveal">
+        <div class="mission-quote">
+          <blockquote>"Equal justice under law is not merely a caption on the facade of the Supreme Court — it is perhaps the most inspiring ideal of our society."</blockquote>
+          <cite>— Lewis F. Powell Jr., Associate Justice</cite>
+        </div>
       </div>
-      <div class="panel card">
-        <p>
-          NABD is committed to helping Black communities and allies navigate civil rights concerns, strengthen civic engagement,
-          and access aligned support pathways. We believe informed people and connected communities create lasting change.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <section data-section="services" id="services">
-    <div class="container">
-      <p class="section-kicker">Services</p>
-      <h2 class="section-title">What NABD can help with</h2>
-      <p class="section-lead">Support options focused on guidance, information, referrals, and educational engagement.</p>
-      <div style="height:1.4rem"></div>
-      <div class="grid-3">
-        <article class="panel card">
-          <div class="icon">⚖️</div>
-          <h3>Advocacy & Guidance</h3>
-          <p>Support for individuals facing civil rights or human rights concerns and seeking next-step direction.</p>
-        </article>
-        <article class="panel card">
-          <div class="icon">📚</div>
-          <h3>Civic Education</h3>
-          <p>Learning opportunities around voting rights, civic participation, community tools, and effective advocacy.</p>
-        </article>
-        <article class="panel card">
-          <div class="icon">🤝</div>
-          <h3>Partnerships</h3>
-          <p>Collaboration with organizations, media, and community leaders on mission-aligned programming and outreach.</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section data-section="membership" id="membership" class="membership">
-    <div class="container">
-      <p class="section-kicker">Membership</p>
-      <h2 class="section-title">Join, support, and stay connected</h2>
-      <p class="section-lead">Membership helps sustain advocacy work, education, and community programming.</p>
-      <div style="height:1.4rem"></div>
-      <div class="tiers">
-        <article class="panel tier">
-          <h3>Community Member</h3>
-          <div class="price">Support</div>
-          <p>Ideal for those who want to stay informed and help advance the mission.</p>
-          <ul>
-            <li>News and updates</li>
-            <li>Event access</li>
-            <li>Community resources</li>
-          </ul>
-        </article>
-        <article class="panel tier">
-          <h3>Advocate Member</h3>
-          <div class="price">Engage</div>
-          <p>For people ready to participate more actively in advocacy and civic engagement efforts.</p>
-          <ul>
-            <li>Volunteer opportunities</li>
-            <li>Priority event notices</li>
-            <li>Program invitations</li>
-          </ul>
-        </article>
-        <article class="panel tier">
-          <h3>Partner Member</h3>
-          <div class="price">Collaborate</div>
-          <p>For organizations or supporters aligned with NABD's long-term mission and initiatives.</p>
-          <ul>
-            <li>Partnership visibility</li>
-            <li>Program collaboration</li>
-            <li>Outreach coordination</li>
-          </ul>
-        </article>
+      <div class="mission-text reveal">
+        <div class="eyebrow">Mission &amp; Purpose</div>
+        <h2>A national voice for advocacy, education, and equal protection under the law.</h2>
+        <p>NABD exists to advance civil and human rights, support public education, strengthen civic participation, promote environmental justice awareness, and help people navigate appropriate support pathways — with dignity and clarity.</p>
+        <p>We are a mission-driven organization committed to fair treatment, community empowerment, and principled public engagement for individuals and communities impacted by systemic inequity.</p>
+        <div class="mission-pillars">
+          <div class="mission-pillar"><span class="mission-pillar-icon">🏛</span><div><div class="mission-pillar-label">Institutional Credibility</div><div class="mission-pillar-desc">Purpose-built for public trust and mission-centered engagement.</div></div></div>
+          <div class="mission-pillar"><span class="mission-pillar-icon">📚</span><div><div class="mission-pillar-label">Educational Advocacy</div><div class="mission-pillar-desc">Helping communities understand rights and resources.</div></div></div>
+          <div class="mission-pillar"><span class="mission-pillar-icon">🤝</span><div><div class="mission-pillar-label">Community Impact</div><div class="mission-pillar-desc">Focused on fairness, equal justice, and civic participation.</div></div></div>
+          <div class="mission-pillar"><span class="mission-pillar-icon">🗺</span><div><div class="mission-pillar-label">Referral Pathways</div><div class="mission-pillar-desc">Directing people toward qualified support when needed.</div></div></div>
+        </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section data-section="appointments" id="appointments" class="appointments">
-    <div class="container">
-      <p class="section-kicker">Appointments</p>
-      <h2 class="section-title">Request an Appointment</h2>
-      <p class="section-lead">Choose the appointment type that best matches your needs, then send your request to NABD staff.</p>
-
-      <div class="instructions">
-        Select an appointment type above from the four cards to understand which best fits your needs, then choose the same type in the dropdown below so NABD staff knows what you're seeking help with.
+<section data-section="services" class="section services-section" id="services">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="eyebrow">How NABD Serves</div>
+      <h2>Mission-centered support for individuals, communities, and the public good.</h2>
+      <p>Six areas where NABD takes direct action — from advocacy and education to attorney referral pathways and environmental justice.</p>
+    </div>
+    <div class="services-grid reveal">
+      <div class="service-tile"><div class="service-icon">✊</div><h3>Human Rights Advocacy</h3><p>NABD elevates human rights concerns through public education, organized advocacy, and mission-driven support that helps people understand pathways toward protection, accountability, and fair treatment.</p><span class="service-tag">Core Mission</span></div>
+      <div class="service-tile"><div class="service-icon">⚖️</div><h3>Civil Rights Protection</h3><p>Through education, advocacy, and public-facing support, NABD helps individuals and communities better understand civil rights concerns while promoting equal justice and stronger protections against discrimination.</p><span class="service-tag">Equal Justice</span></div>
+      <div class="service-tile"><div class="service-icon">📖</div><h3>Legal Advocacy &amp; Training</h3><p>NABD offers advocacy-centered education and training that help communities build awareness, navigate concerns more confidently, and connect with informed support structures.</p><span class="service-tag">Education</span></div>
+      <div class="service-tile"><div class="service-icon">🗳</div><h3>Voting Rights &amp; Civic Voice</h3><p>NABD supports awareness around voting rights and civic participation, helping people understand the value of lawful advocacy, community voice, and informed action in protecting democratic access.</p><span class="service-tag">Civic Rights</span></div>
+      <div class="service-tile"><div class="service-icon">🌿</div><h3>Environmental Justice</h3><p>NABD recognizes that environmental harm often falls hardest on underserved communities and promotes advocacy, awareness, and justice-focused attention to those inequities at local and national levels.</p><span class="service-tag">Community</span></div>
+      <div class="service-tile">
+        <div class="service-icon">🔗</div>
+        <h3>Attorney Referrals &amp; Pathways</h3>
+        <p>When appropriate, NABD helps point individuals toward attorney referral and support pathways so they can seek qualified guidance.</p>
+        <div class="legal-disclaimer-banner" style="margin-top:0.85rem;">
+          <span class="disclaimer-label">⚠ Legal Notice</span>
+          The National Association of Black Defenders, Inc. is <strong style="color:var(--ivory);">not a law firm</strong> and does not provide legal representation. We partner with civil rights and human rights attorneys nationwide to connect individuals with qualified legal support.
+        </div>
+        <span class="service-tag">Referrals</span>
       </div>
-
-      <div class="appt-grid">
-        <article class="flip-card" role="button" tabindex="0" aria-label="Advocacy Consultation flip card">
-          <div class="flip-card-inner">
-            <div class="flip-face flip-front">
-              <div>
-                <div class="icon">🛡️</div>
-                <h3>Advocacy Consultation</h3>
-                <p class="small">Guidance for civil rights or human rights concerns.</p>
-              </div>
-              <div class="flip-hint">Click to learn more</div>
-            </div>
-            <div class="flip-face flip-back">
-              <div>
-                <h3>Advocacy Consultation</h3>
-                <div class="gold-line"></div>
-                <p class="copy">For individuals facing civil rights or human rights concerns. Our team helps you understand your situation, explore options, and connect with appropriate support resources or referral pathways.</p>
-              </div>
-              <div class="flip-hint">Click again to return</div>
-            </div>
+    </div>
+    <div class="legal-disclaimer-banner reveal" style="margin-top:2rem;max-width:100%;">
+      <span class="disclaimer-label">⚠ Important Legal Notice</span>
+      The National Association of Black Defenders, Inc. is <strong style="color:var(--ivory);">not a law firm</strong> and does not provide legal representation. We partner with civil rights and human rights attorneys nationwide to connect individuals with qualified legal support.
+    </div>
+    <div class="chat-feature reveal">
+      <div class="chat-feature-grid">
+        <div class="chat-feature-copy">
+          <div class="eyebrow">AI Concierge</div>
+          <h2>Get answers to your questions — instantly.</h2>
+          <p>NABD's AI assistant is available 24/7 to help you understand your rights, explore available resources, and connect with the right support pathway.</p>
+          <div class="chat-feature-bullets">
+            <div class="chat-bullet">Ask about civil rights and advocacy resources</div>
+            <div class="chat-bullet">Understand attorney referral pathways</div>
+            <div class="chat-bullet">Learn about voting rights and civic participation</div>
+            <div class="chat-bullet">Get connected to the right next step</div>
           </div>
-        </article>
-
-        <article class="flip-card" role="button" tabindex="0" aria-label="Legal Referral Intake flip card">
-          <div class="flip-card-inner">
-            <div class="flip-face flip-front">
-              <div>
-                <div class="icon">⚖️</div>
-                <h3>Legal Referral Intake</h3>
-                <p class="small">Get connected when you need qualified legal representation.</p>
-              </div>
-              <div class="flip-hint">Click to learn more</div>
-            </div>
-            <div class="flip-face flip-back">
-              <div>
-                <h3>Legal Referral Intake</h3>
-                <div class="gold-line"></div>
-                <p class="copy">When you need qualified legal representation. NABD connects you with our network of civil rights and human rights attorneys who can evaluate your case and provide tailored guidance.</p>
-              </div>
-              <div class="flip-hint">Click again to return</div>
-            </div>
+          <a href="https://paymegpt.com/agents/23228416" target="_blank" class="btn btn-gold">Start a Conversation →</a>
+        </div>
+        <div class="chat-feature-visual">
+          <div class="chat-bubble-demo">
+            <div class="chat-bubble user">How can NABD help with civil rights issues?</div>
+            <div class="chat-bubble bot">NABD provides <strong>education, advocacy, and referral support</strong> for civil rights concerns. I can help you understand your options.</div>
+            <div class="chat-typing"><span></span><span></span><span></span></div>
           </div>
-        </article>
-
-        <article class="flip-card" role="button" tabindex="0" aria-label="Civic Education Session flip card">
-          <div class="flip-card-inner">
-            <div class="flip-face flip-front">
-              <div>
-                <div class="icon">📘</div>
-                <h3>Civic Education Session</h3>
-                <p class="small">Learn about voting rights, civic participation, and community resources.</p>
-              </div>
-              <div class="flip-hint">Click to learn more</div>
-            </div>
-            <div class="flip-face flip-back">
-              <div>
-                <h3>Civic Education Session</h3>
-                <div class="gold-line"></div>
-                <p class="copy">Learn about voting rights, civic participation, and community resources. Perfect for individuals and groups seeking to deepen understanding of how to advocate effectively and engage civically.</p>
-              </div>
-              <div class="flip-hint">Click again to return</div>
-            </div>
-          </div>
-        </article>
-
-        <article class="flip-card" role="button" tabindex="0" aria-label="Partnership and Outreach flip card">
-          <div class="flip-card-inner">
-            <div class="flip-face flip-front">
-              <div>
-                <div class="icon">🤝</div>
-                <h3>Partnership &amp; Outreach</h3>
-                <p class="small">For organizations and partners interested in collaborating with NABD.</p>
-              </div>
-              <div class="flip-hint">Click to learn more</div>
-            </div>
-            <div class="flip-face flip-back">
-              <div>
-                <h3>Partnership &amp; Outreach</h3>
-                <div class="gold-line"></div>
-                <p class="copy">For community organizations, media outlets, or partners interested in collaborating on advocacy initiatives, speaking engagements, or joint programming aligned with NABD's mission.</p>
-              </div>
-              <div class="flip-hint">Click again to return</div>
-            </div>
-          </div>
-        </article>
+          <a href="https://paymegpt.com/agents/23228416" target="_blank" class="chat-open-btn">💬 Chat with NABD</a>
+        </div>
       </div>
+    </div>
+  </div>
+</section>
 
-      <div class="panel appt-form">
-        <form>
-          <div class="form-grid">
-            <div>
-              <label for="appt-name">Name</label>
-              <input id="appt-name" type="text" placeholder="Your name" />
+<section data-section="membership" class="section" id="membership" style="background:var(--bg2);">
+  <div class="container">
+    <div class="reveal" style="max-width:640px;margin:0 auto;">
+      <div style="text-align:center;margin-bottom:2rem;">
+        <div class="eyebrow">Join NABD</div>
+        <h2 style="font-size:clamp(1.75rem,3vw,2.4rem);color:var(--ivory);margin-bottom:0.75rem;">Become a Member</h2>
+        <p style="font-size:0.95rem;color:var(--ivory-dim);line-height:1.75;">Stand with NABD in advancing human rights, civil rights, and equal justice. Membership connects you to a national network of advocates, legal professionals, and community leaders.</p>
+      </div>
+      <div class="legal-disclaimer-banner" style="margin-bottom:1.75rem;">
+        <span class="disclaimer-label">⚖ Legal Notice</span>
+        The National Association of Black Defenders, Inc. is <strong style="color:var(--ivory);">not a law firm</strong> and does not provide legal representation. We partner with civil rights and human rights attorneys nationwide to connect individuals with qualified legal support.
+      </div>
+      <div style="font-size:0.62rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:0.75rem;padding-bottom:0.4rem;border-bottom:1px solid rgba(201,151,58,0.2);">Step 1 — Select your membership tier</div>
+      <div style="display:grid;grid-template-columns:1fr;gap:12px;margin-bottom:0.5rem;" id="mem-tier-grid">
+        <div class="mem-tier-card mem-active" id="mem-tier-adult" style="background:var(--surface);border:1.5px solid var(--gold);border-radius:10px;padding:1.25rem;position:relative;">
+          <div style="position:absolute;top:10px;right:10px;width:18px;height:18px;border-radius:50%;background:var(--gold);border:1.5px solid var(--gold);display:flex;align-items:center;justify-content:center;"><span style="color:#0e0e0e;font-size:10px;font-weight:900;">✓</span></div>
+          <div style="font-size:0.58rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);margin-bottom:0.3rem;">Adult Membership</div>
+          <div style="font-family:'DM Serif Display',serif;font-size:1.15rem;color:var(--ivory);margin-bottom:0.15rem;">Adult</div>
+          <div style="font-size:0.75rem;color:var(--muted);margin-bottom:0.6rem;">Ages 18 and over</div>
+          <div style="font-family:'DM Serif Display',serif;font-size:1.5rem;color:var(--gold-light);">$175 <span style="font-size:0.78rem;color:var(--muted);font-family:'Barlow',sans-serif;font-weight:400;">/ year</span></div>
+        </div>
+      </div>
+      <p style="font-size:0.7rem;color:var(--muted);text-align:center;margin-bottom:1.75rem;">Adult Membership — Ages 18 and over.</p>
+      <div style="background:var(--surface);border:1px solid var(--border2);border-radius:12px;padding:1.75rem;margin-bottom:1.75rem;">
+        <div style="font-size:0.62rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:0.75rem;padding-bottom:0.4rem;border-bottom:1px solid rgba(201,151,58,0.2);">What your membership includes</div>
+        <p style="font-size:0.88rem;color:var(--ivory-dim);line-height:1.75;margin-bottom:1.25rem;">Every NABD Adult member receives the full suite of benefits below, connecting you to advocacy, education, legal pathways, and a national community committed to equal justice.</p>
+        <div style="display:flex;flex-direction:column;gap:0.85rem;">
+          <div style="display:flex;gap:0.9rem;align-items:flex-start;padding:0.9rem 1rem;background:var(--bg2);border:1px solid var(--border);border-radius:8px;"><span style="font-size:1rem;flex-shrink:0;">⚖️</span><div><div style="font-size:0.85rem;font-weight:700;color:var(--gold-light);margin-bottom:0.2rem;">Legal Advocacy &amp; Attorney Referral</div><div style="font-size:0.78rem;color:var(--muted);line-height:1.65;">Access NABD's network of civil rights and human rights attorneys. Members receive direct advocacy support and referral pathways to qualified legal counsel for matters brought before the organization.</div></div></div>
+          <div style="display:flex;gap:0.9rem;align-items:flex-start;padding:0.9rem 1rem;background:var(--bg2);border:1px solid var(--border);border-radius:8px;"><span style="font-size:1rem;flex-shrink:0;">🤝</span><div><div style="font-size:0.85rem;font-weight:700;color:var(--gold-light);margin-bottom:0.2rem;">Work Directly with Legal Counsel</div><div style="font-size:0.78rem;color:var(--muted);line-height:1.65;">Members have the opportunity to engage directly with legal professionals through NABD's referral network — ensuring you are connected to the right support for your specific situation.</div></div></div>
+          <div style="display:flex;gap:0.9rem;align-items:flex-start;padding:0.9rem 1rem;background:var(--bg2);border:1px solid var(--border);border-radius:8px;"><span style="font-size:1rem;flex-shrink:0;">📋</span><div><div style="font-size:0.85rem;font-weight:700;color:var(--gold-light);margin-bottom:0.2rem;">Case Management Team Review</div><div style="font-size:0.78rem;color:var(--muted);line-height:1.65;">All legal cases brought before NABD's Board of Directors receive a structured review by our dedicated case management team — ensuring every matter is evaluated with care, clarity, and purpose.</div></div></div>
+          <div style="display:flex;gap:0.9rem;align-items:flex-start;padding:0.9rem 1rem;background:var(--bg2);border:1px solid var(--border);border-radius:8px;"><span style="font-size:1rem;flex-shrink:0;">🏛</span><div><div style="font-size:0.85rem;font-weight:700;color:var(--gold-light);margin-bottom:0.2rem;">12 Human Rights Workshops Per Year</div><div style="font-size:0.78rem;color:var(--muted);line-height:1.65;">Attend up to 12 NABD-hosted human rights workshops annually — covering civil rights law, voting rights, environmental justice, community advocacy, and more.</div></div></div>
+          <div style="display:flex;gap:0.9rem;align-items:flex-start;padding:0.9rem 1rem;background:var(--bg2);border:1px solid var(--border);border-radius:8px;"><span style="font-size:1rem;flex-shrink:0;">🗳</span><div><div style="font-size:0.85rem;font-weight:700;color:var(--gold-light);margin-bottom:0.2rem;">Membership Voting Rights</div><div style="font-size:0.78rem;color:var(--muted);line-height:1.65;">Your voice matters. As an NABD member you hold voting rights on organizational matters, giving you a direct stake in shaping the future direction of the association.</div></div></div>
+          <div style="display:flex;gap:0.9rem;align-items:flex-start;padding:0.9rem 1rem;background:var(--bg2);border:1px solid var(--border);border-radius:8px;"><span style="font-size:1rem;flex-shrink:0;">🌐</span><div><div style="font-size:0.85rem;font-weight:700;color:var(--gold-light);margin-bottom:0.2rem;">State &amp; National Conference Access</div><div style="font-size:0.78rem;color:var(--muted);line-height:1.65;">Members receive access to NABD's state and national conferences — premier gatherings of advocates, attorneys, and community leaders advancing equal justice across the country.</div></div></div>
+          <div style="display:flex;gap:0.9rem;align-items:flex-start;padding:0.9rem 1rem;background:var(--bg2);border:1px solid var(--border);border-radius:8px;"><span style="font-size:1rem;flex-shrink:0;">📖</span><div><div style="font-size:0.85rem;font-weight:700;color:var(--gold-light);margin-bottom:0.2rem;">NABD Quality Magazine</div><div style="font-size:0.78rem;color:var(--muted);line-height:1.65;">Receive NABD's member publication featuring in-depth coverage of civil rights developments, legal advocacy news, community spotlights, and organizational updates.</div></div></div>
+          <div style="display:flex;gap:0.9rem;align-items:flex-start;padding:0.9rem 1rem;background:var(--bg2);border:1px solid var(--border);border-radius:8px;"><span style="font-size:1rem;flex-shrink:0;">🎙</span><div><div style="font-size:0.85rem;font-weight:700;color:var(--gold-light);margin-bottom:0.2rem;">Monthly Podcast — American Injustice</div><div style="font-size:0.78rem;color:var(--muted);line-height:1.65;">Exclusive member access to NABD's monthly podcast series examining systemic injustice in America — featuring legal experts, advocates, and community voices on the front lines of change.</div></div></div>
+        </div>
+        <div style="margin-top:1.25rem;padding-top:1rem;border-top:1px solid var(--border);font-size:0.72rem;color:var(--muted);text-align:center;line-height:1.6;">Adult Membership — $175/yr. Annual membership renews automatically via Stripe.</div>
+      </div>
+      <div style="background:var(--surface);border:1px solid var(--border2);border-radius:12px;padding:1.75rem;margin-bottom:1.5rem;">
+        <div style="font-size:0.62rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:0.85rem;padding-bottom:0.4rem;border-bottom:1px solid rgba(201,151,58,0.2);">Step 2 — Your information</div>
+        <div class="form-row">
+          <input class="field" type="text" id="memFirst" placeholder="First Name">
+          <input class="field" type="text" id="memLast" placeholder="Last Name">
+        </div>
+        <input class="field" type="text" id="memAddress" placeholder="Street Address">
+        <div class="form-row">
+          <input class="field" type="text" id="memCity" placeholder="City">
+          <input class="field" type="text" id="memState" placeholder="State">
+        </div>
+        <div class="form-row">
+          <input class="field" type="text" id="memZip" placeholder="ZIP Code">
+          <input class="field" type="tel" id="memPhone" placeholder="Phone Number">
+        </div>
+        <input class="field" type="email" id="memEmail" placeholder="Email Address" style="margin-bottom:0;">
+      </div>
+      <div style="font-size:0.62rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:0.85rem;padding-bottom:0.4rem;border-bottom:1px solid rgba(201,151,58,0.2);">Step 3 — Complete payment</div>
+      <div style="background:var(--bg2);border:1px solid rgba(201,151,58,0.25);border-radius:10px;padding:1.1rem 1.25rem;margin-bottom:1.25rem;display:flex;justify-content:space-between;align-items:center;">
+        <div>
+          <div style="font-size:0.62rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-bottom:0.2rem;">Selected tier</div>
+          <div style="font-size:0.92rem;font-weight:600;color:var(--gold-light);">Adult Membership</div>
+        </div>
+        <div style="text-align:right;">
+          <div style="font-family:'DM Serif Display',serif;font-size:1.5rem;color:var(--ivory);">$175.00</div>
+          <div style="font-size:0.72rem;color:var(--muted);">per year</div>
+        </div>
+      </div>
+      <div style="background:var(--bg2);border:1px solid var(--border2);border-radius:8px;padding:0.9rem 1rem;margin-bottom:1.25rem;display:flex;gap:0.85rem;align-items:flex-start;">
+        <div style="width:34px;height:22px;background:#635bff;border-radius:4px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;">
+          <svg viewBox="0 0 60 25" width="20" height="12" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M59.6 14.3c0-4.6-2.2-8.2-6.5-8.2-4.3 0-6.9 3.6-6.9 8.2 0 5.4 3 8.1 7.4 8.1 2.1 0 3.7-.5 4.9-1.2v-3.5c-1.2.6-2.6 1-4.3 1-1.7 0-3.2-.6-3.4-2.7h8.7c0-.2.1-.9.1-1.7zm-8.8-1.7c0-2 1.2-2.8 2.3-2.8 1.1 0 2.2.8 2.2 2.8h-4.5zM36.8 6.1c-1.7 0-2.8.8-3.4 1.4l-.2-1.1H29v21.3l4.4-1 .1-5.2c.6.5 1.6 1.1 3.2 1.1 3.2 0 6.2-2.6 6.2-8.3-.1-5.2-3-8.2-6.1-8.2zm-1.1 12.6c-1.1 0-1.7-.4-2.1-.9l-.1-7.1c.5-.5 1.1-.9 2.2-.9 1.7 0 2.8 1.9 2.8 4.4 0 2.6-1.1 4.5-2.8 4.5zM22.5 4.8l4.4-1V.3l-4.4 1v3.5zM22.5 6.4h4.4v15.8h-4.4V6.4zM17.8 7.6l-.3-1.2h-3.8v15.8h4.4v-10.7c1-1.4 2.8-1.1 3.3-.9V6.4c-.5-.2-2.5-.5-3.6 1.2zM9.5 2.7L5.2 3.6l-.1 14.9c0 2.8 2.1 4.8 4.9 4.8 1.5 0 2.7-.3 3.3-.6v-3.6c-.6.3-3.6 1.1-3.6-1.6V10h3.6V6.4H9.5V2.7zM3.5 9.8C1.4 9.2 0 8.7 0 7.5c0-1 .8-1.6 2.2-1.6 2 0 4 .8 5.4 1.5V3.7C6.2 2.9 4.3 2 2.2 2 .9 2 0 2.3 0 2.3v-.1C-.1 3.9.9 5.3 3.5 6.2c2.2.8 3.7 1.4 3.7 2.7 0 1-.9 1.7-2.4 1.7-2.1 0-4.3-1-5.8-1.8v3.7c1.5.8 3.7 1.5 5.8 1.5 3.3 0 5.5-1.6 5.5-4.3-.1-2.6-2.3-3.5-2.8-3.9z"/></svg>
+        </div>
+        <div>
+          <div style="font-size:0.78rem;font-weight:700;color:var(--ivory-dim);margin-bottom:0.2rem;">Secure checkout via Stripe</div>
+          <p style="font-size:0.73rem;color:var(--muted);line-height:1.6;">Clicking the button below will take you to Stripe's secure hosted payment page. Your card details are never stored by NABD. Annual membership renews automatically each year.</p>
+        </div>
+      </div>
+      <a href="https://buy.stripe.com/aFa28qdn03pK2eQ4nE8so01" id="mem-pay-btn" target="_blank" class="btn btn-gold" style="width:100%;justify-content:center;font-size:0.88rem;padding:1rem;border-radius:8px;text-transform:uppercase;letter-spacing:0.08em;">
+        Complete Registration &amp; Pay — $175.00 / year
+      </a>
+      <p style="font-size:0.7rem;color:var(--muted);text-align:center;margin-top:0.85rem;line-height:1.6;">By completing registration you agree to NABD's annual membership terms.<br>Payments processed securely by Stripe. NABD does not store payment information.</p>
+    </div>
+  </div>
+</section>
+
+<section data-section="appointments" class="section appt-section" id="appointments">
+  <div class="container">
+    <div class="appt-grid">
+      <div class="appt-copy reveal">
+        <div class="eyebrow">Schedule a Meeting</div>
+        <h2>Book an Appointment with NABD</h2>
+        <p>Whether you need to discuss advocacy support, legal referrals, civic education, or community partnership, our team is available to meet with you.</p>
+        <div class="appt-types">
+          <div class="appt-type"><span class="appt-type-icon">⚖️</span><div><div class="appt-type-label">Advocacy Consultation</div><div class="appt-type-desc">Discuss civil or human rights concerns with our team</div></div></div>
+          <div class="appt-type"><span class="appt-type-icon">🔗</span><div><div class="appt-type-label">Legal Referral Intake</div><div class="appt-type-desc">Get connected with qualified attorney referral pathways</div></div></div>
+          <div class="appt-type"><span class="appt-type-icon">🗳</span><div><div class="appt-type-label">Civic Education Session</div><div class="appt-type-desc">Voting rights, civic participation, and community resources</div></div></div>
+          <div class="appt-type"><span class="appt-type-icon">🤝</span><div><div class="appt-type-label">Partnership &amp; Outreach</div><div class="appt-type-desc">Community organizations, media, or partnership inquiries</div></div></div>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="legal-disclaimer-banner" style="margin-bottom:1.25rem;">
+          <span class="disclaimer-label">⚠ Legal Notice</span>
+          The National Association of Black Defenders, Inc. is <strong style="color:var(--ivory);">not a law firm</strong> and does not provide legal representation. We partner with civil rights and human rights attorneys nationwide to connect individuals with qualified legal support.
+        </div>
+        <div class="appt-form-card">
+          <h3>Request an Appointment</h3>
+          <p>We'll confirm your preferred time within one business day.</p>
+          <form id="apptForm">
+            <div class="form-row">
+              <input class="field" type="text" id="apptFirst" name="firstName" placeholder="First Name" required>
+              <input class="field" type="text" id="apptLast" name="lastName" placeholder="Last Name">
             </div>
-            <div>
-              <label for="appt-email">Email</label>
-              <input id="appt-email" type="email" placeholder="you@example.com" required />
-            </div>
-          </div>
-          <div class="form-grid" style="margin-top:1rem">
-            <div>
-              <label for="appt-phone">Phone</label>
-              <input id="appt-phone" type="tel" placeholder="(202) 770-3962" />
-            </div>
-            <div>
-              <label for="appt-type">Appointment Type</label>
-              <select id="appt-type" required>
-                <option value="">Choose one</option>
-                <option>Advocacy Consultation</option>
-                <option>Legal Referral Intake</option>
-                <option>Civic Education Session</option>
-                <option>Partnership &amp; Outreach</option>
+            <input class="field" type="email" id="apptEmail" name="contactEmail" placeholder="Email Address" required>
+            <input class="field" type="tel" id="apptPhone" name="contactPhone" placeholder="Phone Number">
+            <select class="field" id="apptService" name="service">
+              <option value="" disabled selected>Type of Appointment</option>
+              <option>Advocacy Consultation</option><option>Legal Referral Intake</option>
+              <option>Civic Education Session</option><option>Partnership &amp; Outreach</option><option>General Inquiry</option>
+            </select>
+            <div class="form-row">
+              <input class="field" type="date" id="apptDate" name="apptDate" style="margin-bottom:0;background:#ffffff;color:#333333;border:1px solid #cccccc;">
+              <select class="field" id="apptTime" name="apptTime" style="margin-bottom:0;">
+                <option value="">Select Time...</option>
+                <option>8:00 AM</option><option>8:30 AM</option><option>9:00 AM</option><option>9:30 AM</option>
+                <option>10:00 AM</option><option>10:30 AM</option><option>11:00 AM</option><option>11:30 AM</option>
+                <option>12:00 PM</option><option>12:30 PM</option><option>1:00 PM</option><option>1:30 PM</option>
+                <option>2:00 PM</option><option>2:30 PM</option><option>3:00 PM</option><option>3:30 PM</option>
+                <option>4:00 PM</option><option>4:30 PM</option><option>5:00 PM</option><option>5:30 PM</option>
+                <option>6:00 PM</option>
               </select>
             </div>
+            <textarea class="field" id="apptNotes" name="message" placeholder="Additional notes or questions (optional)" style="margin-top:0.75rem;"></textarea>
+            <button type="submit" class="form-submit">Request Appointment</button>
+          </form>
+          <div id="apptThanks" class="thanks-msg">
+            <div class="thanks-title">Your appointment request has been submitted!</div>
+            Thank you for your interest in NABD. A member of our team will follow up within 24 hours to confirm your appointment.
           </div>
-          <div style="margin-top:1rem">
-            <label for="appt-message">Message</label>
-            <textarea id="appt-message" placeholder="Tell us a little about what you need help with."></textarea>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-section="support" class="section support-section" id="support">
+  <div class="container">
+    <div class="support-grid">
+      <div class="support-copy reveal">
+        <div class="eyebrow">Support the Mission</div>
+        <h2>Stand with NABD in advancing advocacy, education, and equal justice.</h2>
+        <p>Your support strengthens public education, community empowerment, civil rights awareness, and access to dignified support pathways for those who need it most.</p>
+        <div class="impact-list">
+          <div class="impact-item"><span class="impact-icon">🎓</span><div><div class="impact-label">Public Education</div><div class="impact-desc">Accessible programs that help communities understand their rights and available resources.</div></div></div>
+          <div class="impact-item"><span class="impact-icon">🗣</span><div><div class="impact-label">Community Advocacy</div><div class="impact-desc">Organized voices demanding accountability, fairness, and systemic change.</div></div></div>
+          <div class="impact-item"><span class="impact-icon">🔑</span><div><div class="impact-label">Access to Justice</div><div class="impact-desc">Referral pathways that connect individuals to qualified legal guidance and support.</div></div></div>
+        </div>
+      </div>
+      <div class="form-card reveal">
+        <h3>Donate or Request Information</h3>
+        <p>Complete the form below. A member of the NABD team will follow up personally.</p>
+        <form id="supportForm">
+          <div class="form-row">
+            <input class="field" type="text" id="supFirst" name="firstName" placeholder="First Name" required>
+            <input class="field" type="text" id="supLast" name="lastName" placeholder="Last Name">
           </div>
-          <div class="form-actions">
-            <a class="btn primary" href="mailto:info@nabd.org?subject=Appointment%20Request">Send Request</a>
-            <span class="note">Phone: <a href="tel:+12027703962">(202) 770-3962</a></span>
-          </div>
+          <input class="field" type="email" id="supEmail" name="contactEmail" placeholder="Email Address" required>
+          <input class="field" type="tel" id="supPhone" name="contactPhone" placeholder="Phone Number">
+          <textarea class="field" id="supMessage" name="message" placeholder="How would you like to support or connect with NABD?"></textarea>
+          <button type="submit" class="form-submit">Submit Your Information</button>
         </form>
-      </div>
-    </div>
-  </section>
-
-  <section data-section="support" id="support">
-    <div class="container">
-      <div class="grid-2">
-        <div class="panel card">
-          <p class="section-kicker">Support</p>
-          <h2 class="section-title" style="font-size:clamp(1.9rem, 2.6vw, 2.8rem);">How support works</h2>
-          <p>
-            After you submit an appointment request, NABD staff reviews your needs and follows up with next steps,
-            which may include a consultation, educational guidance, or a referral pathway.
-          </p>
-        </div>
-        <div class="panel card">
-          <p class="section-kicker">Need help now?</p>
-          <h2 class="section-title" style="font-size:clamp(1.9rem, 2.6vw, 2.8rem);">Call NABD directly</h2>
-          <p>
-            For the fastest response, please call <a href="tel:+12027703962">(202) 770-3962</a>.
-            The same number is available throughout the page for convenience.
-          </p>
+        <div id="supportThanks" class="thanks-msg">
+          <div class="thanks-title">Thank you for supporting NABD!</div>
+          Your submission has been received. A member of our team will be in touch within 24 hours.
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section data-section="contact" id="contact">
-    <div class="container contact-grid">
-      <div class="panel contact-item">
-        <p class="section-kicker">Contact</p>
-        <h2 class="section-title" style="font-size:clamp(1.9rem, 2.6vw, 2.8rem);">Get in touch with NABD</h2>
-        <p class="section-lead">We welcome inquiries about advocacy, civic education, partnerships, and community support.</p>
+<section data-section="contact" class="section contact-section" id="contact">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <div class="eyebrow">Contact NABD</div>
+        <h2>Reach the organization directly.</h2>
+        <p>For questions about NABD's mission, advocacy work, public education, legal support pathways, environmental justice concerns, voting rights awareness, or attorney referrals — contact us directly.</p>
+        <div class="contact-details">
+          <div class="contact-detail"><div class="contact-detail-icon">📞</div><div><div class="contact-detail-label">Phone</div><div class="contact-detail-value"><span class="phone-display" data-phone="2027703962">(202) 770-3962</span></div></div></div>
+          <div class="contact-detail"><div class="contact-detail-icon">✉️</div><div><div class="contact-detail-label">Email</div><div class="contact-detail-value"><a href="mailto:info@nabd-justice.org">info@nabd-justice.org</a></div></div></div>
+          <div class="contact-detail"><div class="contact-detail-icon">📍</div><div><div class="contact-detail-label">Office</div><div class="contact-detail-value">1717 Pennsylvania Avenue NW, Suite 1025<br>Washington, DC 20006</div></div></div>
+          <div class="contact-detail"><div class="contact-detail-icon">👤</div><div><div class="contact-detail-label">Leadership</div><div class="contact-detail-value">Dr. Michael McCorvey, CEO &amp; Founder</div></div></div>
+        </div>
       </div>
-      <div class="panel contact-item">
-        <h3 style="margin-top:0">Contact Information</h3>
-        <p style="margin:.35rem 0"><strong>Phone:</strong> <a href="tel:+12027703962">(202) 770-3962</a></p>
-        <p style="margin:.35rem 0"><strong>Email:</strong> info@nabd.org</p>
-        <p style="margin:.35rem 0"><strong>Location:</strong> Washington, D.C.</p>
+      <div class="form-card reveal">
+        <h3>Send a Message</h3>
+        <p>Leave your information and a member of the organization will follow up as appropriate.</p>
+        <form id="contactForm">
+          <div class="form-row">
+            <input class="field" type="text" id="conFirstName" name="firstName" placeholder="First Name" required>
+            <input class="field" type="text" id="conLastName" name="lastName" placeholder="Last Name" required>
+          </div>
+          <input class="field" type="email" id="conEmail" name="contactEmail" placeholder="Email Address" required>
+          <input class="field" type="tel" id="conPhone" name="contactPhone" placeholder="Phone Number">
+          <textarea class="field" id="conMessage" name="message" placeholder="How can NABD assist you?"></textarea>
+          <button type="submit" class="form-submit">Send Message</button>
+        </form>
+        <div id="contactThanks" class="thanks-msg">
+          <div class="thanks-title">Your message has been submitted!</div>
+          Thank you for reaching out to NABD. A member of our team will follow up within 24 hours.
+        </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <footer data-section="footer">
-    <div class="container" style="display:flex;flex-wrap:wrap;gap:1rem;align-items:center;justify-content:space-between">
-      <div>© 2026 National Association of Black Defenders</div>
-      <div><a href="tel:+12027703962">(202) 770-3962</a></div>
+<footer data-section="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand"><div class="logo-text">NABD Inc.</div><div class="tagline">National Association of Black Defenders</div></div>
+      <div class="footer-links">
+        <a href="#mission">Mission</a><a href="#services">Services</a><a href="#membership">Membership</a>
+        <a href="#appointments">Appointments</a><a href="#support">Support</a><a href="#contact">Contact</a>
+        <a href="#contact" class="footer-links" style="display:inline;"><span class="phone-display" data-phone="2027703962">(202) 770-3962</span></a>
+      </div>
     </div>
-  </footer>
+    <div class="footer-copy">
+      Human Rights · Civil Rights · Equal Justice · Public Education · Environmental Justice · Attorney Referral Pathways<br><br>
+      <div style="display:inline-block;background:rgba(201,151,58,0.07);border:1px solid rgba(201,151,58,0.2);border-radius:6px;padding:0.65rem 1rem;margin-bottom:1rem;max-width:700px;font-size:0.72rem;color:var(--ivory-dim);line-height:1.7;text-align:left;">
+        <strong style="color:var(--gold);font-size:0.62rem;letter-spacing:0.14em;text-transform:uppercase;display:block;margin-bottom:0.25rem;">⚠ Legal Disclaimer</strong>
+        The National Association of Black Defenders, Inc. is not a law firm and does not provide legal representation. We partner with civil rights and human rights attorneys nationwide to connect individuals with qualified legal support.
+      </div><br>
+      © 2026 National Association of Black Defenders, Inc. · Washington, DC · <a href="mailto:info@nabd-justice.org" style="color:var(--muted);text-decoration:none;">info@nabd-justice.org</a>
+    </div>
+  </div>
+</footer>
 
-  
-
-  <script data-field-replace>
+<script src="https://paymegpt.com/widget.js" data-widget="23228416" async></script>
+<script>
   (function(){
-    var params=new URLSearchParams(window.location.search);
-    var fields={};
-    var paramMap={
-      'first_name':'firstName','last_name':'lastName','full_name':'fullName',
-      'email':'email','phone':'phone','company':'company',
-      'city':'city','state':'state','country':'country'
-    };
-    var skipTags={'SCRIPT':1,'STYLE':1,'NOSCRIPT':1,'TEXTAREA':1,'CODE':1,'PRE':1};
-    var hasUrlFields=false;
-    for(var p in paramMap){
-      var v=params.get(p);
-      if(v){fields[paramMap[p]]=v;hasUrlFields=true;}
-    }
-    var contactId=params.get('contact_id');
-    function esc(s){
-      if(!s)return s;
-      var d=document.createElement('div');
-      d.appendChild(document.createTextNode(s));
-      return d.innerHTML;
-    }
-    function doReplace(data){
-      var r={};
-      r['{{full_name}}']=esc(((data.firstName||'')+' '+(data.lastName||'')).trim()||((data.fullName||data.name)||''));
-      r['{{first_name}}']=esc(data.firstName||(data.name?data.name.split(' ')[0]:'')||'');
-      r['{{last_name}}']=esc(data.lastName||(data.name&&data.name.indexOf(' ')>-1?data.name.substring(data.name.indexOf(' ')+1):'')||'');
-      r['{{email}}']=esc(data.email||'');
-      r['{{phone}}']=esc(data.phone||'');
-      r['{{company}}']=esc(data.company||'');
-      r['{{city}}']=esc(data.city||'');
-      r['{{state}}']=esc(data.state||'');
-      r['{{country}}']=esc(data.country||'');
-      r['{{date}}']=new Date().toLocaleDateString();
-      r['{{time}}']=new Date().toLocaleTimeString();
-      r['{{location}}']=[data.city,data.state,data.country].filter(Boolean).join(', ');
-      r['{{tracking_id}}']=esc(data.trackingId||'');
-      r['{{lastClickedProduct}}']=esc(data.lastClickedProduct||'');
-      r['{{lastProductClickDate}}']=esc(data.lastClickedProductDate||data.lastProductClickDate||'');
-      r['{{lastClickedProductPrice}}']=esc(data.lastClickedProductPrice||'');
-      r['{{lastClickedProductURL}}']=esc(data.lastClickedProductURL||'');
-      r['{{productsClickedCount}}']=esc(data.productsClickedCount||'0');
-      r['{{ip_address}}']=esc(data.ipAddress||'');
-      r['{{ip}}']=esc(data.ipAddress||'');
-      if(data.customFields){
-        for(var k in data.customFields){
-          r['{{'+k+'}}']=esc(String(data.customFields[k]||''));
-        }
+    var isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent) || ('ontouchstart' in window && navigator.maxTouchPoints > 1);
+    document.querySelectorAll('.phone-display[data-phone]').forEach(function(el){
+      if(isMobile){
+        var num = el.getAttribute('data-phone');
+        var a = document.createElement('a');
+        a.href = 'tel:' + num;
+        a.className = el.className + ' mobile-callable';
+        a.style.cssText = el.style.cssText;
+        a.textContent = el.textContent;
+        el.parentNode.replaceChild(a, el);
       }
-      params.forEach(function(v,k){
-        if(!paramMap[k]&&k!=='contact_id'&&k!=='page_id'&&k.indexOf('utm_')!==0){
-          r['{{'+k+'}}']=esc(v);
-        }
-      });
-      var hasValues=false;
-      for(var key in r){if(r[key]){hasValues=true;break;}}
-      if(!hasValues)return;
-      var walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT,{
-        acceptNode:function(n){
-          var p=n.parentNode;
-          if(p&&skipTags[p.nodeName])return NodeFilter.FILTER_REJECT;
-          return NodeFilter.FILTER_ACCEPT;
-        }
-      });
-      var node;
-      while(node=walker.nextNode()){
-        var txt=node.nodeValue;
-        if(txt&&txt.indexOf('{{')>-1){
-          var changed=txt;
-          for(var ph in r){
-            if(r[ph]&&changed.indexOf(ph)>-1){
-              changed=changed.split(ph).join(r[ph]);
-            }
-          }
-          if(changed!==txt)node.nodeValue=changed;
-        }
-      }
-      var attrs=['value','placeholder','content','alt','title'];
-      attrs.forEach(function(attr){
-        var els=document.querySelectorAll('['+attr+'*="{{"]');
-        for(var i=0;i<els.length;i++){
-          var tag=els[i].tagName;
-          if(skipTags[tag])continue;
-          var val=els[i].getAttribute(attr);
-          if(val){
-            var nv=val;
-            for(var ph in r){
-              if(r[ph]&&nv.indexOf(ph)>-1){
-                nv=nv.split(ph).join(r[ph]);
-              }
-            }
-            if(nv!==val)els[i].setAttribute(attr,nv);
-          }
-        }
-      });
-    }
-    function run(){
-      if(contactId){
-        var xhr=new XMLHttpRequest();
-        xhr.open('GET','https://paymegpt.com/api/landing/context/'+encodeURIComponent(contactId)+'?page_id=3384');
-        xhr.onload=function(){
-          if(xhr.status===200){
-            try{
-              var resp=JSON.parse(xhr.responseText);
-              if(resp.success&&resp.contact){
-                var merged=resp.contact;
-                for(var k in fields){merged[k]=fields[k];}
-                doReplace(merged);
-                return;
-              }
-            }catch(e){}
-          }
-          if(hasUrlFields)doReplace(fields);
-        };
-        xhr.onerror=function(){if(hasUrlFields)doReplace(fields);};
-        xhr.send();
-      }else if(hasUrlFields){
-        doReplace(fields);
-      }
-    }
-    if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',run);}
-    else{run();}
+    });
   })();
-  </script>
-  <script src="script.js"></script>
+
+  var reveals = document.querySelectorAll('.reveal');
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry, i){ if (entry.isIntersecting){ setTimeout(function(){ entry.target.classList.add('visible'); }, i*80); obs.unobserve(entry.target); } });
+  }, { threshold: 0.08 });
+  reveals.forEach(function(el){ obs.observe(el); });
+
+  (function(){
+    var W='https://paymegpt.com/api/webhooks/flow/2683/f1446fe7553fe336888535803872d9111bde2c47ad90348460342ceec3ca4951';
+    var THANKS={'apptForm':'apptThanks','supportForm':'supportThanks','contactForm':'contactThanks'};
+    document.querySelectorAll('form').forEach(function(f){
+      f._isSubmitting=false;
+      f.addEventListener('submit',function(e){
+        e.preventDefault();
+        e.stopImmediatePropagation();
+        if(f._isSubmitting)return;
+        f._isSubmitting=true;
+        var d={};
+        f.querySelectorAll('input,select,textarea').forEach(function(el){
+          var k=el.name||el.id;
+          if(k&&el.type!=='hidden'&&el.type!=='submit')d[k]=el.value;
+        });
+        d.contactEmail=d.contactEmail||d.apptEmail||d.supEmail||d.conEmail||'';
+        d.contactPhone=d.contactPhone||d.apptPhone||d.supPhone||d.conPhone||'';
+        d.firstName=d.firstName||'';
+        d.lastName=d.lastName||'';
+        fetch(W,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(d)})
+          .then(function(){
+            var t=document.getElementById(THANKS[f.id]);
+            if(t){f.style.display='none';t.style.display='block';setTimeout(function(){t.style.display='none';f.style.display='block';f.reset();f._isSubmitting=false;},4000);}
+          }).catch(function(err){console.error('Form error:',err);f._isSubmitting=false;});
+      });
+    });
+  })();
+</script>
 </body>
 </html>
