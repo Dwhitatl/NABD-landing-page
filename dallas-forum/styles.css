@@ -1,0 +1,114 @@
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Open Sans',sans-serif;color:#fff;background:#000;overflow-x:hidden;}
+::-webkit-scrollbar{width:4px;}
+::-webkit-scrollbar-track{background:#000;}
+::-webkit-scrollbar-thumb{background:#C9A227;border-radius:2px;}
+nav{position:fixed;top:0;left:0;right:0;z-index:999;background:rgba(0,0,0,0.92);backdrop-filter:blur(16px);border-bottom:1px solid rgba(201,162,39,0.2);display:flex;align-items:center;justify-content:space-between;padding:0 36px;height:66px;}
+.nav-brand{display:flex;align-items:center;gap:11px;}
+.nav-logo{width:44px;height:44px;border-radius:50%;border:2px solid #C9A227;object-fit:cover;box-shadow:0 0 14px rgba(201,162,39,0.45);}
+.nav-name{font-family:'Montserrat',sans-serif;font-weight:900;color:#C9A227;font-size:18px;letter-spacing:2px;}
+.nav-right{display:flex;align-items:center;gap:20px;}
+.nav-date{font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;color:rgba(255,255,255,0.5);letter-spacing:1px;text-transform:uppercase;}
+.nav-cta{background:linear-gradient(135deg,#C9A227,#E8BD3A);color:#000;font-family:'Montserrat',sans-serif;font-weight:900;font-size:11px;letter-spacing:2px;text-transform:uppercase;padding:10px 24px;border-radius:50px;text-decoration:none;transition:all 0.25s;box-shadow:0 2px 18px rgba(201,162,39,0.4);}
+.nav-cta:hover{transform:translateY(-1px);box-shadow:0 4px 28px rgba(201,162,39,0.6);}
+.hero{min-height:100vh;padding-top:66px;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden;background:#000;}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 35%,rgba(201,162,39,0.1) 0%,rgba(0,0,0,0) 60%);z-index:0;}
+.hero-rays{position:absolute;inset:0;z-index:0;background:conic-gradient(from 0deg at 50% 40%,transparent 0deg,rgba(201,162,39,0.022) 6deg,transparent 12deg,rgba(201,162,39,0.022) 18deg,transparent 24deg,rgba(201,162,39,0.022) 30deg,transparent 36deg,rgba(201,162,39,0.022) 42deg,transparent 48deg,rgba(201,162,39,0.022) 54deg,transparent 60deg,rgba(201,162,39,0.022) 66deg,transparent 72deg,rgba(201,162,39,0.022) 78deg,transparent 84deg,rgba(201,162,39,0.022) 90deg,transparent 96deg,rgba(201,162,39,0.022) 102deg,transparent 108deg,rgba(201,162,39,0.022) 114deg,transparent 120deg,rgba(201,162,39,0.022) 126deg,transparent 132deg,rgba(201,162,39,0.022) 138deg,transparent 144deg,rgba(201,162,39,0.022) 150deg,transparent 156deg,rgba(201,162,39,0.022) 162deg,transparent 168deg,rgba(201,162,39,0.022) 174deg,transparent 180deg,rgba(201,162,39,0.022) 186deg,transparent 192deg,rgba(201,162,39,0.022) 198deg,transparent 204deg,rgba(201,162,39,0.022) 210deg,transparent 216deg,rgba(201,162,39,0.022) 222deg,transparent 228deg,rgba(201,162,39,0.022) 234deg,transparent 240deg,rgba(201,162,39,0.022) 246deg,transparent 252deg,rgba(201,162,39,0.022) 258deg,transparent 264deg,rgba(201,162,39,0.022) 270deg,transparent 276deg,rgba(201,162,39,0.022) 282deg,transparent 288deg,rgba(201,162,39,0.022) 294deg,transparent 300deg,rgba(201,162,39,0.022) 306deg,transparent 312deg,rgba(201,162,39,0.022) 318deg,transparent 324deg,rgba(201,162,39,0.022) 330deg,transparent 336deg,rgba(201,162,39,0.022) 342deg,transparent 348deg,rgba(201,162,39,0.022) 354deg,transparent 360deg);animation:spin-rays 90s linear infinite;}
+@keyframes spin-rays{to{transform:rotate(360deg);}}
+#pts{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden;}
+.pt{position:absolute;border-radius:50%;background:#C9A227;animation:pt-up linear infinite;}
+@keyframes pt-up{0%{opacity:0;transform:translateY(110vh) scale(0);}8%{opacity:0.55;}92%{opacity:0.1;}100%{opacity:0;transform:translateY(-15vh) scale(1.3);}}
+.hero-inner{position:relative;z-index:1;width:100%;max-width:1140px;padding:48px 36px;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
+.hero-logo-ring{position:relative;width:200px;height:200px;margin-bottom:32px;}
+.hero-logo-ring img{width:200px;height:200px;border-radius:50%;object-fit:cover;border:3px solid #C9A227;display:block;box-shadow:0 0 0 8px rgba(201,162,39,0.1),0 0 60px rgba(201,162,39,0.5),0 0 120px rgba(201,162,39,0.2);animation:logo-pulse 3.5s ease-in-out infinite;}
+@keyframes logo-pulse{0%,100%{box-shadow:0 0 0 8px rgba(201,162,39,0.1),0 0 60px rgba(201,162,39,0.5),0 0 120px rgba(201,162,39,0.2);}50%{box-shadow:0 0 0 12px rgba(201,162,39,0.18),0 0 80px rgba(201,162,39,0.75),0 0 160px rgba(201,162,39,0.35);}}
+.hero-org{font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:#C9A227;margin-bottom:14px;display:flex;align-items:center;gap:10px;}
+.hero-org::before{content:'';width:32px;height:1px;background:#C9A227;opacity:0.6;}
+@keyframes shimmer{0%{background-position:-400% center;}100%{background-position:400% center;}}
+.hero-h1{font-family:'Montserrat',sans-serif;font-weight:900;font-size:clamp(42px,5.5vw,76px);line-height:0.92;text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;background:linear-gradient(90deg,#7a5c0e 0%,#C9A227 18%,#fff 38%,#E8BD3A 50%,#fff 62%,#C9A227 82%,#7a5c0e 100%);background-size:400% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmer 5s linear infinite;}
+.hero-theme{font-family:'Montserrat',sans-serif;font-size:clamp(13px,1.8vw,17px);color:#C9A227;font-weight:700;letter-spacing:4px;text-transform:uppercase;margin-bottom:6px;}
+.hero-faith{font-family:'Montserrat',sans-serif;font-size:13px;color:rgba(255,255,255,0.45);font-style:italic;letter-spacing:1px;margin-bottom:32px;}
+.hero-pills{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:36px;}
+.pill{background:rgba(201,162,39,0.08);border:1px solid rgba(201,162,39,0.28);border-radius:50px;padding:9px 18px;font-family:'Montserrat',sans-serif;font-size:12px;font-weight:700;color:#fff;display:flex;align-items:center;gap:8px;transition:all 0.25s;}
+.pill:hover{background:rgba(201,162,39,0.18);border-color:#C9A227;transform:translateY(-3px);box-shadow:0 8px 24px rgba(201,162,39,0.2);}
+.pill-icon{font-size:14px;}
+.mil-badge{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,rgba(201,162,39,0.15),rgba(201,162,39,0.05));border:1px solid rgba(201,162,39,0.4);border-radius:8px;padding:10px 16px;font-family:'Montserrat',sans-serif;font-size:12px;color:#C9A227;font-weight:700;letter-spacing:0.5px;margin-top:4px;}
+.form-card{background:rgba(10,10,10,0.95);border:1px solid rgba(201,162,39,0.3);border-radius:24px;overflow:hidden;box-shadow:0 0 80px rgba(201,162,39,0.1),0 32px 80px rgba(0,0,0,0.6);backdrop-filter:blur(20px);}
+.form-card-head{background:linear-gradient(135deg,#111 0%,#1c1400 100%);border-bottom:2px solid #C9A227;padding:28px 32px;}
+.form-card-head h2{font-family:'Montserrat',sans-serif;font-size:17px;font-weight:900;color:#C9A227;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:4px;}
+.form-card-head p{font-size:12px;color:rgba(255,255,255,0.4);letter-spacing:0.5px;}
+.ticker-wrap{background:linear-gradient(90deg,#7a5c0e,#C9A227,#E8BD3A,#C9A227,#7a5c0e);padding:11px 0;overflow:hidden;position:relative;z-index:2;}
+.ticker-track{display:flex;white-space:nowrap;animation:tick 30s linear infinite;}
+.tick-item{font-family:'Montserrat',sans-serif;font-weight:900;font-size:11px;color:#000;letter-spacing:3px;text-transform:uppercase;padding:0 40px;}
+.tick-sep{color:rgba(0,0,0,0.35);}
+@keyframes tick{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+.qr-section{background:#080808;border-top:1px solid rgba(201,162,39,0.1);padding:72px 36px;}
+.qr-inner{max-width:900px;margin:0 auto;}
+.section-eyebrow{font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:#C9A227;margin-bottom:12px;display:flex;align-items:center;gap:10px;}
+.section-eyebrow::after{content:'';flex:0 0 48px;height:1px;background:linear-gradient(90deg,rgba(201,162,39,0.6),transparent);}
+.section-title{font-family:'Montserrat',sans-serif;font-size:clamp(28px,3.5vw,44px);font-weight:900;color:#fff;text-transform:uppercase;line-height:1.05;margin-bottom:36px;}
+.section-title span{color:#C9A227;}
+.qr-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;}
+.qr-card{background:#0c0c0c;border:1px solid rgba(201,162,39,0.18);border-radius:20px;padding:36px 32px;display:flex;align-items:center;gap:28px;transition:all 0.3s;}
+.qr-card:hover{border-color:rgba(201,162,39,0.5);transform:translateY(-3px);box-shadow:0 16px 48px rgba(201,162,39,0.1);}
+.qr-img-wrap{background:#fff;border:3px solid #C9A227;border-radius:14px;padding:12px;flex-shrink:0;}
+.qr-img-wrap img{display:block;width:130px;height:130px;border-radius:6px;}
+.qr-badge{font-family:'Montserrat',sans-serif;font-size:9px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#C9A227;margin-bottom:8px;}
+.qr-title{font-family:'Montserrat',sans-serif;font-size:16px;font-weight:900;color:#fff;margin-bottom:8px;text-transform:uppercase;letter-spacing:0.5px;}
+.qr-desc{font-size:13px;color:rgba(255,255,255,0.5);line-height:1.6;margin-bottom:10px;}
+.qr-url{font-size:10px;color:rgba(201,162,39,0.65);font-family:'Montserrat',sans-serif;font-weight:700;letter-spacing:0.5px;word-break:break-all;}
+.leadership{background:#000;border-top:1px solid rgba(201,162,39,0.1);padding:72px 36px;}
+.leadership-inner{max-width:1000px;margin:0 auto;}
+.poc-card{background:linear-gradient(135deg,#0d0d0d 0%,#130e00 100%);border:1px solid rgba(201,162,39,0.35);border-radius:24px;padding:48px 40px;display:grid;grid-template-columns:auto 1fr;gap:48px;align-items:center;max-width:780px;margin:0 auto;position:relative;overflow:hidden;transition:all 0.35s;box-shadow:0 0 60px rgba(201,162,39,0.06);}
+.poc-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,#C9A227,transparent);}
+.poc-card:hover{border-color:rgba(201,162,39,0.6);box-shadow:0 0 80px rgba(201,162,39,0.12),0 24px 60px rgba(0,0,0,0.5);}
+.poc-avatar{width:120px;height:120px;border-radius:50%;background:linear-gradient(135deg,#1a1400,#2a2000);border:3px solid #C9A227;display:flex;align-items:center;justify-content:center;font-family:'Montserrat',sans-serif;font-size:40px;font-weight:900;color:#C9A227;box-shadow:0 0 0 6px rgba(201,162,39,0.1),0 0 36px rgba(201,162,39,0.3);flex-shrink:0;}
+.poc-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(201,162,39,0.12);border:1px solid rgba(201,162,39,0.3);border-radius:50px;padding:5px 14px;font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;color:#C9A227;letter-spacing:2px;text-transform:uppercase;margin-bottom:14px;}
+.poc-name{font-family:'Montserrat',sans-serif;font-size:28px;font-weight:900;color:#fff;margin-bottom:6px;line-height:1.1;}
+.poc-title{font-family:'Montserrat',sans-serif;font-size:14px;font-weight:700;color:#C9A227;margin-bottom:16px;line-height:1.5;}
+.poc-desc{font-size:14px;color:rgba(255,255,255,0.55);line-height:1.7;margin-bottom:24px;}
+.poc-contacts{display:flex;flex-wrap:wrap;gap:12px;}
+.poc-link{display:flex;align-items:center;gap:8px;background:rgba(255,255,255,0.04);border:1px solid rgba(201,162,39,0.2);border-radius:50px;padding:9px 18px;font-size:13px;font-weight:700;text-decoration:none;transition:all 0.25s;}
+.poc-link.gold{color:#C9A227;}.poc-link.white{color:rgba(255,255,255,0.7);}
+.poc-link:hover{background:rgba(201,162,39,0.1);border-color:#C9A227;transform:translateY(-1px);}
+@media(max-width:680px){.poc-card{grid-template-columns:1fr;text-align:center;padding:36px 24px;gap:28px;}.poc-avatar{margin:0 auto;}.poc-contacts{justify-content:center;}}
+footer{background:#000;border-top:1px solid rgba(201,162,39,0.2);padding:48px 36px;text-align:center;}
+.footer-brand{display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:16px;}
+.footer-logo{width:50px;height:50px;border-radius:50%;border:2px solid #C9A227;object-fit:cover;box-shadow:0 0 18px rgba(201,162,39,0.3);}
+.footer-name{font-family:'Montserrat',sans-serif;font-size:22px;font-weight:900;color:#C9A227;letter-spacing:2px;}
+footer p{font-size:12px;color:rgba(255,255,255,0.3);margin-bottom:5px;line-height:1.8;}
+footer a{color:#C9A227;text-decoration:none;}
+.footer-div{width:48px;height:1px;background:rgba(201,162,39,0.3);margin:16px auto;}
+.footer-tagline{font-style:italic;color:#ffffff;font-size:13px;letter-spacing:2px;margin-top:14px;font-family:'Montserrat',sans-serif;font-weight:600;}
+.agent-btn{position:fixed;bottom:28px;right:28px;z-index:9999;background:linear-gradient(135deg,#C9A227,#E8BD3A);width:64px;height:64px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:28px;cursor:pointer;border:none;text-decoration:none;animation:agent-ring 2.5s ease-in-out infinite;transition:transform 0.2s;}
+@keyframes agent-ring{0%,100%{box-shadow:0 4px 24px rgba(201,162,39,0.55),0 0 0 0 rgba(201,162,39,0.4);}50%{box-shadow:0 4px 36px rgba(201,162,39,0.7),0 0 0 12px rgba(201,162,39,0);}}
+.agent-btn:hover{transform:scale(1.1);}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity 0.7s ease,transform 0.7s ease;}
+.reveal.on{opacity:1;transform:translateY(0);}
+@media(max-width:900px){
+  .hero-inner{grid-template-columns:1fr;gap:32px;text-align:center;padding:24px 16px;}
+  .hero-logo-ring{margin:0 auto 20px;width:140px;height:140px;}
+  .hero-logo-ring img{width:140px;height:140px;}
+  .hero-org{justify-content:center;}
+  .hero-pills{justify-content:center;}
+  .hero-h1{font-size:clamp(36px,10vw,60px);}
+  .form-card{border-radius:16px;margin:0;}
+  .form-card-head{padding:20px 20px;}
+  .qr-grid{grid-template-columns:1fr;}
+  .qr-card{flex-direction:column;text-align:center;}
+  .qr-section{padding:48px 16px;}
+  .leadership{padding:48px 16px;}
+  nav{padding:0 16px;}
+  .nav-date{display:none;}
+  .nav-name{font-size:15px;}
+  .agent-btn{bottom:16px;right:16px;width:54px;height:54px;font-size:24px;}
+  footer{padding:36px 16px;}
+}
+@media(max-width:480px){
+  .hero-inner{padding:20px 12px;}
+  .hero-h1{font-size:clamp(32px,12vw,52px);}
+  .mil-badge{font-size:11px;padding:8px 12px;flex-wrap:wrap;justify-content:center;text-align:center;}
+  .form-card-head h2{font-size:15px;}
+  .poc-name{font-size:22px;}
+}
