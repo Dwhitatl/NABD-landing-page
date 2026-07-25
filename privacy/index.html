@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<meta name="robots" content="index,follow">
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+
+<!-- SEO Meta Tags -->
+<title>Privacy Statement | National Association of Black Defenders, Inc.</title>
+<meta name="description" content="Privacy Statement of the National Association of Black Defenders, Inc. — how NABD collects, uses, shares, retains, and protects personal information, and the privacy rights available to you." />
+<meta property="og:title" content="Privacy Statement | National Association of Black Defenders, Inc." />
+<meta property="og:description" content="Privacy Statement of the National Association of Black Defenders, Inc. — how NABD collects, uses, shares, retains, and protects personal information, and the privacy rights available to you." />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Privacy Statement | National Association of Black Defenders, Inc." />
+<meta name="twitter:description" content="Privacy Statement of the National Association of Black Defenders, Inc. — how NABD collects, uses, shares, retains, and protects personal information, and the privacy rights available to you." />
+<!-- End SEO Meta Tags -->
+<script data-lp-token-hydrate>
+(function(){try{
+  var slug="lp-ms0duolt-z52lx";
+  var SK='lp_access_'+slug;
+  var map={access_token:'lp_pw_',allowlist_access_token:'lp_al_',pin_access_token:'lp_pin_',paywall_access_token:'lp_paid_'};
+  var u=new URL(location.href);var found=null;var changed=false;
+  Object.keys(map).forEach(function(p){var v=u.searchParams.get(p);if(v){found=v;try{localStorage.setItem(map[p]+slug,v);}catch(e){}u.searchParams.delete(p);changed=true;}});
+  if(found){try{sessionStorage.setItem(SK,found);}catch(e){}}
+  else{try{if(!sessionStorage.getItem(SK)){var t=localStorage.getItem('lp_pw_'+slug)||localStorage.getItem('lp_al_'+slug)||localStorage.getItem('lp_pin_'+slug)||localStorage.getItem('lp_paid_'+slug);if(t)sessionStorage.setItem(SK,t);}}catch(e){}}
+  if(changed){try{history.replaceState(null,'',u.toString());}catch(e){}}
+  function getTok(){try{return sessionStorage.getItem(SK)||localStorage.getItem('lp_pw_'+slug)||localStorage.getItem('lp_al_'+slug)||localStorage.getItem('lp_pin_'+slug)||localStorage.getItem('lp_paid_'+slug);}catch(e){return null;}}
+  function needsToken(url,method){if(!url)return false;var s=String(url);var m=(method||'GET').toUpperCase();var isSheetWrite=(m==='POST'||m==='PATCH'||m==='PUT'||m==='DELETE')&&/\/sheet-rows(\/|$|\?)/.test(s);var isSheetRead=/\/sheet-data(\/|$|\?)/.test(s);var isLlm=/\/api\/landing-pages\/public\/[^/]+\/(llm|llm-config)(\/|$|\?)/.test(s);return isSheetWrite||isSheetRead||isLlm;}
+  if(window.fetch){var _f=window.fetch;window.fetch=function(input,init){try{var url=typeof input==='string'?input:(input&&input.url)||'';var method=(init&&init.method)||(input&&input.method)||'GET';if(needsToken(url,method)){var tok=getTok();if(tok){init=init||{};var h=new Headers(init.headers||(typeof input!=='string'?input.headers:undefined)||{});if(!h.has('X-Landing-Page-Token'))h.set('X-Landing-Page-Token',tok);init.headers=h;}}}catch(e){}return _f.call(this,input,init);};}
+  if(window.XMLHttpRequest){var _o=XMLHttpRequest.prototype.open;var _s=XMLHttpRequest.prototype.send;XMLHttpRequest.prototype.open=function(m,u){this.__lpM=m;this.__lpU=u;return _o.apply(this,arguments);};XMLHttpRequest.prototype.send=function(){try{if(needsToken(this.__lpU,this.__lpM)){var tok=getTok();if(tok)this.setRequestHeader('X-Landing-Page-Token',tok);}}catch(e){}return _s.apply(this,arguments);};}
+}catch(e){}})();
+</script>
+
+<script data-field-replace>
+(function(){
+  var params=new URLSearchParams(window.location.search);
+  var fields={};
+  var paramMap={
+    'first_name':'firstName','last_name':'lastName','full_name':'fullName',
+    'email':'email','phone':'phone','company':'company',
+    'city':'city','state':'state','country':'country'
+  };
+  var skipTags={'SCRIPT':1,'STYLE':1,'NOSCRIPT':1,'TEXTAREA':1,'CODE':1,'PRE':1};
+  var hasUrlFields=false;
+  for(var p in paramMap){
+    var v=params.get(p);
+    if(v){fields[paramMap[p]]=v;hasUrlFields=true;}
+  }
+  var contactId=params.get('contact_id');
+  function esc(s){
+    if(!s)return s;
+    var d=document.createElement('div');
+    d.appendChild(document.createTextNode(s));
+    return d.innerHTML;
+  }
+  function doReplace(data){
+    var r={};
+    r['{{full_name}}']=esc(((data.firstName||'')+' '+(data.lastName||'')).trim()||((data.fullName||data.name)||''));
+    r['{{first_name}}']=esc(data.firstName||(data.name?data.name.split(' ')[0]:'')||'');
+    r['{{last_name}}']=esc(data.lastName||(data.name&&data.name.indexOf(' ')>-1?data.name.substring(data.name.indexOf(' ')+1):'')||'');
+    r['{{email}}']=esc(data.email||'');
+    r['{{phone}}']=esc(data.phone||'');
+    r['{{company}}']=esc(data.company||'');
+    r['{{city}}']=esc(data.city||'');
+    r['{{state}}']=esc(data.state||'');
+    r['{{country}}']=esc(data.country||'');
+    r['{{date}}']=new Date().toLocaleDateString();
+    r['{{time}}']=new Date().toLocaleTimeString();
+    r['{{location}}']=[data.city,data.state,data.country].filter(Boolean).join(', ');
+    r['{{tracking_id}}']=esc(data.trackingId||'');
+    r['{{lastClickedProduct}}']=esc(data.lastClickedProduct||'');
+    r['{{lastProductClickDate}}']=esc(data.lastProductClickDate||'');
+    r['{{lastClickedProductPrice}}']=esc(data.lastClickedProductPrice||'');
+    r['{{lastClickedProductURL}}']=esc(data.lastClickedProductURL||'');
+    r['{{productsClickedCount}}']=esc(data.productsClickedCount||'0');
+    r['{{ip_address}}']=esc(data.ipAddress||'');
+    r['{{ip}}']=esc(data.ipAddress||'');
+    if(data.customFields){
+      for(var k in data.customFields){
+        r['{{'+k+'}}']=esc(String(data.customFields[k]||''));
+      }
+    }
+    params.forEach(function(v,k){
+      if(!paramMap[k]&&k!=='contact_id'&&k!=='page_id'&&k.indexOf('utm_')!==0){
+        r['{{'+k+'}}']=esc(v);
+      }
+    });
+    var hasValues=false;
+    for(var key in r){if(r[key]){hasValues=true;break;}}
+    if(!hasValues)return;
+    var walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT,{
+      acceptNode:function(n){
+        var p=n.parentNode;
+        if(p&&skipTags[p.nodeName])return NodeFilter.FILTER_REJECT;
+        return NodeFilter.FILTER_ACCEPT;
+      }
+    });
+    var node;
+    while(node=walker.nextNode()){
+      var txt=node.nodeValue;
+      if(txt&&txt.indexOf('{{')>-1){
+        var changed=txt;
+        for(var ph in r){
+          if(r[ph]&&changed.indexOf(ph)>-1){
+            changed=changed.split(ph).join(r[ph]);
+          }
+        }
+        if(changed!==txt)node.nodeValue=changed;
+      }
+    }
+    var attrs=['value','placeholder','content','alt','title'];
+    attrs.forEach(function(attr){
+      var els=document.querySelectorAll('['+attr+'*="{{"]');
+      for(var i=0;i<els.length;i++){
+        var tag=els[i].tagName;
+        if(skipTags[tag])continue;
+        var val=els[i].getAttribute(attr);
+        if(val){
+          var nv=val;
+          for(var ph in r){
+            if(r[ph]&&nv.indexOf(ph)>-1){
+              nv=nv.split(ph).join(r[ph]);
+            }
+          }
+          if(nv!==val)els[i].setAttribute(attr,nv);
+        }
+      }
+    });
+  }
+  function run(){
+    if(contactId){
+      var xhr=new XMLHttpRequest();
+      xhr.open('GET','https://paymegpt.com/api/landing/context/'+encodeURIComponent(contactId)+'?page_id=5747');
+      xhr.onload=function(){
+        if(xhr.status===200){
+          try{
+            var resp=JSON.parse(xhr.responseText);
+            if(resp.success&&resp.contact){
+              var merged=resp.contact;
+              for(var k in fields){merged[k]=fields[k];}
+              doReplace(merged);
+              return;
+            }
+          }catch(e){}
+        }
+        if(hasUrlFields)doReplace(fields);
+      };
+      xhr.onerror=function(){if(hasUrlFields)doReplace(fields);};
+      xhr.send();
+    }else if(hasUrlFields){
+      doReplace(fields);
+    }
+  }
+  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',run);}
+  else{run();}
+})();
+</script>
+<script data-payment>
+(function(){
+  var slug='xXzKR9nWS';
+  var apiBase='https://paymegpt.com';
+  var successSubtext='';var successBtnLabel='Continue';var successBtnColor='#16a34a';var successRedirect='';
+  function findEmail(){
+    var ids=['email','emailAddress','buyer-email','buyerEmail','user-email','userEmail','checkout-email','customer-email','contact-email'];
+    for(var i=0;i<ids.length;i++){var el=document.getElementById(ids[i]);if(el&&el.value&&el.value.includes('@'))return el.value.trim();}
+    var inputs=document.querySelectorAll('input[type="email"],input[name*="email"],input[placeholder*="email"],input[placeholder*="Email"]');
+    for(var j=0;j<inputs.length;j++){if(inputs[j].value&&inputs[j].value.includes('@'))return inputs[j].value.trim();}
+    return '';
+  }
+  function findName(){
+    var ids=['name','fullName','full-name','buyer-name','buyerName','customer-name','userName','user-name'];
+    for(var i=0;i<ids.length;i++){var el=document.getElementById(ids[i]);if(el&&el.value)return el.value.trim();}
+    var inputs=document.querySelectorAll('input[name*="name"]:not([name*="email"]):not([type="email"]),input[placeholder*="name"]:not([placeholder*="email"]):not([type="email"]),input[placeholder*="Name"]:not([type="email"])');
+    for(var j=0;j<inputs.length;j++){if(inputs[j].value)return inputs[j].value.trim();}
+    return '';
+  }
+  function findPhone(){var ids=['phone','phoneNumber','phone-number','tel','telephone','mobile','mobileNumber','cell','contact-phone','buyer-phone'];for(var i=0;i<ids.length;i++){var el=document.getElementById(ids[i]);if(el&&el.value&&el.value.trim())return el.value.trim();}var inputs=document.querySelectorAll('input[type="tel"],input[name*="phone"],input[name*="tel"],input[name*="mobile"],input[placeholder*="phone"],input[placeholder*="Phone"]');for(var j=0;j<inputs.length;j++){if(inputs[j].value&&inputs[j].value.trim())return inputs[j].value.trim();}return '';}
+  var __realProcessPayment=function(a,b,c,d,e){
+    var amountCents,email,productName,productDescription,customerName,quantity;
+    if(a&&typeof a==='object'){
+      amountCents=a.amountCents;email=a.email;productName=a.productName;
+      productDescription=a.productDescription||'';customerName=a.name||'';quantity=a.quantity||1;
+    }else{
+      amountCents=typeof a==='number'?a:0;productName=typeof b==='string'?b:'';
+      productDescription=typeof c==='string'?c:'';email='';customerName='';quantity=1;
+    }
+    if(!email)email=findEmail();
+    if(!customerName)customerName=findName();
+    var phone=findPhone();
+    if(!productName){alert('Product name is required.');return Promise.reject('no_product_name');}
+    if(!amountCents||amountCents<100){alert('Amount must be at least $1.00');return Promise.reject('invalid_amount');}
+    if(!email){alert('Please enter your email address.');return Promise.reject('no_email');}
+    var successBase=window.location.href.split('?')[0];
+    var __pLoc=(document.documentElement.lang||navigator.language||'en');
+    return fetch(apiBase+'/api/landing-pages/public/'+slug+'/payment/checkout',{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({email:email,name:customerName,phone:phone||'',amountCents:amountCents,productName:productName,productDescription:productDescription,quantity:quantity,locale:__pLoc,successUrl:successBase+'?payment=success&product='+encodeURIComponent(productName)+'&session_id={CHECKOUT_SESSION_ID}',cancelUrl:successBase+'?payment=cancelled'})
+    }).then(function(r){return r.json();}).then(function(d){
+      if(d.checkoutUrl){window.location.href=d.checkoutUrl;}
+      else{alert(d.error||'Failed to process payment');throw new Error(d.error);}
+    });
+  };
+  Object.defineProperty(window,'__processPayment',{value:__realProcessPayment,writable:false,configurable:false});
+  document.addEventListener('DOMContentLoaded',function(){
+    var urlParams=new URLSearchParams(window.location.search);
+    if(urlParams.get('payment')==='success'){
+      var sidP=urlParams.get('session_id');
+      if(sidP){try{fetch(apiBase+'/api/landing-pages/public/'+slug+'/checkout/confirm',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({sessionId:sidP})}).catch(function(){});}catch(e){}}
+      var pName=urlParams.get('product')||'your item';
+      var overlay=document.createElement('div');overlay.id='payment-success-overlay';
+      overlay.style.cssText='position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;z-index:999999;font-family:system-ui,-apple-system,sans-serif;';
+      function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+      var subTxt=successSubtext||('Thank you for purchasing '+pName+'.');
+      overlay.innerHTML='<div style="background:white;border-radius:16px;padding:40px;max-width:420px;width:90%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.15);"><div style="width:64px;height:64px;border-radius:50%;background:#dcfce7;margin:0 auto 20px;display:flex;align-items:center;justify-content:center;"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><h2 style="margin:0 0 12px;font-size:24px;font-weight:700;color:#111827;">Payment Successful!</h2><p style="margin:0 0 24px;color:#6b7280;font-size:16px;">'+esc(subTxt)+'</p><button id="lp-pay-success-btn" style="padding:12px 32px;font-size:16px;font-weight:600;background:'+successBtnColor+';color:white;border:none;border-radius:8px;cursor:pointer;">'+esc(successBtnLabel)+'</button></div>';
+      document.body.appendChild(overlay);
+      var pBtn=document.getElementById('lp-pay-success-btn');
+      if(pBtn){pBtn.addEventListener('click',function(){if(successRedirect){window.location.href=successRedirect;}else{overlay.remove();window.history.replaceState({},'',window.location.pathname);}});}
+    }
+  });
+})();
+</script>
+<script data-cart>
+(function(){
+  var slug='xXzKR9nWS';
+  var apiBase='https://paymegpt.com';
+  var successSubtext='';var successBtnLabel='Continue';var successBtnColor='#16a34a';var successRedirect='';
+  function findCartEmail(){
+    var ids=['email','emailAddress','buyer-email','buyerEmail','user-email','userEmail','checkout-email','customer-email','contact-email'];
+    for(var i=0;i<ids.length;i++){var el=document.getElementById(ids[i]);if(el&&el.value&&el.value.includes('@'))return el.value.trim();}
+    var inputs=document.querySelectorAll('input[type="email"],input[name*="email"],input[placeholder*="email"],input[placeholder*="Email"]');
+    for(var j=0;j<inputs.length;j++){if(inputs[j].value&&inputs[j].value.includes('@'))return inputs[j].value.trim();}
+    return '';
+  }
+  function findCartName(){
+    var ids=['name','fullName','full-name','buyer-name','buyerName','customer-name','userName','user-name'];
+    for(var i=0;i<ids.length;i++){var el=document.getElementById(ids[i]);if(el&&el.value)return el.value.trim();}
+    var inputs=document.querySelectorAll('input[name*="name"]:not([name*="email"]):not([type="email"]),input[placeholder*="name"]:not([placeholder*="email"]):not([type="email"]),input[placeholder*="Name"]:not([type="email"])');
+    for(var j=0;j<inputs.length;j++){if(inputs[j].value)return inputs[j].value.trim();}
+    return '';
+  }
+  function findCartPhone(){var ids=['phone','phoneNumber','phone-number','tel','telephone','mobile','mobileNumber','cell','contact-phone','buyer-phone'];for(var i=0;i<ids.length;i++){var el=document.getElementById(ids[i]);if(el&&el.value&&el.value.trim())return el.value.trim();}var inputs=document.querySelectorAll('input[type="tel"],input[name*="phone"],input[name*="tel"],input[name*="mobile"],input[placeholder*="phone"],input[placeholder*="Phone"]');for(var j=0;j<inputs.length;j++){if(inputs[j].value&&inputs[j].value.trim())return inputs[j].value.trim();}return '';}
+  var __realCart=function(arg){
+    var items, email='', customerName='', successUrl, cancelUrl, currency;
+    if(Array.isArray(arg)){items=arg;}
+    else if(arg&&typeof arg==='object'){
+      items=arg.items;email=arg.email||'';customerName=arg.name||arg.customerName||'';
+      successUrl=arg.successUrl;cancelUrl=arg.cancelUrl;currency=arg.currency;
+    }
+    if(!Array.isArray(items)||items.length===0){alert('No items in cart.');return Promise.reject('no_items');}
+    var cleanItems=[];var totalCents=0;
+    for(var i=0;i<items.length;i++){
+      var it=items[i];if(!it||typeof it!=='object'){alert('Invalid item at position '+i);return Promise.reject('bad_item');}
+      var nm=typeof it.name==='string'?it.name.trim():'';
+      if(!nm){alert('Item '+(i+1)+' is missing a name.');return Promise.reject('no_name');}
+      var amt=typeof it.amountCents==='number'?it.amountCents:(typeof it.amount==='number'?Math.round(it.amount*100):NaN);
+      if(!isFinite(amt)||amt<1){alert('Item "'+nm+'" needs a valid amount in cents.');return Promise.reject('bad_amount');}
+      var qty=(typeof it.quantity==='number'&&it.quantity>0)?Math.floor(it.quantity):1;
+      cleanItems.push({name:nm,description:it.description||'',amountCents:amt,quantity:qty});
+      totalCents+=amt*qty;
+    }
+    if(totalCents<50){alert('Cart total must be at least $0.50');return Promise.reject('total_too_low');}
+    if(!email)email=findCartEmail();
+    if(!customerName)customerName=findCartName();
+    var cartPhone=findCartPhone();
+    if(!email){var p=window.prompt('Enter your email for the receipt:','');if(p&&p.indexOf('@')>-1){email=p.trim();}else{alert('An email address is required to complete checkout.');return Promise.reject('no_email');}}
+    var successBase=window.location.href.split('?')[0];
+    var body={email:email,name:customerName,items:cleanItems,locale:(document.documentElement.lang||navigator.language||'en')};
+    if(currency)body.currency=currency;
+    if(cartPhone)body.phone=cartPhone;
+    body.successUrl=successUrl||(successBase+'?cart=success&email='+encodeURIComponent(email)+'&session_id={CHECKOUT_SESSION_ID}');
+    body.cancelUrl=cancelUrl||(successBase+'?cart=cancelled');
+    return fetch(apiBase+'/api/landing-pages/public/'+slug+'/cart/checkout',{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify(body)
+    }).then(function(r){return r.json();}).then(function(d){
+      if(d.checkoutUrl){window.location.href=d.checkoutUrl;}
+      else{alert(d.error||'Failed to process checkout');throw new Error(d.error);}
+    });
+  };
+  try{Object.defineProperty(window,'__processCart',{value:__realCart,writable:false,configurable:false});}catch(e){window.__processCart=__realCart;}
+  document.addEventListener('DOMContentLoaded',function(){
+    var urlParams=new URLSearchParams(window.location.search);
+    if(urlParams.get('cart')==='success'){
+      var sidC=urlParams.get('session_id');
+      if(sidC){try{fetch(apiBase+'/api/landing-pages/public/'+slug+'/checkout/confirm',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({sessionId:sidC})}).catch(function(){});}catch(e){}}
+      if(document.getElementById('payment-success-overlay')||document.getElementById('donation-success-overlay')||document.getElementById('cart-success-overlay'))return;
+      var overlay=document.createElement('div');overlay.id='cart-success-overlay';
+      overlay.style.cssText='position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;z-index:999999;font-family:system-ui,-apple-system,sans-serif;';
+      function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+      var subTxt=successSubtext||'Thank you for your order.';
+      overlay.innerHTML='<div style="background:white;border-radius:16px;padding:40px;max-width:420px;width:90%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.15);"><div style="width:64px;height:64px;border-radius:50%;background:#dcfce7;margin:0 auto 20px;display:flex;align-items:center;justify-content:center;"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><h2 style="margin:0 0 12px;font-size:24px;font-weight:700;color:#111827;">Order Confirmed!</h2><p style="margin:0 0 24px;color:#6b7280;font-size:16px;">'+esc(subTxt)+'</p><button id="lp-cart-success-btn" style="padding:12px 32px;font-size:16px;font-weight:600;background:'+successBtnColor+';color:white;border:none;border-radius:8px;cursor:pointer;">'+esc(successBtnLabel)+'</button></div>';
+      document.body.appendChild(overlay);
+      var cBtn=document.getElementById('lp-cart-success-btn');
+      if(cBtn){cBtn.addEventListener('click',function(){if(successRedirect){window.location.href=successRedirect;}else{overlay.remove();window.history.replaceState({},'',window.location.pathname);}});}
+    }
+  });
+})();
+</script>  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<nav data-section="navbar">
+  <div class="nav-inner">
+    <a href="https://www.nabd-justice.org" class="nav-brand">
+      <img src="https://storage.googleapis.com/wttus/assets/1605006/images/NABD_newlogo.jpg" alt="NABD Logo">
+      <span>
+        <span class="org-abbr">NABD</span>
+        <span class="org-full">National Association of Black Defenders</span>
+      </span>
+    </a>
+    <a href="https://www.nabd-justice.org" class="nav-back">← Back to Main Site</a>
+  </div>
+</nav>
+
+<header class="doc-head" data-section="doc-header">
+  <div class="container">
+    <div class="eyebrow">Legal</div>
+    <h1>Privacy Statement</h1>
+    <div class="doc-meta">Effective Date: <span>May 2, 2026</span> &nbsp;·&nbsp; Last Updated: <span>May 2, 2026</span></div>
+    <p class="doc-intro">The National Association of Black Defenders, Inc. ("NABD," "we," "us," or "our") respects the privacy of every person who contacts us, supports us, joins us, or entrusts us with their story. This Privacy Statement explains what personal information we collect, why we collect it, how we use and share it, how long we keep it, how we protect it, and the choices and rights available to you.</p>
+
+    <div class="notice">
+      <span class="notice-label">⚖ Important Legal Notice</span>
+      NABD is <strong>not a law firm</strong> and does not provide legal representation or legal advice. Submitting information to NABD — including through any intake, appointment, membership, contact, or chat feature — <strong>does not create an attorney-client relationship</strong>, and information you submit is <strong>not protected by the attorney-client privilege</strong> unless and until you separately enter into a representation agreement with an attorney. Please consider this carefully before sharing sensitive details.
+    </div>
+  </div>
+</header>
+
+<div class="container">
+  <div class="toc">
+    <div class="toc-title">Contents</div>
+    <ol>
+      <li><a href="#scope">Scope of This Statement</a></li>
+      <li><a href="#who">Who We Are</a></li>
+      <li><a href="#collect">Information We Collect</a></li>
+      <li><a href="#sensitive">Sensitive Information</a></li>
+      <li><a href="#thirdparty">Information About Other People</a></li>
+      <li><a href="#automatic">Information Collected Automatically</a></li>
+      <li><a href="#use">How We Use Information</a></li>
+      <li><a href="#share">How We Share Information</a></li>
+      <li><a href="#sale">No Sale or Targeted Advertising</a></li>
+      <li><a href="#cookies">Cookies and Similar Technologies</a></li>
+      <li><a href="#retention">Data Retention</a></li>
+      <li><a href="#security">Security</a></li>
+      <li><a href="#rights">Your Privacy Rights</a></li>
+      <li><a href="#exercise">How to Exercise Your Rights</a></li>
+      <li><a href="#appeal">Right to Appeal</a></li>
+      <li><a href="#california">Notice to California Residents</a></li>
+      <li><a href="#communications">Email, Calls, and Text Messages</a></li>
+      <li><a href="#children">Children's Privacy</a></li>
+      <li><a href="#donors">Donor and Member Privacy</a></li>
+      <li><a href="#links">Third-Party Links and Services</a></li>
+      <li><a href="#changes">Changes to This Statement</a></li>
+      <li><a href="#contact">How to Contact Us</a></li>
+    </ol>
+  </div>
+</div>
+
+<main class="container" data-section="policy-body">
+
+<section class="clause" id="scope">
+  <div class="clause-num">Section 1</div>
+  <h2>Scope of This Statement</h2>
+  <p>This Privacy Statement applies to personal information NABD collects through:</p>
+  <ul>
+    <li>The NABD website at <strong>nabd-justice.org</strong> and any NABD-operated landing pages;</li>
+    <li>NABD online forms, including contact, appointment request, support and donation inquiry, and membership registration forms;</li>
+    <li>The <strong>NABD Ford Motor Company – Chicago Class Action Intake Form</strong> and any similar NABD-operated matter intake or questionnaire page;</li>
+    <li>The NABD AI Concierge chat assistant; and</li>
+    <li>Email, telephone, and written correspondence with NABD.</li>
+  </ul>
+  <p>This Statement does not apply to the practices of independent attorneys, law firms, partner organizations, or other third parties, each of which maintains its own privacy practices.</p>
+</section>
+
+<section class="clause" id="who">
+  <div class="clause-num">Section 2</div>
+  <h2>Who We Are</h2>
+  <p>The National Association of Black Defenders, Inc. is a nonprofit organization headquartered at 1717 Pennsylvania Avenue NW, Suite 1025, Washington, DC 20006. NABD advances human rights, civil rights protections, legal advocacy, voting rights awareness, environmental justice, and public education.</p>
+  <p>NABD is the entity responsible for the personal information described in this Statement. Depending on the state in which you live, NABD may be referred to as the "controller" of that information.</p>
+</section>
+
+<section class="clause" id="collect">
+  <div class="clause-num">Section 3</div>
+  <h2>Information We Collect</h2>
+
+  <h3>3.1 Information you provide through general website forms</h3>
+  <p>When you request an appointment, submit a contact or support inquiry, or ask about donating, we collect the information you enter, which may include: first and last name, email address, telephone number, the type of appointment requested, your preferred date and time, and any free-text message, notes, or questions you choose to include.</p>
+
+  <h3>3.2 Membership registration</h3>
+  <p>If you register for NABD membership, we collect your first and last name, street address, city, state, ZIP code, telephone number, and email address. Membership dues are processed by our payment processor; see Section 3.5.</p>
+
+  <h3>3.3 Matter intake forms</h3>
+  <p>If you complete an NABD matter intake questionnaire — including the Ford Motor Company – Chicago Class Action Intake Form — we collect substantially more detailed information, which may include:</p>
+  <ul>
+    <li><strong>Identity and contact details:</strong> legal name, preferred name, personal email address, telephone number, mailing address, preferred contact method, and best times to reach you;</li>
+    <li><strong>Employment information:</strong> employment status, work location, employment start and end dates, department, job title, shift, union membership status and union local, supervisor and manager names, and your employment history narrative;</li>
+    <li><strong>Conduct and incident information:</strong> the categories of conduct you report, your narrative description of what occurred, frequency, whether the conduct is ongoing, and the impact it has had on you, which may include financial, occupational, emotional, or health-related effects;</li>
+    <li><strong>Reporting and witness information:</strong> the channels through which you reported the conduct, the response you received, and information about potential witnesses;</li>
+    <li><strong>Legal history and remedies sought:</strong> prior or current legal representation relating to the matter, damages, and your desired outcome; and</li>
+    <li><strong>Certifications and signature:</strong> your acknowledgements, your typed electronic signature, and the signature date.</li>
+  </ul>
+
+  <h3>3.4 AI Concierge conversations</h3>
+  <p>If you use the NABD AI Concierge, we and our technology provider collect and retain the content of your conversation, together with any name, email address, telephone number, or other details you volunteer in the chat. Please do not enter information in the chat that you would not want retained in a written record.</p>
+
+  <h3>3.5 Payment information</h3>
+  <p>Membership dues and other payments are processed by <strong>Stripe, Inc.</strong> through Stripe's own secure hosted checkout. NABD does not collect, receive, process, or store your full payment card number, security code, or bank account credentials. Stripe processes that information under its own privacy policy. NABD receives only transaction-level confirmation details such as the payer's name, email address, amount, date, and payment status.</p>
+</section>
+
+<section class="clause" id="sensitive">
+  <div class="clause-num">Section 4</div>
+  <h2>Sensitive Information</h2>
+  <p>Some of the information NABD collects — particularly through matter intake forms — is treated as <strong>sensitive personal data</strong> under the privacy laws of several states. This may include information revealing union membership, racial or ethnic origin, sex or sexual harassment allegations, physical or mental health effects, or the contents of communications about those subjects.</p>
+  <p>NABD collects sensitive information only where you voluntarily provide it in connection with a request for advocacy support, referral, education, or matter review. By submitting a matter intake form and checking the certification boxes on that form, <strong>you consent to NABD's collection, use, and disclosure of that sensitive information</strong> for the purposes described in Section 7 and Section 8, including review by NABD staff and by authorized counsel.</p>
+  <p>You may withdraw this consent at any time using the contact information in Section 22. Withdrawal is not retroactive, and NABD may be unable to continue reviewing or supporting your matter after you withdraw. NABD may also be required to retain certain information notwithstanding a withdrawal request; see Section 11.</p>
+  <div class="notice">
+    <span class="notice-label">⚠ Please Read Before You Submit</span>
+    Information transmitted over the internet is never entirely secure. NABD is not a law firm, and information you send us is not privileged. Do not use NABD forms or chat to transmit Social Security numbers, government identification numbers, financial account numbers, or medical records. If a matter requires that level of detail, contact us and we will arrange an appropriate method.
+  </div>
+</section>
+
+<section class="clause" id="thirdparty">
+  <div class="clause-num">Section 5</div>
+  <h2>Information About Other People</h2>
+  <p>NABD intake forms ask you to identify supervisors, managers, and potential witnesses. When you provide information about another person, you are asked to supply only information you reasonably believe to be accurate and relevant to the matter. NABD uses that information solely to evaluate and support the matter and does not use it for marketing, membership solicitation, or any unrelated purpose.</p>
+  <p>If you are an individual named in a submission to NABD and you wish to inquire about that information, contact us using Section 22. Please note that NABD may be limited in what it can disclose where doing so would compromise the privacy or safety of the person who submitted the information, interfere with a legal proceeding, or conflict with a legal obligation.</p>
+</section>
+
+<section class="clause" id="automatic">
+  <div class="clause-num">Section 6</div>
+  <h2>Information Collected Automatically</h2>
+  <p>When you visit an NABD page, we and our technology providers automatically collect certain technical information, including:</p>
+  <ul>
+    <li><strong>IP address</strong> and general location derived from it;</li>
+    <li>Browser type, device type, operating system, and screen characteristics;</li>
+    <li>Pages viewed, time spent, and referring website;</li>
+    <li>Campaign and referral parameters appended to page links, such as UTM parameters; and</li>
+    <li>Aggregate page-view counts.</li>
+  </ul>
+  <p>Where you arrive at an NABD page through a personalized link that we sent you, that link may include an identifier that allows the page to display information already associated with your contact record.</p>
+</section>
+
+<section class="clause" id="use">
+  <div class="clause-num">Section 7</div>
+  <h2>How We Use Information</h2>
+  <p>NABD uses personal information to:</p>
+  <ul>
+    <li>Respond to your inquiries, confirm and schedule appointments, and follow up on requests;</li>
+    <li>Review matter intake submissions and evaluate whether a matter may be appropriate for referral, advocacy support, or potential participation in a legal action;</li>
+    <li>Connect you, when you request it, with attorney referral pathways and authorized counsel;</li>
+    <li>Process, confirm, and administer memberships, renewals, and donations, and issue receipts and acknowledgements;</li>
+    <li>Deliver membership benefits such as workshops, conferences, publications, and podcast access;</li>
+    <li>Operate, maintain, secure, troubleshoot, and improve our website and forms;</li>
+    <li>Send you organizational updates, advocacy alerts, and fundraising communications where permitted, subject to Section 17;</li>
+    <li>Detect, investigate, and prevent fraud, abuse, or misuse of our services; and</li>
+    <li>Comply with law, respond to lawful requests, and establish, exercise, or defend legal claims.</li>
+  </ul>
+  <p>NABD does not use personal information to make decisions that produce legal or similarly significant effects about you through solely automated means.</p>
+</section>
+
+<section class="clause" id="share">
+  <div class="clause-num">Section 8</div>
+  <h2>How We Share Information</h2>
+  <p>NABD shares personal information only in the circumstances described below.</p>
+  <table>
+    <tr><th>Recipient</th><th>Purpose</th></tr>
+    <tr><td><strong>Authorized counsel and referral attorneys</strong></td><td>Where you have requested a referral or submitted a matter intake and consented to review, NABD may share your submission with civil rights and human rights attorneys and with counsel authorized to evaluate the matter.</td></tr>
+    <tr><td><strong>Website and form platform provider</strong></td><td>NABD's landing pages, forms, workflow automations, contact records, and AI Concierge are operated on a third-party platform that processes submissions on NABD's behalf.</td></tr>
+    <tr><td><strong>Cloud storage and productivity providers</strong></td><td>Form submissions are routed into cloud-hosted spreadsheets and storage used to organize inquiries and intake records.</td></tr>
+    <tr><td><strong>Payment processor</strong></td><td>Stripe, Inc. processes membership dues and payments and provides NABD with transaction confirmations.</td></tr>
+    <tr><td><strong>Professional advisors</strong></td><td>Auditors, accountants, insurers, and legal advisors engaged by NABD, subject to confidentiality obligations.</td></tr>
+    <tr><td><strong>Legal and safety disclosures</strong></td><td>Courts, regulators, and law enforcement where required by law, subpoena, or court order, or where NABD believes disclosure is necessary to prevent serious harm.</td></tr>
+    <tr><td><strong>Organizational change</strong></td><td>A successor entity in the event of a merger, consolidation, dissolution, or transfer of NABD programs, subject to this Statement.</td></tr>
+  </table>
+  <p>Service providers act on NABD's instructions and are contractually restricted from using personal information for their own independent purposes.</p>
+</section>
+
+<section class="clause" id="sale">
+  <div class="clause-num">Section 9</div>
+  <h2>No Sale or Targeted Advertising</h2>
+  <p>NABD <strong>does not sell personal information</strong>. NABD does not share personal information for cross-context behavioral advertising or targeted advertising, and does not exchange personal information for monetary or other valuable consideration. NABD does not rent, trade, or otherwise disclose member, donor, or intake lists to third parties for their own marketing purposes.</p>
+  <p>NABD does not sell or share the personal information of any individual, and does not knowingly process the personal information of any consumer under 16 years of age for advertising purposes.</p>
+</section>
+
+<section class="clause" id="cookies">
+  <div class="clause-num">Section 10</div>
+  <h2>Cookies and Similar Technologies</h2>
+  <p>NABD pages use a limited set of cookies and browser storage technologies, including <strong>local storage</strong> and <strong>session storage</strong>, for purposes such as maintaining access to protected pages, preserving your progress through multi-step forms, and remembering that you have already completed a verification step. These technologies are strictly functional; NABD does not use advertising cookies or third-party advertising pixels.</p>
+  <p>NABD pages load typography from a third-party font service. That service receives your IP address as a technical necessity of delivering the fonts.</p>
+  <p>You can block or delete cookies and clear browser storage through your browser settings. Doing so may prevent certain forms and protected pages from working correctly.</p>
+  <h3>Do Not Track and Global Privacy Control</h3>
+  <p>Because NABD does not track users across third-party websites for advertising, NABD does not respond differently to browser "Do Not Track" signals. Where required by applicable state law, NABD honors an opt-out preference signal such as Global Privacy Control as a valid request to opt out of the sale or sharing of personal information.</p>
+</section>
+
+<section class="clause" id="retention">
+  <div class="clause-num">Section 11</div>
+  <h2>Data Retention</h2>
+  <p>NABD retains personal information only for as long as reasonably necessary for the purposes described in this Statement, and thereafter as required by law. In general:</p>
+  <ul>
+    <li><strong>General inquiries and appointment requests</strong> are retained while the inquiry is open and for a reasonable period afterward to maintain continuity of service;</li>
+    <li><strong>Membership and donation records</strong> are retained for the period required by tax, accounting, and nonprofit recordkeeping obligations;</li>
+    <li><strong>Matter intake submissions</strong> are retained for the duration of the review and any resulting matter, and thereafter for the period required by applicable statutes of limitation, evidence-preservation obligations, or a litigation hold; and</li>
+    <li><strong>AI Concierge conversation records</strong> are retained on the platform in accordance with NABD's configured settings.</li>
+  </ul>
+  <p>Where a legal hold or preservation obligation applies to a matter, NABD may be legally required to retain information even after you request deletion.</p>
+</section>
+
+<section class="clause" id="security">
+  <div class="clause-num">Section 12</div>
+  <h2>Security</h2>
+  <p>NABD maintains administrative, technical, and physical safeguards designed to protect personal information against unauthorized access, disclosure, alteration, and destruction. These include encrypted transmission of form submissions, access controls limiting who within NABD can view intake records, restriction of intake data to designated storage locations, and use of a PCI-compliant payment processor so that card data never reaches NABD systems.</p>
+  <p>No method of transmission or storage is completely secure. NABD cannot guarantee absolute security, and you submit information at your own risk. If you become aware of a security concern involving NABD, please notify us immediately using Section 22.</p>
+</section>
+
+<section class="clause" id="rights">
+  <div class="clause-num">Section 13</div>
+  <h2>Your Privacy Rights</h2>
+  <p>Depending on where you live, you may have some or all of the following rights with respect to your personal information:</p>
+  <ul>
+    <li><strong>Right to know or access</strong> — to confirm whether NABD processes your personal information and to obtain a copy of it;</li>
+    <li><strong>Right to correct</strong> — to have inaccurate personal information corrected;</li>
+    <li><strong>Right to delete</strong> — to request deletion of personal information, subject to legal and preservation exceptions;</li>
+    <li><strong>Right to data portability</strong> — to receive your information in a portable, readily usable format;</li>
+    <li><strong>Right to opt out</strong> — of the sale of personal information, targeted advertising, and certain profiling. As stated in Section 9, NABD does not engage in these activities;</li>
+    <li><strong>Right to limit use of sensitive information</strong> — to direct NABD to limit its use of sensitive personal information to what is necessary to provide the services you requested;</li>
+    <li><strong>Right to withdraw consent</strong> — to withdraw consent previously given for the processing of sensitive information; and</li>
+    <li><strong>Right to non-discrimination</strong> — NABD will not deny you services, charge you a different rate, or provide a different level of service because you exercised a privacy right.</li>
+  </ul>
+  <p>Residents of states including Colorado, Connecticut, Delaware, Montana, Nebraska, New Hampshire, New Jersey, Oregon, Texas, Utah, and Virginia have statutory privacy rights that may apply to NABD. NABD extends the core rights described above to <strong>all individuals in the United States</strong>, regardless of state of residence, as a matter of policy.</p>
+</section>
+
+<section class="clause" id="exercise">
+  <div class="clause-num">Section 14</div>
+  <h2>How to Exercise Your Rights</h2>
+  <p>To submit a privacy request, contact NABD by email at <a href="mailto:info@nabd-justice.org">info@nabd-justice.org</a> with the subject line "Privacy Request," by telephone at <a href="tel:2027703962">(202) 770-3962</a>, or by mail at the address in Section 22.</p>
+  <p>Please describe the right you wish to exercise and provide enough information for NABD to locate your records — typically the name, email address, and telephone number you used when you contacted us. NABD will take reasonable steps to verify your identity before acting on a request; the verification required will be proportionate to the sensitivity of the information involved. NABD will not use verification information for any other purpose.</p>
+  <p>NABD will respond within <strong>45 days</strong> of receiving a verifiable request. Where reasonably necessary, NABD may extend that period by an additional 45 days and will notify you of the extension and the reason for it.</p>
+  <h3>Authorized agents</h3>
+  <p>You may designate an authorized agent to submit a request on your behalf. NABD may require the agent to provide proof of authorization and may require you to verify your own identity directly.</p>
+</section>
+
+<section class="clause" id="appeal">
+  <div class="clause-num">Section 15</div>
+  <h2>Right to Appeal</h2>
+  <p>If NABD declines to act on your privacy request, you may appeal that decision within a reasonable period by replying to NABD's response or by writing to <a href="mailto:info@nabd-justice.org">info@nabd-justice.org</a> with the subject line "Privacy Appeal."</p>
+  <p>NABD will review the appeal and inform you in writing of the outcome, together with a written explanation of the reasons, within <strong>60 days</strong> of receipt. If your appeal is denied, you may contact your state Attorney General to submit a complaint.</p>
+</section>
+
+<section class="clause" id="california">
+  <div class="clause-num">Section 16</div>
+  <h2>Notice to California Residents</h2>
+  <p>NABD publishes this Privacy Statement in accordance with the California Online Privacy Protection Act. The categories of personal information NABD collects, the purposes for which it is used, and the parties with whom it is shared are described in Sections 3 through 8. NABD does not sell personal information and does not disclose personal information to third parties for those parties' direct marketing purposes.</p>
+  <p>NABD operates as a nonprofit organization. Certain provisions of the California Consumer Privacy Act, as amended by the California Privacy Rights Act, apply only to for-profit businesses and therefore may not apply to NABD. Regardless of whether those provisions apply, NABD extends the rights described in Section 13 to California residents and will process California requests through the procedures in Sections 14 and 15.</p>
+</section>
+
+<section class="clause" id="communications">
+  <div class="clause-num">Section 17</div>
+  <h2>Email, Calls, and Text Messages</h2>
+  <h3>Email</h3>
+  <p>NABD may send you transactional messages relating to your inquiry, appointment, membership, donation, or matter. NABD may also send organizational updates, advocacy alerts, event invitations, and fundraising messages. Every commercial email includes a working unsubscribe mechanism and NABD's valid physical postal address. Unsubscribing from mailings does not stop transactional or matter-related messages, which are necessary to respond to your request.</p>
+  <h3>Telephone calls and text messages</h3>
+  <p>When you give NABD your telephone number and select a preferred contact method, you consent to NABD and, where applicable, authorized counsel contacting you at that number about your inquiry or matter, including by text message where you have selected text as a contact method. Message and data rates may apply. Message frequency varies. You may opt out of text messages at any time by replying <strong>STOP</strong>, and may request help by replying <strong>HELP</strong>. Consent to receive text messages is not a condition of membership, donation, or any NABD service.</p>
+</section>
+
+<section class="clause" id="children">
+  <div class="clause-num">Section 18</div>
+  <h2>Children's Privacy</h2>
+  <p>NABD's website, forms, and membership program are directed to adults. NABD membership is available only to individuals aged 18 and over. NABD does not knowingly collect personal information from children under the age of 13 in violation of the Children's Online Privacy Protection Act.</p>
+  <p>If you believe a child under 13 has provided personal information to NABD, please contact us using Section 22 and we will delete that information promptly. A parent or legal guardian may contact NABD at any time to review, correct, or request deletion of information relating to their minor child.</p>
+</section>
+
+<section class="clause" id="donors">
+  <div class="clause-num">Section 19</div>
+  <h2>Donor and Member Privacy</h2>
+  <p>NABD does not sell, rent, trade, or share donor or member lists with any other organization for that organization's own solicitation or marketing purposes. Donor and member information is used to process contributions and memberships, issue receipts and acknowledgements, deliver benefits, satisfy tax and reporting obligations, and communicate about NABD's work. You may request that NABD not publicly recognize your name in donor listings or publications by contacting us using Section 22.</p>
+</section>
+
+<section class="clause" id="links">
+  <div class="clause-num">Section 20</div>
+  <h2>Third-Party Links and Services</h2>
+  <p>NABD pages link to third-party services, including our payment processor's hosted checkout and our chat platform. Once you leave an NABD page, the privacy practices of the destination service govern. NABD is not responsible for the content or privacy practices of third-party websites and encourages you to review their policies before providing information.</p>
+</section>
+
+<section class="clause" id="changes">
+  <div class="clause-num">Section 21</div>
+  <h2>Changes to This Statement</h2>
+  <p>NABD may update this Privacy Statement to reflect changes in our practices, our technology, or applicable law. When we do, we will revise the "Last Updated" date at the top of this page. If we make material changes affecting how we use information you have already provided, we will provide additional notice, which may include email notice or a prominent notice on our website. Your continued use of NABD's website and services after an update takes effect constitutes acknowledgement of the revised Statement.</p>
+</section>
+
+<section class="clause" id="contact">
+  <div class="clause-num">Section 22</div>
+  <h2>How to Contact Us</h2>
+  <p>Questions, concerns, privacy requests, and appeals may be directed to:</p>
+  <div class="contact-block">
+    <strong style="color:var(--gold);">National Association of Black Defenders, Inc.</strong><br>
+    Attn: Privacy<br>
+    1717 Pennsylvania Avenue NW, Suite 1025<br>
+    Washington, DC 20006<br>
+    Telephone: <a href="tel:2027703962">(202) 770-3962</a><br>
+    Email: <a href="mailto:info@nabd-justice.org">info@nabd-justice.org</a><br>
+    Website: <a href="https://www.nabd-justice.org">nabd-justice.org</a>
+  </div>
+</section>
+
+</main>
+
+<footer data-section="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <div class="logo-text">NABD Inc.</div>
+        <div class="tagline">National Association of Black Defenders</div>
+      </div>
+      <div class="footer-links">
+        <a href="https://www.nabd-justice.org">Main Site</a>
+        <a href="https://www.nabd-justice.org#membership">Membership</a>
+        <a href="https://www.nabd-justice.org#contact">Contact</a>
+        <a href="mailto:info@nabd-justice.org">info@nabd-justice.org</a>
+      </div>
+    </div>
+    <div class="footer-copy">
+      <div style="display:inline-block;background:rgba(201,151,58,0.07);border:1px solid rgba(201,151,58,0.2);border-radius:6px;padding:0.65rem 1rem;margin-bottom:1rem;max-width:700px;font-size:0.72rem;color:var(--ivory-dim);line-height:1.7;text-align:left;">
+        <strong style="color:var(--gold);font-size:0.62rem;letter-spacing:0.14em;text-transform:uppercase;display:block;margin-bottom:0.25rem;">⚠ Legal Disclaimer</strong>
+        The National Association of Black Defenders, Inc. is not a law firm and does not provide legal representation. We partner with civil rights and human rights attorneys nationwide to connect individuals with qualified legal support.
+      </div><br>
+      © 2026 National Association of Black Defenders, Inc. · Washington, DC · <a href="mailto:info@nabd-justice.org" style="color:var(--muted);text-decoration:none;">info@nabd-justice.org</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
