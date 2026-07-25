@@ -1087,6 +1087,36 @@
       });
     });
   })();
+
+  (function(){
+    var MW='https://paymegpt.com/api/webhooks/flow/to7w1xvz/f4d59a4aca2ebeb704bcb5efce6a4a17e014b4ce5f003221fcc98b617098172d';
+    var btn=document.getElementById('mem-pay-btn');
+    if(!btn)return;
+    function val(id){var el=document.getElementById(id);return (el&&el.value)?el.value.trim():'';}
+    btn.addEventListener('click',function(){
+      try{
+        var first=val('memFirst'),last=val('memLast'),email=val('memEmail'),phone=val('memPhone');
+        if(!first&&!last&&!email&&!phone)return;
+        var payload={
+          contactEmail:email,
+          contactName:(first+' '+last).trim(),
+          contactPhone:phone,
+          data:{
+            firstName:first,
+            lastName:last,
+            streetAddress:val('memAddress'),
+            city:val('memCity'),
+            state:val('memState'),
+            zipCode:val('memZip'),
+            membershipTier:'Adult',
+            annualDues:'175.00',
+            registrationId:'REG-'+Date.now()+'-'+Math.random().toString(36).slice(2,8)
+          }
+        };
+        fetch(MW,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload),keepalive:true}).catch(function(){});
+      }catch(e){}
+    });
+  })();
 </script>
 </body>
 </html>
