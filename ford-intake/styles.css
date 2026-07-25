@@ -1,0 +1,17 @@
+/* ===== THEME STYLES ===== */
+    /* Black, gold, and white palette plus a few UI details that Tailwind alone would be noisy for */
+    :root{
+      --nabd-black:#0b0b0f;
+      --nabd-gold:#c8a24a;
+      --nabd-gold-soft:#f3e4bb;
+      --nabd-cream:#faf7f0;
+    }
+    .gold-ring:focus{outline:none; box-shadow:0 0 0 4px rgba(200,162,74,.28);}
+    .step-panel{display:none}
+    .step-panel.active{display:block}
+    .progress-dot.active{background:var(--nabd-gold); border-color:var(--nabd-gold)}
+    .progress-bar-fill{transition:width .25s ease}
+    .file-chip::-webkit-file-upload-button{
+      margin-right: .75rem; border:0; background:var(--nabd-black); color:#fff;
+      padding:.65rem .9rem; border-radius:.75rem; cursor:pointer;
+    }
