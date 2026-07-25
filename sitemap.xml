@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://nabd-justice.org/dallas-forum/</loc>
-    <lastmod>2026-06-26T13:58:30.591Z</lastmod>
+    <loc>https://nabd-justice.org/privacy/</loc>
+    <lastmod>2026-07-25T13:21:48.078Z</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://nabd-justice.org/</loc>
-    <lastmod>2026-06-26T04:55:45.299Z</lastmod>
+    <lastmod>2026-07-25T04:53:16.767Z</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://nabd-justice.org/dallas-forum/</loc>
+    <lastmod>2026-06-27T02:53:27.901Z</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
