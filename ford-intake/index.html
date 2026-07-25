@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+
+<!-- SEO Meta Tags -->
+<title>NABD Ford Motor Company – Chicago Class Action Intake</title>
+<meta name="description" content="Secure and confidential class action intake for current and former Ford Motor Company – Chicago employees." />
+<meta property="og:title" content="NABD Ford Motor Company – Chicago Class Action Intake" />
+<meta property="og:description" content="Secure and confidential class action intake for current and former Ford Motor Company – Chicago employees." />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="NABD Ford Motor Company – Chicago Class Action Intake" />
+<meta name="twitter:description" content="Secure and confidential class action intake for current and former Ford Motor Company – Chicago employees." />
+<!-- End SEO Meta Tags -->
+<script data-lp-token-hydrate>
+(function(){try{
+  var slug="lp-mrwf96gp-p4q8e";
+  var SK='lp_access_'+slug;
+  var map={access_token:'lp_pw_',allowlist_access_token:'lp_al_',pin_access_token:'lp_pin_',paywall_access_token:'lp_paid_'};
+  var u=new URL(location.href);var found=null;var changed=false;
+  Object.keys(map).forEach(function(p){var v=u.searchParams.get(p);if(v){found=v;try{localStorage.setItem(map[p]+slug,v);}catch(e){}u.searchParams.delete(p);changed=true;}});
+  if(found){try{sessionStorage.setItem(SK,found);}catch(e){}}
+  else{try{if(!sessionStorage.getItem(SK)){var t=localStorage.getItem('lp_pw_'+slug)||localStorage.getItem('lp_al_'+slug)||localStorage.getItem('lp_pin_'+slug)||localStorage.getItem('lp_paid_'+slug);if(t)sessionStorage.setItem(SK,t);}}catch(e){}}
+  if(changed){try{history.replaceState(null,'',u.toString());}catch(e){}}
+  function getTok(){try{return sessionStorage.getItem(SK)||localStorage.getItem('lp_pw_'+slug)||localStorage.getItem('lp_al_'+slug)||localStorage.getItem('lp_pin_'+slug)||localStorage.getItem('lp_paid_'+slug);}catch(e){return null;}}
+  function needsToken(url,method){if(!url)return false;var s=String(url);var m=(method||'GET').toUpperCase();var isSheetWrite=(m==='POST'||m==='PATCH'||m==='PUT'||m==='DELETE')&&/\/sheet-rows(\/|$|\?)/.test(s);var isSheetRead=/\/sheet-data(\/|$|\?)/.test(s);var isLlm=/\/api\/landing-pages\/public\/[^/]+\/(llm|llm-config)(\/|$|\?)/.test(s);return isSheetWrite||isSheetRead||isLlm;}
+  if(window.fetch){var _f=window.fetch;window.fetch=function(input,init){try{var url=typeof input==='string'?input:(input&&input.url)||'';var method=(init&&init.method)||(input&&input.method)||'GET';if(needsToken(url,method)){var tok=getTok();if(tok){init=init||{};var h=new Headers(init.headers||(typeof input!=='string'?input.headers:undefined)||{});if(!h.has('X-Landing-Page-Token'))h.set('X-Landing-Page-Token',tok);init.headers=h;}}}catch(e){}return _f.call(this,input,init);};}
+  if(window.XMLHttpRequest){var _o=XMLHttpRequest.prototype.open;var _s=XMLHttpRequest.prototype.send;XMLHttpRequest.prototype.open=function(m,u){this.__lpM=m;this.__lpU=u;return _o.apply(this,arguments);};XMLHttpRequest.prototype.send=function(){try{if(needsToken(this.__lpU,this.__lpM)){var tok=getTok();if(tok)this.setRequestHeader('X-Landing-Page-Token',tok);}}catch(e){}return _s.apply(this,arguments);};}
+}catch(e){}})();
+</script>
+
+<script data-gate>
+(function(){
+  var slug='lp-mrwf96gp-p4q8e';var apiBase='https://paymegpt.com';var currency='USD';var presets=[2500,5000,10000,25000];var minAmt=100;var maxAmt=1000000;var thankYouMsg='Thank you for your generous donation!';
+  var successSubtext='Your donation has been processed successfully.';var successBtnLabel='Continue';var successBtnColor='#16a34a';var successRedirect='';
+  function getLang(){var l=(document.documentElement.lang||navigator.language||'en').toLowerCase();return l.split('-')[0];}
+  function getLocale(){return (document.documentElement.lang||navigator.language||'en');}
+  var I18N={en:{min:'Minimum is ',max:'Maximum is ',emailPrompt:'Enter your email for the receipt:',emailRequired:'An email address is required to complete checkout.',failed:'Failed to process donation'},fr:{min:'Le minimum est ',max:'Le maximum est ',emailPrompt:'Entrez votre adresse e-mail pour le reçu :',emailRequired:'Une adresse e-mail est requise pour finaliser le paiement.',failed:'Échec du traitement du don'},es:{min:'El mínimo es ',max:'El máximo es ',emailPrompt:'Introduce tu correo electrónico para el recibo:',emailRequired:'Se requiere una dirección de correo electrónico para completar el pago.',failed:'No se pudo procesar la donación'},pt:{min:'O mínimo é ',max:'O máximo é ',emailPrompt:'Insira seu e-mail para o recibo:',emailRequired:'Um endereço de e-mail é necessário para concluir o pagamento.',failed:'Falha ao processar a doação'},de:{min:'Mindestbetrag ist ',max:'Höchstbetrag ist ',emailPrompt:'Geben Sie Ihre E-Mail-Adresse für die Quittung ein:',emailRequired:'Eine E-Mail-Adresse ist erforderlich, um den Checkout abzuschließen.',failed:'Spende konnte nicht verarbeitet werden'},it:{min:'Il minimo è ',max:'Il massimo è ',emailPrompt:'Inserisci la tua email per la ricevuta:',emailRequired:"È richiesto un indirizzo email per completare il pagamento.",failed:'Impossibile elaborare la donazione'}};
+  function t(k){var L=getLang();return (I18N[L]&&I18N[L][k])||I18N.en[k];}
+  function fmtD(c){try{return new Intl.NumberFormat(getLocale(),{style:'currency',currency:currency}).format(c/100);}catch(e){return new Intl.NumberFormat('en-US',{style:'currency',currency:currency}).format(c/100);}}
+  function findDonEmail(){var ids=['email','emailAddress','buyer-email','buyerEmail','donor-email','donorEmail','user-email','userEmail','contact-email'];for(var i=0;i<ids.length;i++){var el=document.getElementById(ids[i]);if(el&&el.value&&el.value.indexOf('@')>-1)return el.value.trim();}var inputs=document.querySelectorAll('input[type="email"],input[name*="email"],input[placeholder*="email"],input[placeholder*="Email"]');for(var j=0;j<inputs.length;j++){if(inputs[j].value&&inputs[j].value.indexOf('@')>-1)return inputs[j].value.trim();}return '';}
+  function findDonName(){var ids=['name','fullName','full-name','donor-name','donorName','customer-name','user-name'];for(var i=0;i<ids.length;i++){var el=document.getElementById(ids[i]);if(el&&el.value)return el.value.trim();}var inputs=document.querySelectorAll('input[name*="name"]:not([name*="email"]):not([type="email"]),input[placeholder*="name"]:not([placeholder*="email"]):not([type="email"])');for(var j=0;j<inputs.length;j++){if(inputs[j].value)return inputs[j].value.trim();}return '';}
+  function findDonPhone(){var ids=['phone','phoneNumber','phone-number','tel','telephone','mobile','mobileNumber','cell','contact-phone','buyer-phone'];for(var i=0;i<ids.length;i++){var el=document.getElementById(ids[i]);if(el&&el.value&&el.value.trim())return el.value.trim();}var inputs=document.querySelectorAll('input[type="tel"],input[name*="phone"],input[name*="tel"],input[name*="mobile"],input[placeholder*="phone"],input[placeholder*="Phone"]');for(var j=0;j<inputs.length;j++){if(inputs[j].value&&inputs[j].value.trim())return inputs[j].value.trim();}return '';}
+  window.__processDonation=function(a,b,c,d){
+    var amountCents,email='',donorName='',donorMessage='',productName='',productDescription='',quantity=1;
+    if(a&&typeof a==='object'){
+      amountCents=a.amountCents||(a.amount?Math.round(Number(a.amount)*100):0);
+      email=a.email||'';
+      productName=a.productName||a.label||'';
+      productDescription=a.productDescription||a.description||'';
+      donorName=a.name||a.donorName||'';
+      donorMessage=a.message||a.donorMessage||'';
+      quantity=a.quantity&&parseInt(a.quantity,10)>0?parseInt(a.quantity,10):1;
+    }else{
+      amountCents=typeof a==='number'?a:(parseInt(a,10)||0);
+      var rest=[b,c,d];var nonEmail=[];
+      for(var i=0;i<rest.length;i++){var v=rest[i];if(typeof v==='string'&&v){if(!email&&v.indexOf('@')>-1&&/^[^s@]+@[^s@]+.[^s@]+$/.test(v.trim())){email=v.trim();}else{nonEmail.push(v);}}}
+      donorName=nonEmail[0]||'';donorMessage=nonEmail[1]||'';
+    }
+    if(!email)email=findDonEmail();
+    if(!donorName)donorName=findDonName();
+    var donorPhone=findDonPhone();
+    if(!amountCents||amountCents<minAmt){alert(t('min')+fmtD(minAmt));return Promise.reject('below_min');}
+    if(amountCents>maxAmt){alert(t('max')+fmtD(maxAmt));return Promise.reject('above_max');}
+    if(!email){var p=window.prompt(t('emailPrompt'),'');if(p&&p.indexOf('@')>-1){email=p.trim();}else{alert(t('emailRequired'));return Promise.reject('no_email');}}
+    var successBase=window.location.href.split('?')[0];
+    return fetch(apiBase+'/api/landing-pages/public/'+slug+'/donation/checkout',{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({email:email,name:donorName||'',phone:donorPhone||'',amountCents:amountCents,message:donorMessage||'',productName:productName||'',productDescription:productDescription||'',quantity:quantity,locale:getLocale(),successUrl:successBase+'?donation=success&email='+encodeURIComponent(email)+'&session_id={CHECKOUT_SESSION_ID}',cancelUrl:successBase+'?donation=cancelled'})
+    }).then(function(r){return r.json();}).then(function(d){
+      if(d.checkoutUrl){window.location.href=d.checkoutUrl;}
+      else{alert(d.error||t('failed'));throw new Error(d.error);}
+    });
+  };
+  window.__donationConfig={currency:currency,presets:presets.map(function(c){return c/100;}),minAmount:minAmt/100,maxAmount:maxAmt/100,formatAmount:fmtD};
+  document.addEventListener('DOMContentLoaded',function(){
+    var urlParams=new URLSearchParams(window.location.search);
+    if(urlParams.get('donation')==='success'){
+      var sidD=urlParams.get('session_id');
+      if(sidD){try{fetch(apiBase+'/api/landing-pages/public/'+slug+'/checkout/confirm',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({sessionId:sidD})}).catch(function(){});}catch(e){}}
+      var overlay=document.createElement('div');overlay.id='donation-success-overlay';
+      overlay.style.cssText='position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;z-index:999999;font-family:system-ui,-apple-system,sans-serif;';
+      function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+      overlay.innerHTML='<div style="background:white;border-radius:16px;padding:40px;max-width:420px;width:90%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.15);"><div style="width:64px;height:64px;border-radius:50%;background:#dcfce7;margin:0 auto 20px;display:flex;align-items:center;justify-content:center;"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><h2 style="margin:0 0 12px;font-size:24px;font-weight:700;color:#111827;">'+esc(thankYouMsg)+'</h2><p style="margin:0 0 24px;color:#6b7280;font-size:16px;">'+esc(successSubtext)+'</p><button id="lp-don-success-btn" style="padding:12px 32px;font-size:16px;font-weight:600;background:'+successBtnColor+';color:white;border:none;border-radius:8px;cursor:pointer;">'+esc(successBtnLabel)+'</button></div>';
+      document.body.appendChild(overlay);
+      var dBtn=document.getElementById('lp-don-success-btn');
+      if(dBtn){dBtn.addEventListener('click',function(){if(successRedirect){window.location.href=successRedirect;}else{overlay.remove();window.history.replaceState({},'',window.location.pathname);}});}
+    }
+  });
+})();
+</script>
+<script data-field-replace>
+(function(){
+  var params=new URLSearchParams(window.location.search);
+  var fields={};
+  var paramMap={
+    'first_name':'firstName','last_name':'lastName','full_name':'fullName',
+    'email':'email','phone':'phone','company':'company',
+    'city':'city','state':'state','country':'country'
+  };
+  var skipTags={'SCRIPT':1,'STYLE':1,'NOSCRIPT':1,'TEXTAREA':1,'CODE':1,'PRE':1};
+  var hasUrlFields=false;
+  for(var p in paramMap){
+    var v=params.get(p);
+    if(v){fields[paramMap[p]]=v;hasUrlFields=true;}
+  }
+  var contactId=params.get('contact_id');
+  function esc(s){
+    if(!s)return s;
+    var d=document.createElement('div');
+    d.appendChild(document.createTextNode(s));
+    return d.innerHTML;
+  }
+  function doReplace(data){
+    var r={};
+    r['{{full_name}}']=esc(((data.firstName||'')+' '+(data.lastName||'')).trim()||((data.fullName||data.name)||''));
+    r['{{first_name}}']=esc(data.firstName||(data.name?data.name.split(' ')[0]:'')||'');
+    r['{{last_name}}']=esc(data.lastName||(data.name&&data.name.indexOf(' ')>-1?data.name.substring(data.name.indexOf(' ')+1):'')||'');
+    r['{{email}}']=esc(data.email||'');
+    r['{{phone}}']=esc(data.phone||'');
+    r['{{company}}']=esc(data.company||'');
+    r['{{city}}']=esc(data.city||'');
+    r['{{state}}']=esc(data.state||'');
+    r['{{country}}']=esc(data.country||'');
+    r['{{date}}']=new Date().toLocaleDateString();
+    r['{{time}}']=new Date().toLocaleTimeString();
+    r['{{location}}']=[data.city,data.state,data.country].filter(Boolean).join(', ');
+    r['{{tracking_id}}']=esc(data.trackingId||'');
+    r['{{lastClickedProduct}}']=esc(data.lastClickedProduct||'');
+    r['{{lastProductClickDate}}']=esc(data.lastProductClickDate||'');
+    r['{{lastClickedProductPrice}}']=esc(data.lastClickedProductPrice||'');
+    r['{{lastClickedProductURL}}']=esc(data.lastClickedProductURL||'');
+    r['{{productsClickedCount}}']=esc(data.productsClickedCount||'0');
+    r['{{ip_address}}']=esc(data.ipAddress||'');
+    r['{{ip}}']=esc(data.ipAddress||'');
+    if(data.customFields){
+      for(var k in data.customFields){
+        r['{{'+k+'}}']=esc(String(data.customFields[k]||''));
+      }
+    }
+    params.forEach(function(v,k){
+      if(!paramMap[k]&&k!=='contact_id'&&k!=='page_id'&&k.indexOf('utm_')!==0){
+        r['{{'+k+'}}']=esc(v);
+      }
+    });
+    var hasValues=false;
+    for(var key in r){if(r[key]){hasValues=true;break;}}
+    if(!hasValues)return;
+    var walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT,{
+      acceptNode:function(n){
+        var p=n.parentNode;
+        if(p&&skipTags[p.nodeName])return NodeFilter.FILTER_REJECT;
+        return NodeFilter.FILTER_ACCEPT;
+      }
+    });
+    var node;
+    while(node=walker.nextNode()){
+      var txt=node.nodeValue;
+      if(txt&&txt.indexOf('{{')>-1){
+        var changed=txt;
+        for(var ph in r){
+          if(r[ph]&&changed.indexOf(ph)>-1){
+            changed=changed.split(ph).join(r[ph]);
+          }
+        }
+        if(changed!==txt)node.nodeValue=changed;
+      }
+    }
+    var attrs=['value','placeholder','content','alt','title'];
+    attrs.forEach(function(attr){
+      var els=document.querySelectorAll('['+attr+'*="{{"]');
+      for(var i=0;i<els.length;i++){
+        var tag=els[i].tagName;
+        if(skipTags[tag])continue;
+        var val=els[i].getAttribute(attr);
+        if(val){
+          var nv=val;
+          for(var ph in r){
+            if(r[ph]&&nv.indexOf(ph)>-1){
+              nv=nv.split(ph).join(r[ph]);
+            }
+          }
+          if(nv!==val)els[i].setAttribute(attr,nv);
+        }
+      }
+    });
+  }
+  function run(){
+    if(contactId){
+      var xhr=new XMLHttpRequest();
+      xhr.open('GET','https://paymegpt.com/api/landing/context/'+encodeURIComponent(contactId)+'?page_id=5695');
+      xhr.onload=function(){
+        if(xhr.status===200){
+          try{
+            var resp=JSON.parse(xhr.responseText);
+            if(resp.success&&resp.contact){
+              var merged=resp.contact;
+              for(var k in fields){merged[k]=fields[k];}
+              doReplace(merged);
+              return;
+            }
+          }catch(e){}
+        }
+        if(hasUrlFields)doReplace(fields);
+      };
+      xhr.onerror=function(){if(hasUrlFields)doReplace(fields);};
+      xhr.send();
+    }else if(hasUrlFields){
+      doReplace(fields);
+    }
+  }
+  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',run);}
+  else{run();}
+})();
+</script>
+<script data-payment>
+(function(){
+  var slug='MAY88PT';
+  var apiBase='https://paymegpt.com';
+  var successSubtext='';var successBtnLabel='Continue';var successBtnColor='#16a34a';var successRedirect='';
+  function findEmail(){
+    var ids=['email','emailAddress','buyer-email','buyerEmail','user-email','userEmail','checkout-email','customer-email','contact-email'];
+    for(var i=0;i<ids.length;i++){var el=document.getElementById(ids[i]);if(el&&el.value&&el.value.includes('@'))return el.value.trim();}
+    var inputs=document.querySelectorAll('input[type="email"],input[name*="email"],input[placeholder*="email"],input[placeholder*="Email"]');
+    for(var j=0;j<inputs.length;j++){if(inputs[j].value&&inputs[j].value.includes('@'))return inputs[j].value.trim();}
+    return '';
+  }
+  function findName(){
+    var ids=['name','fullName','full-name','buyer-name','buyerName','customer-name','userName','user-name'];
+    for(var i=0;i<ids.length;i++){var el=document.getElementById(ids[i]);if(el&&el.value)return el.value.trim();}
+    var inputs=document.querySelectorAll('input[name*="name"]:not([name*="email"]):not([type="email"]),input[placeholder*="name"]:not([placeholder*="email"]):not([type="email"]),input[placeholder*="Name"]:not([type="email"])');
+    for(var j=0;j<inputs.length;j++){if(inputs[j].value)return inputs[j].value.trim();}
+    return '';
+  }
+  function findPhone(){var ids=['phone','phoneNumber','phone-number','tel','telephone','mobile','mobileNumber','cell','contact-phone','buyer-phone'];for(var i=0;i<ids.length;i++){var el=document.getElementById(ids[i]);if(el&&el.value&&el.value.trim())return el.value.trim();}var inputs=document.querySelectorAll('input[type="tel"],input[name*="phone"],input[name*="tel"],input[name*="mobile"],input[placeholder*="phone"],input[placeholder*="Phone"]');for(var j=0;j<inputs.length;j++){if(inputs[j].value&&inputs[j].value.trim())return inputs[j].value.trim();}return '';}
+  var __realProcessPayment=function(a,b,c,d,e){
+    var amountCents,email,productName,productDescription,customerName,quantity;
+    if(a&&typeof a==='object'){
+      amountCents=a.amountCents;email=a.email;productName=a.productName;
+      productDescription=a.productDescription||'';customerName=a.name||'';quantity=a.quantity||1;
+    }else{
+      amountCents=typeof a==='number'?a:0;productName=typeof b==='string'?b:'';
+      productDescription=typeof c==='string'?c:'';email='';customerName='';quantity=1;
+    }
+    if(!email)email=findEmail();
+    if(!customerName)customerName=findName();
+    var phone=findPhone();
+    if(!productName){alert('Product name is required.');return Promise.reject('no_product_name');}
+    if(!amountCents||amountCents<100){alert('Amount must be at least $1.00');return Promise.reject('invalid_amount');}
+    if(!email){alert('Please enter your email address.');return Promise.reject('no_email');}
+    var successBase=window.location.href.split('?')[0];
+    var __pLoc=(document.documentElement.lang||navigator.language||'en');
+    return fetch(apiBase+'/api/landing-pages/public/'+slug+'/payment/checkout',{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({email:email,name:customerName,phone:phone||'',amountCents:amountCents,productName:productName,productDescription:productDescription,quantity:quantity,locale:__pLoc,successUrl:successBase+'?payment=success&product='+encodeURIComponent(productName)+'&session_id={CHECKOUT_SESSION_ID}',cancelUrl:successBase+'?payment=cancelled'})
+    }).then(function(r){return r.json();}).then(function(d){
+      if(d.checkoutUrl){window.location.href=d.checkoutUrl;}
+      else{alert(d.error||'Failed to process payment');throw new Error(d.error);}
+    });
+  };
+  Object.defineProperty(window,'__processPayment',{value:__realProcessPayment,writable:false,configurable:false});
+  document.addEventListener('DOMContentLoaded',function(){
+    var urlParams=new URLSearchParams(window.location.search);
+    if(urlParams.get('payment')==='success'){
+      var sidP=urlParams.get('session_id');
+      if(sidP){try{fetch(apiBase+'/api/landing-pages/public/'+slug+'/checkout/confirm',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({sessionId:sidP})}).catch(function(){});}catch(e){}}
+      var pName=urlParams.get('product')||'your item';
+      var overlay=document.createElement('div');overlay.id='payment-success-overlay';
+      overlay.style.cssText='position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;z-index:999999;font-family:system-ui,-apple-system,sans-serif;';
+      function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+      var subTxt=successSubtext||('Thank you for purchasing '+pName+'.');
+      overlay.innerHTML='<div style="background:white;border-radius:16px;padding:40px;max-width:420px;width:90%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.15);"><div style="width:64px;height:64px;border-radius:50%;background:#dcfce7;margin:0 auto 20px;display:flex;align-items:center;justify-content:center;"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><h2 style="margin:0 0 12px;font-size:24px;font-weight:700;color:#111827;">Payment Successful!</h2><p style="margin:0 0 24px;color:#6b7280;font-size:16px;">'+esc(subTxt)+'</p><button id="lp-pay-success-btn" style="padding:12px 32px;font-size:16px;font-weight:600;background:'+successBtnColor+';color:white;border:none;border-radius:8px;cursor:pointer;">'+esc(successBtnLabel)+'</button></div>';
+      document.body.appendChild(overlay);
+      var pBtn=document.getElementById('lp-pay-success-btn');
+      if(pBtn){pBtn.addEventListener('click',function(){if(successRedirect){window.location.href=successRedirect;}else{overlay.remove();window.history.replaceState({},'',window.location.pathname);}});}
+    }
+  });
+})();
+</script>
+<script data-cart>
+(function(){
+  var slug='MAY88PT';
+  var apiBase='https://paymegpt.com';
+  var successSubtext='';var successBtnLabel='Continue';var successBtnColor='#16a34a';var successRedirect='';
+  function findCartEmail(){
+    var ids=['email','emailAddress','buyer-email','buyerEmail','user-email','userEmail','checkout-email','customer-email','contact-email'];
+    for(var i=0;i<ids.length;i++){var el=document.getElementById(ids[i]);if(el&&el.value&&el.value.includes('@'))return el.value.trim();}
+    var inputs=document.querySelectorAll('input[type="email"],input[name*="email"],input[placeholder*="email"],input[placeholder*="Email"]');
+    for(var j=0;j<inputs.length;j++){if(inputs[j].value&&inputs[j].value.includes('@'))return inputs[j].value.trim();}
+    return '';
+  }
+  function findCartName(){
+    var ids=['name','fullName','full-name','buyer-name','buyerName','customer-name','userName','user-name'];
+    for(var i=0;i<ids.length;i++){var el=document.getElementById(ids[i]);if(el&&el.value)return el.value.trim();}
+    var inputs=document.querySelectorAll('input[name*="name"]:not([name*="email"]):not([type="email"]),input[placeholder*="name"]:not([placeholder*="email"]):not([type="email"]),input[placeholder*="Name"]:not([type="email"])');
+    for(var j=0;j<inputs.length;j++){if(inputs[j].value)return inputs[j].value.trim();}
+    return '';
+  }
+  function findCartPhone(){var ids=['phone','phoneNumber','phone-number','tel','telephone','mobile','mobileNumber','cell','contact-phone','buyer-phone'];for(var i=0;i<ids.length;i++){var el=document.getElementById(ids[i]);if(el&&el.value&&el.value.trim())return el.value.trim();}var inputs=document.querySelectorAll('input[type="tel"],input[name*="phone"],input[name*="tel"],input[name*="mobile"],input[placeholder*="phone"],input[placeholder*="Phone"]');for(var j=0;j<inputs.length;j++){if(inputs[j].value&&inputs[j].value.trim())return inputs[j].value.trim();}return '';}
+  var __realCart=function(arg){
+    var items, email='', customerName='', successUrl, cancelUrl, currency;
+    if(Array.isArray(arg)){items=arg;}
+    else if(arg&&typeof arg==='object'){
+      items=arg.items;email=arg.email||'';customerName=arg.name||arg.customerName||'';
+      successUrl=arg.successUrl;cancelUrl=arg.cancelUrl;currency=arg.currency;
+    }
+    if(!Array.isArray(items)||items.length===0){alert('No items in cart.');return Promise.reject('no_items');}
+    var cleanItems=[];var totalCents=0;
+    for(var i=0;i<items.length;i++){
+      var it=items[i];if(!it||typeof it!=='object'){alert('Invalid item at position '+i);return Promise.reject('bad_item');}
+      var nm=typeof it.name==='string'?it.name.trim():'';
+      if(!nm){alert('Item '+(i+1)+' is missing a name.');return Promise.reject('no_name');}
+      var amt=typeof it.amountCents==='number'?it.amountCents:(typeof it.amount==='number'?Math.round(it.amount*100):NaN);
+      if(!isFinite(amt)||amt<1){alert('Item "'+nm+'" needs a valid amount in cents.');return Promise.reject('bad_amount');}
+      var qty=(typeof it.quantity==='number'&&it.quantity>0)?Math.floor(it.quantity):1;
+      cleanItems.push({name:nm,description:it.description||'',amountCents:amt,quantity:qty});
+      totalCents+=amt*qty;
+    }
+    if(totalCents<50){alert('Cart total must be at least $0.50');return Promise.reject('total_too_low');}
+    if(!email)email=findCartEmail();
+    if(!customerName)customerName=findCartName();
+    var cartPhone=findCartPhone();
+    if(!email){var p=window.prompt('Enter your email for the receipt:','');if(p&&p.indexOf('@')>-1){email=p.trim();}else{alert('An email address is required to complete checkout.');return Promise.reject('no_email');}}
+    var successBase=window.location.href.split('?')[0];
+    var body={email:email,name:customerName,items:cleanItems,locale:(document.documentElement.lang||navigator.language||'en')};
+    if(currency)body.currency=currency;
+    if(cartPhone)body.phone=cartPhone;
+    body.successUrl=successUrl||(successBase+'?cart=success&email='+encodeURIComponent(email)+'&session_id={CHECKOUT_SESSION_ID}');
+    body.cancelUrl=cancelUrl||(successBase+'?cart=cancelled');
+    return fetch(apiBase+'/api/landing-pages/public/'+slug+'/cart/checkout',{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify(body)
+    }).then(function(r){return r.json();}).then(function(d){
+      if(d.checkoutUrl){window.location.href=d.checkoutUrl;}
+      else{alert(d.error||'Failed to process checkout');throw new Error(d.error);}
+    });
+  };
+  try{Object.defineProperty(window,'__processCart',{value:__realCart,writable:false,configurable:false});}catch(e){window.__processCart=__realCart;}
+  document.addEventListener('DOMContentLoaded',function(){
+    var urlParams=new URLSearchParams(window.location.search);
+    if(urlParams.get('cart')==='success'){
+      var sidC=urlParams.get('session_id');
+      if(sidC){try{fetch(apiBase+'/api/landing-pages/public/'+slug+'/checkout/confirm',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({sessionId:sidC})}).catch(function(){});}catch(e){}}
+      if(document.getElementById('payment-success-overlay')||document.getElementById('donation-success-overlay')||document.getElementById('cart-success-overlay'))return;
+      var overlay=document.createElement('div');overlay.id='cart-success-overlay';
+      overlay.style.cssText='position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;z-index:999999;font-family:system-ui,-apple-system,sans-serif;';
+      function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+      var subTxt=successSubtext||'Thank you for your order.';
+      overlay.innerHTML='<div style="background:white;border-radius:16px;padding:40px;max-width:420px;width:90%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.15);"><div style="width:64px;height:64px;border-radius:50%;background:#dcfce7;margin:0 auto 20px;display:flex;align-items:center;justify-content:center;"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><h2 style="margin:0 0 12px;font-size:24px;font-weight:700;color:#111827;">Order Confirmed!</h2><p style="margin:0 0 24px;color:#6b7280;font-size:16px;">'+esc(subTxt)+'</p><button id="lp-cart-success-btn" style="padding:12px 32px;font-size:16px;font-weight:600;background:'+successBtnColor+';color:white;border:none;border-radius:8px;cursor:pointer;">'+esc(successBtnLabel)+'</button></div>';
+      document.body.appendChild(overlay);
+      var cBtn=document.getElementById('lp-cart-success-btn');
+      if(cBtn){cBtn.addEventListener('click',function(){if(successRedirect){window.location.href=successRedirect;}else{overlay.remove();window.history.replaceState({},'',window.location.pathname);}});}
+    }
+  });
+})();
+</script>  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-stone-50 text-stone-900 antialiased">
+
+<main class="bg-[#081B3A] min-h-screen px-4 py-6 sm:px-6 md:px-8 lg:px-12 text-white flex flex-col items-center" data-section="intake-form">
+
+<section class="w-full max-w-3xl text-center mb-6">
+<div class="mx-auto mb-3 flex flex-col items-center"><img src="https://storage.googleapis.com/wttus/assets/57/a/1605006/images/NABD-2_thumbnail.jpg" alt="National Association of Black Defenders logo" style="height:96px;width:96px;object-fit:cover;border-radius:50%;display:block;margin:0 auto;"><div class="font-sans uppercase text-white/70 mt-2" style="font-size:0.62rem;letter-spacing:0.18em;">National Association of Black Defenders</div></div>
+<p class="text-[#C89B3C] text-xs tracking-wide font-semibold mb-1 uppercase">FORD MOTOR COMPANY – CHICAGO</p>
+<h1 class="font-serif text-4xl font-bold leading-tight mb-3 text-white">Class Action Intake Form</h1>
+<p class="font-sans text-sm max-w-xl mx-auto text-white/90">Secure, confidential intake for current and former Ford Motor Company – Chicago employees.</p>
+</section>
+
+<section class="w-full max-w-4xl rounded-3xl border-2 border-[#C89B3C] bg-white shadow-lg text-[#071A36]">
+<div class="bg-[#081B3A] rounded-t-3xl p-6 flex flex-col sm:flex-row sm:justify-between sm:items-center">
+<h2 class="font-serif text-2xl font-bold tracking-tight text-[#C89B3C] uppercase">Class Action Intake Questionnaire</h2>
+<div class="text-sm font-semibold text-[#C89B3C] mt-3 sm:mt-0 tracking-wider uppercase">100% Confidential</div>
+</div>
+
+<div class="px-6 mt-6 space-y-3">
+<div class="flex items-center justify-between text-xs font-semibold uppercase tracking-wider text-[#C89B3C] font-sans">
+<span>Progress</span><span id="progress-label">Step 1 of 6</span>
+</div>
+<div class="h-2 overflow-hidden rounded-full bg-[#C89B3C]/20">
+<div class="progress-bar-fill h-full w-[16.66%] rounded-full bg-[#C89B3C] transition-width duration-300 ease-in-out" id="progress-bar"></div>
+</div>
+<div class="grid grid-cols-6 gap-2 mt-1">
+<div class="progress-dot active h-3 rounded-full border-2 border-[#C89B3C]/60 bg-white/40"></div>
+<div class="progress-dot h-3 rounded-full border-2 border-[#C89B3C]/60 bg-white/40"></div>
+<div class="progress-dot h-3 rounded-full border-2 border-[#C89B3C]/60 bg-white/40"></div>
+<div class="progress-dot h-3 rounded-full border-2 border-[#C89B3C]/60 bg-white/40"></div>
+<div class="progress-dot h-3 rounded-full border-2 border-[#C89B3C]/60 bg-white/40"></div>
+<div class="progress-dot h-3 rounded-full border-2 border-[#C89B3C]/60 bg-white/40"></div>
+</div>
+</div>
+<form class="px-8 py-8" id="intakeForm" novalidate="">
+
+<fieldset class="step-panel active" data-step="1">
+<legend class="font-serif text-lg font-semibold text-[#071A36]">Contact Information</legend>
+<p class="mt-1 text-sm text-[#3B4252] font-sans">Tell us how to reach you and confirm your preferred contact method.</p>
+<div class="mt-5 grid gap-6 md:grid-cols-2">
+<div>
+<label class="block text-sm font-medium text-[#071A36]" for="legal_name">Legal name *</label>
+<input class="gold-ring mt-1 w-full rounded-xl border-2 border-[#C89B3C] px-4 py-3 text-[#071A36] font-sans focus:outline-none focus:ring-2 focus:ring-[#C89B3C]" id="legal_name" name="legal_name" required=""/>
+</div>
+<div>
+<label class="block text-sm font-medium text-[#071A36]" for="preferred_name">Preferred name</label>
+<input class="gold-ring mt-1 w-full rounded-xl border-2 border-[#C89B3C] px-4 py-3 text-[#071A36] font-sans focus:outline-none focus:ring-2 focus:ring-[#C89B3C]" id="preferred_name" name="preferred_name"/>
+</div>
+<div>
+<label class="block text-sm font-medium text-[#071A36]" for="personal_email">Personal email *</label>
+<input class="gold-ring mt-1 w-full rounded-xl border-2 border-[#C89B3C] px-4 py-3 text-[#071A36] font-sans focus:outline-none focus:ring-2 focus:ring-[#C89B3C]" id="personal_email" name="personal_email" required="" type="email"/>
+</div>
+<div>
+<label class="block text-sm font-medium text-[#071A36]" for="phone_number">Phone number *</label>
+<input class="gold-ring mt-1 w-full rounded-xl border-2 border-[#C89B3C] px-4 py-3 text-[#071A36] font-sans focus:outline-none focus:ring-2 focus:ring-[#C89B3C]" id="phone_number" name="phone_number" required="" type="tel"/>
+</div>
+<div>
+<label class="block text-sm font-medium text-[#071A36]" for="preferred_contact_method">Preferred contact method *</label>
+<select class="gold-ring mt-1 w-full rounded-xl border-2 border-[#C89B3C] px-4 py-3 bg-white text-[#071A36] font-sans focus:outline-none focus:ring-2 focus:ring-[#C89B3C]" id="preferred_contact_method" name="preferred_contact_method" required="">
+<option value="">Select one</option>
+<option>Email</option>
+<option>Phone</option>
+<option>Text message</option>
+</select>
+</div>
+<div>
+<label class="block text-sm font-medium text-[#071A36]" for="best_contact_times">Best contact times *</label>
+<input class="gold-ring mt-1 w-full rounded-xl border-2 border-[#C89B3C] px-4 py-3 text-[#071A36] font-sans focus:outline-none focus:ring-2 focus:ring-[#C89B3C]" id="best_contact_times" name="best_contact_times" placeholder="For example: weekday evenings after 6 PM" required=""/>
+</div>
+<div class="md:col-span-2">
+<label class="block text-sm font-medium text-[#071A36]" for="mailing_address">Mailing address *</label>
+<textarea class="gold-ring mt-1 w-full rounded-xl border-2 border-[#C89B3C] px-4 py-3 text-[#071A36] font-sans focus:outline-none focus:ring-2 focus:ring-[#C89B3C]" id="mailing_address" name="mailing_address" required="" rows="3"></textarea>
+</div>
+</div>
+</fieldset>
+
+<fieldset class="step-panel" data-step="2">
+<legend class="font-serif text-lg font-semibold text-[#071A36]">Ford Employment Information</legend>
+<p class="mt-1 text-sm text-[#3B4252] font-sans">Share your work history at the Ford Motor Company – Chicago as accurately as you can.</p>
+<div class="mt-5 grid gap-6 md:grid-cols-2">
+<div>
+<label class="block text-sm font-medium text-[#071A36]" for="ford_employment_status">Ford employment status *</label>
+<select class="gold-ring mt-1 w-full rounded-xl border-2 border-[#C89B3C] px-4 py-3 bg-white text-[#071A36] font-sans focus:outline-none focus:ring-2 focus:ring-[#C89B3C]" id="ford_employment_status" name="ford_employment_status" required="">
+<option value="">Select one</option>
+<option>Current employee</option>
+<option>Former employee</option>
+<option>Contractor</option>
+<option>Temporary worker</option>
+<option>Other</option>
+</select>
+</div>
+<div>
+<label class="block text-sm font-medium text-[#071A36]" for="work_location">Work location *</label>
+<input class="gold-ring mt-1 w-full rounded-xl border-2 border-[#C89B3C] px-4 py-3 text-[#071A36] font-sans focus:outline-none focus:ring-2 focus:ring-[#C89B3C]" id="work_location" name="work_location" placeholder="Ford Motor Company – Chicago" required=""/>
+</div>
+<div>
+<label class="block text-sm font-medium text-[#071A36]" for="employment_start_date">Employment start date *</label>
+<input class="gold-ring mt-1 w-full rounded-xl border-2 border-[#C89B3C] px-4 py-3 text-[#071A36] font-sans focus:outline-none focus:ring-2 focus:ring-[#C89B3C]" id="employment_start_date" name="employment_start_date" required="" type="date"/>
+</div>
+<div>
+<label class="block text-sm font-medium text-[#071A36]" for="employment_end_date">Employment end date</label>
+<input class="gold-ring mt-1 w-full rounded-xl border-2 border-[#C89B3C] px-4 py-3 text-[#071A36] font-sans focus:outline-none focus:ring-2 focus:ring-[#C89B3C]" id="employment_end_date" name="employment_end_date" type="date"/>
+</div>
+<div>
+<label class="block text-sm font-medium text-[#071A36]" for="department">Department *</label>
+<input class="gold-ring mt-1 w-full rounded-xl border-2 border-[#C89B3C] px-4 py-3 text-[#071A36] font-sans focus:outline-none focus:ring-2 focus:ring-[#C89B3C]" id="department" name="department" required=""/>
+</div>
+<div>
+<label class="block text-sm font-medium text-[#071A36]" for="job_title">Job title *</label>
+<input class="gold-ring mt-1 w-full rounded-xl border-2 border-[#C89B3C] px-4 py-3 text-[#071A36] font-sans focus:outline-none focus:ring-2 focus:ring-[#C89B3C]" id="job_title" name="job_title" required=""/>
+</div>
+<div>
+<label class="block text-sm font-medium text-[#071A36]" for="shift">Shift *</label>
+<input class="gold-ring mt-1 w-full rounded-xl border-2 border-[#C89B3C] px-4 py-3 text-[#071A36] font-sans focus:outline-none focus:ring-2 focus:ring-[#C89B3C]" id="shift" name="shift" placeholder="Day, evening, night, rotating, etc." required=""/>
+</div>
+<div>
+<label class="block text-sm font-medium text-[#071A36]" for="union_member">Union member? *</label>
+<select class="gold-ring mt-1 w-full rounded-xl border-2 border-[#C89B3C] px-4 py-3 bg-white text-[#071A36] font-sans focus:outline-none focus:ring-2 focus:ring-[#C89B3C]" id="union_member" name="union_member" required="">
+<option value="">Select one</option>
+<option>Yes</option>
+<option>No</option>
+<option>Unsure</option>
+</select>
+</div>
+<div>
+<label class="block text-sm font-medium text-[#071A36]" for="union_local">Union local</label>
+<input class="gold-ring mt-1 w-full rounded-xl border-2 border-[#C89B3C] px-4 py-3 text-[#071A36] font-sans focus:outline-none focus:ring-2 focus:ring-[#C89B3C]" id="union_local" name="union_local"/>
+</div>
+<div class="md:col-span-2">
+<label class="block text-sm font-medium text-[#071A36]" for="supervisor_manager_names">Supervisor or manager names *</label>
+<textarea class="gold-ring mt-1 w-full rounded-xl border-2 border-[#C89B3C] px-4 py-3 text-[#071A36] font-sans focus:outline-none focus:ring-2 focus:ring-[#C89B3C]" id="supervisor_manager_names" name="supervisor_manager_names" required="" rows="3"></textarea>
+</div>
+<div class="md:col-span-2">
+<label class="block text-sm font-medium text-[#071A36]" for="employment_history_details">Employment history details *</label>
+<textarea class="gold-ring mt-1 w-full rounded-xl border-2 border-[#C89B3C] px-4 py-3 text-[#071A36] font-sans focus:outline-none focus:ring-2 focus:ring-[#C89B3C]" id="employment_history_details" name="employment_history_details" placeholder="Describe your Ford employment timeline, assignments, transfers, promotions, discipline, layoffs, or return-to-work details." required="" rows="4"></textarea>
+</div>
+</div>
+</fieldset>
+
+<fieldset class="step-panel" data-step="3">
+<legend class="font-serif text-lg font-semibold text-[#071A36]">Workplace Conduct and Incidents</legend>
+<p class="mt-1 text-sm text-[#3B4252] font-sans">Describe the conduct, when it happened, whether it is ongoing, and how it affected you.</p>
+<div class="mt-5 grid gap-6">
+<div>
+<p class="block text-sm font-medium text-[#071A36]">Conduct types *</p>
+<div class="mt-2 grid gap-3 sm:grid-cols-2">
+<label class="flex items-start gap-3 rounded-xl border border-[#C89B3C] p-3 text-[#071A36] font-sans cursor-pointer"><input class="mt-1 h-4 w-4 accent-[#C89B3C]" name="conduct_types" type="checkbox" value="employment discrimination"/> <span>Employment discrimination</span></label>
+<label class="flex items-start gap-3 rounded-xl border border-[#C89B3C] p-3 text-[#071A36] font-sans cursor-pointer"><input class="mt-1 h-4 w-4 accent-[#C89B3C]" name="conduct_types" type="checkbox" value="sexual harassment"/> <span>Sexual harassment</span></label>
+<label class="flex items-start gap-3 rounded-xl border border-[#C89B3C] p-3 text-[#071A36] font-sans cursor-pointer"><input class="mt-1 h-4 w-4 accent-[#C89B3C]" name="conduct_types" type="checkbox" value="hostile work environment"/> <span>Hostile work environment</span></label>
+<label class="flex items-start gap-3 rounded-xl border border-[#C89B3C] p-3 text-[#071A36] font-sans cursor-pointer"><input class="mt-1 h-4 w-4 accent-[#C89B3C]" name="conduct_types" type="checkbox" value="retaliation"/> <span>Retaliation</span></label>
+<label class="flex items-start gap-3 rounded-xl border border-[#C89B3C] p-3 text-[#071A36] font-sans cursor-pointer"><input class="mt-1 h-4 w-4 accent-[#C89B3C]" name="conduct_types" type="checkbox" value="unequal treatment"/> <span>Unequal treatment</span></label>
+<label class="flex items-start gap-3 rounded-xl border border-[#C89B3C] p-3 text-[#071A36] font-sans cursor-pointer"><input class="mt-1 h-4 w-4 accent-[#C89B3C]" name="conduct_types" type="checkbox" value="other workplace misconduct"/> <span>Other workplace misconduct</span></label>
+</div>
+<p class="mt-2 text-xs text-[#6B7280] font-sans">Select all that apply.</p>
+</div>
+<div>
+<label class="block text-sm font-medium text-[#071A36]" for="incident_narrative">Incident narrative *</label>
+<textarea class="gold-ring mt-1 w-full rounded-xl border-2 border-[#C89B3C] px-4 py-3 text-[#071A36] font-sans focus:outline-none focus:ring-2 focus:ring-[#C89B3C]" id="incident_narrative" name="incident_narrative" placeholder="Describe what happened, who was involved, approximate dates, locations, and any patterns you noticed." required="" rows="6"></textarea>
+</div>
+<div class="grid gap-6 md:grid-cols-3">
+<div>
+<label class="block text-sm font-medium text-[#071A36]" for="incident_frequency">Incident frequency *</label>
+<select class="gold-ring mt-1 w-full rounded-xl border-2 border-[#C89B3C] px-4 py-3 bg-white text-[#071A36] font-sans focus:outline-none focus:ring-2 focus:ring-[#C89B3C]" id="incident_frequency" name="incident_frequency" required="">
+<option value="">Select one</option>
+<option>One-time</option>
+<option>Occasional</option>
+<option>Repeated</option>
+<option>Ongoing</option>
+<option>Unsure</option>
+</select>
+</div>
+<div>
+<label class="block text-sm font-medium text-[#071A36]" for="conduct_ongoing">Is the conduct ongoing? *</label>
+<select class="gold-ring mt-1 w-full rounded-xl border-2 border-[#C89B3C] px-4 py-3 bg-white text-[#071A36] font-sans focus:outline-none focus:ring-2 focus:ring-[#C89B3C]" id="conduct_ongoing" name="conduct_ongoing" required="">
+<option value="">Select one</option>
+<option>Yes</option>
+<option>No</option>
+<option>Unsure</option>
+</select>
+</div>
+<div>
+<label class="block text-sm font-medium text-[#071A36]" for="impact_details">Impact details *</label>
+<input class="gold-ring mt-1 w-full rounded-xl border-2 border-[#C89B3C] px-4 py-3 text-[#071A36] font-sans focus:outline-none focus:ring-2 focus:ring-[#C89B3C]" id="impact_details" name="impact_details" placeholder="Describe stress, missed work, discipline, pay loss, health effects, or other harm" required="">
+</input></div>
+</div>
+</div>
+</fieldset>
+
+<fieldset class="step-panel" data-step="4">
+<legend class="font-serif text-lg font-semibold text-[#071A36]">Reporting and Witnesses</legend>
+<p class="mt-1 text-sm text-[#3B4252] font-sans">Tell us whether you reported the issue, how it was handled, and who may have witnessed it.</p>
+<div class="mt-5 grid gap-6">
+<div>
+<p class="block text-sm font-medium text-[#071A36]">Reporting channels *</p>
+<div class="mt-2 grid gap-3 sm:grid-cols-2">
+<label class="flex items-start gap-3 rounded-xl border border-[#C89B3C] p-3 text-[#071A36] font-sans cursor-pointer"><input class="mt-1 h-4 w-4 accent-[#C89B3C]" name="reporting_channels" type="checkbox" value="supervisor or manager"/> <span>Supervisor or manager</span></label>
+<label class="flex items-start gap-3 rounded-xl border border-[#C89B3C] p-3 text-[#071A36] font-sans cursor-pointer"><input class="mt-1 h-4 w-4 accent-[#C89B3C]" name="reporting_channels" type="checkbox" value="Human Resources"/> <span>Human Resources</span></label>
+<label class="flex items-start gap-3 rounded-xl border border-[#C89B3C] p-3 text-[#071A36] font-sans cursor-pointer"><input class="mt-1 h-4 w-4 accent-[#C89B3C]" name="reporting_channels" type="checkbox" value="union representative"/> <span>Union representative</span></label>
+<label class="flex items-start gap-3 rounded-xl border border-[#C89B3C] p-3 text-[#071A36] font-sans cursor-pointer"><input class="mt-1 h-4 w-4 accent-[#C89B3C]" name="reporting_channels" type="checkbox" value="ethics hotline"/> <span>Ethics hotline</span></label>
+<label class="flex items-start gap-3 rounded-xl border border-[#C89B3C] p-3 text-[#071A36] font-sans cursor-pointer"><input class="mt-1 h-4 w-4 accent-[#C89B3C]" name="reporting_channels" type="checkbox" value="government agency"/> <span>Government agency</span></label>
+<label class="flex items-start gap-3 rounded-xl border border-[#C89B3C] p-3 text-[#071A36] font-sans cursor-pointer"><input class="mt-1 h-4 w-4 accent-[#C89B3C]" name="reporting_channels" type="checkbox" value="law enforcement"/> <span>Law enforcement</span></label>
+<label class="flex items-start gap-3 rounded-xl border border-[#C89B3C] p-3 text-[#071A36] font-sans cursor-pointer"><input class="mt-1 h-4 w-4 accent-[#C89B3C]" name="reporting_channels" type="checkbox" value="attorney"/> <span>Attorney</span></label>
+<label class="flex items-start gap-3 rounded-xl border border-[#C89B3C] p-3 text-[#071A36] font-sans cursor-pointer"><input class="mt-1 h-4 w-4 accent-[#C89B3C]" name="reporting_channels" type="checkbox" value="did not report"/> <span>Did not report</span></label>
+</div>
+<p class="mt-2 text-xs text-[#6B7280] font-sans">Select all that apply.</p>
+</div>
+<div>
+<label class="block text-sm font-medium text-[#071A36]" for="reporting_response_details">Reporting response details *</label>
+<textarea class="gold-ring mt-1 w-full rounded-xl border-2 border-[#C89B3C] px-4 py-3 text-[#071A36] font-sans focus:outline-none focus:ring-2 focus:ring-[#C89B3C]" id="reporting_response_details" name="reporting_response_details" placeholder="Explain what happened after you reported, including any response, investigation, discipline, or lack of response." required="" rows="5"></textarea>
+</div>
+<div>
+<label class="block text-sm font-medium text-[#071A36]" for="witnesses_details">Witnesses details *</label>
+<textarea class="gold-ring mt-1 w-full rounded-xl border-2 border-[#C89B3C] px-4 py-3 text-[#071A36] font-sans focus:outline-none focus:ring-2 focus:ring-[#C89B3C]" id="witnesses_details" name="witnesses_details" placeholder="List witness names, roles, and what they may have seen or heard, if known." required="" rows="4"></textarea>
+</div>
+</div>
+</fieldset>
+
+<fieldset class="step-panel" data-step="5">
+<legend class="font-serif text-lg font-semibold text-[#071A36]">Evidence and Legal History</legend>
+<p class="mt-1 text-sm text-[#3B4252] font-sans">Upload supporting materials if available and share any prior legal involvement related to these issues.</p>
+<div class="mt-5 grid gap-6">
+<div>
+<label class="block text-sm font-medium text-[#071A36]" for="evidence_uploads">Evidence uploads</label>
+<input accept=".pdf,.doc,.docx,.png,.jpg,.jpeg,.gif,.webp,.mp3,.wav,.m4a,.mp4,.mov,.avi,.mkv,.txt" class="file-chip gold-ring mt-1 w-full rounded-xl border-2 border-[#C89B3C] px-4 py-3 bg-white text-sm text-[#071A36] font-sans focus:outline-none focus:ring-2 focus:ring-[#C89B3C]" id="evidence_uploads" multiple="" name="evidence_uploads" type="file">
+<p class="mt-2 text-xs text-[#6B7280] font-sans">Common document, image, audio, and video file types are accepted if your device supports uploading them.</p>
+</input></div>
+<div>
+<label class="block text-sm font-medium text-[#071A36]" for="prior_legal_representation">Prior legal representation *</label>
+<textarea class="gold-ring mt-1 w-full rounded-xl border-2 border-[#C89B3C] px-4 py-3 text-[#071A36] font-sans focus:outline-none focus:ring-2 focus:ring-[#C89B3C]" id="prior_legal_representation" name="prior_legal_representation" placeholder="State whether you have spoken with or been represented by any attorney about these issues." required="" rows="4"></textarea>
+</div>
+<div>
+<label class="block text-sm font-medium text-[#071A36]" for="damages_and_desired_outcome">Damages and desired outcome *</label>
+<textarea class="gold-ring mt-1 w-full rounded-xl border-2 border-[#C89B3C] px-4 py-3 text-[#071A36] font-sans focus:outline-none focus:ring-2 focus:ring-[#C89B3C]" id="damages_and_desired_outcome" name="damages_and_desired_outcome" placeholder="Describe the harm you experienced and what outcome you hope for through review or legal action." required="" rows="4"></textarea>
+</div>
+</div>
+</fieldset>
+
+<fieldset class="step-panel" data-step="6">
+<legend class="font-serif text-lg font-semibold text-[#071A36]">Certifications and Signature</legend>
+<p class="mt-1 text-sm text-[#3B4252] font-sans">Please read each certification carefully before signing.</p>
+<div class="mt-5 space-y-6 rounded-2xl border-2 border-[#C89B3C] bg-[#F5F3EB] p-5 text-sm leading-6 text-[#4A4A4A] font-sans">
+<p><span class="font-semibold text-[#071A36]">Confidentiality notice:</span> Information shared here should be kept private, but there are limits to confidentiality and some information may need to be shared with NABD or authorized counsel for review.</p>
+<p><span class="font-semibold text-[#071A36]">Relationship notice:</span> Submitting this form does not create an attorney-client relationship. Any decision to proceed will be made separately after review.</p>
+<p><span class="font-semibold text-[#071A36]">Evidence notice:</span> Preserve messages, documents, photos, recordings, schedules, pay records, and any other relevant evidence.</p>
+<p><span class="font-semibold text-[#071A36]">Contact notice:</span> NABD or authorized counsel may contact you if additional information is needed or if your submission may fit potential participation criteria.</p>
+</div>
+<div class="mt-5 grid gap-6">
+<div class="grid gap-6 md:grid-cols-2">
+<label class="flex items-start gap-3 rounded-2xl border-2 border-[#C89B3C] bg-[#F5F3EB] p-4 text-[#071A36] font-sans cursor-pointer">
+<input class="mt-1 h-4 w-4 accent-[#C89B3C]" id="certify_truth" name="certify_truth" required="" type="checkbox">
+<span class="text-sm">I certify that the information I am providing is true and complete to the best of my knowledge. *</span>
+</input></label>
+<label class="flex items-start gap-3 rounded-2xl border-2 border-[#C89B3C] bg-[#F5F3EB] p-4 text-[#071A36] font-sans cursor-pointer">
+<input class="mt-1 h-4 w-4 accent-[#C89B3C]" id="consent_to_review_contact" name="consent_to_review_contact" required="" type="checkbox">
+<span class="text-sm">I consent to NABD or authorized counsel reviewing my submission and contacting me using the details provided. *</span>
+</input></label>
+<label class="flex items-start gap-3 rounded-2xl border-2 border-[#C89B3C] bg-[#F5F3EB] p-4 text-[#071A36] font-sans cursor-pointer">
+<input class="mt-1 h-4 w-4 accent-[#C89B3C]" id="acknowledge_confidentiality_risks" name="acknowledge_confidentiality_risks" required="" type="checkbox">
+<span class="text-sm">I acknowledge there are confidentiality risks when sharing information electronically. *</span>
+</input></label>
+<label class="flex items-start gap-3 rounded-2xl border-2 border-[#C89B3C] bg-[#F5F3EB] p-4 text-[#071A36] font-sans cursor-pointer">
+<input class="mt-1 h-4 w-4 accent-[#C89B3C]" id="acknowledge_no_attorney_client_relationship" name="acknowledge_no_attorney_client_relationship" required="" type="checkbox">
+<span class="text-sm">I acknowledge this submission does not create an attorney-client relationship. *</span>
+</input></label>
+<label class="flex items-start gap-3 rounded-2xl border-2 border-[#C89B3C] bg-[#F5F3EB] p-4 md:col-span-2 text-[#071A36] font-sans cursor-pointer">
+<input class="mt-1 h-4 w-4 accent-[#C89B3C]" id="acknowledge_preserve_evidence" name="acknowledge_preserve_evidence" required="" type="checkbox">
+<span class="text-sm">I acknowledge that I should preserve all relevant evidence, including texts, emails, documents, records, photos, and notes. *</span>
+</input></label>
+</div>
+<div class="grid gap-6 md:grid-cols-2">
+<div>
+<label class="block text-sm font-medium text-[#071A36]" for="typed_signature">Typed signature *</label>
+<input class="gold-ring mt-1 w-full rounded-xl border-2 border-[#C89B3C] px-4 py-3 text-[#071A36] font-sans focus:outline-none focus:ring-2 focus:ring-[#C89B3C]" id="typed_signature" name="typed_signature" placeholder="Type your full legal name" required="">
+</input></div>
+<div>
+<label class="block text-sm font-medium text-[#071A36]" for="signature_date">Signature date *</label>
+<input class="gold-ring mt-1 w-full rounded-xl border-2 border-[#C89B3C] px-4 py-3 text-[#071A36] font-sans focus:outline-none focus:ring-2 focus:ring-[#C89B3C]" id="signature_date" name="signature_date" required="" type="date">
+</input></div>
+</div>
+</div>
+</fieldset>
+
+<div class="mt-8 flex flex-col-reverse gap-4 border-t border-[#C89B3C] pt-6 sm:flex-row sm:items-center sm:justify-between">
+<button class="rounded-xl border-2 border-[#C89B3C] px-6 py-3 font-semibold text-[#071A36] bg-white hover:bg-[#FAF7F0] disabled:cursor-not-allowed disabled:opacity-40 transition" id="backBtn" type="button">
+          Back
+        </button>
+<div class="flex flex-col gap-3 sm:flex-row">
+<button class="rounded-xl bg-[#081B3A] px-6 py-3 font-semibold text-[#C89B3C] hover:text-[#FFD966] transition" id="continueBtn" type="button">
+            Continue
+          </button>
+<button class="hidden rounded-xl bg-[#C89B3C] px-6 py-3 font-semibold text-[#081B3A] hover:brightness-105 transition" id="submitBtn" type="submit">
+            Submit Intake
+          </button>
+</div>
+</div>
+<p class="mt-4 hidden rounded-xl border border-red-600 bg-red-100 px-4 py-3 text-sm text-red-700" id="formError" role="alert"></p>
+</form>
+
+<div class="hidden border-t border-[#C89B3C] p-5" id="successMessage">
+<div class="rounded-3xl border border-emerald-200 bg-emerald-50 p-5 text-emerald-900 font-sans">
+<h3 class="text-xl font-bold">Thank you. Your intake has been received.</h3>
+<p class="mt-2 text-sm leading-6">
+          Please preserve any relevant evidence, including messages, emails, documents, photos, recordings, and notes. NABD or authorized counsel may contact you if your submission is under review for potential participation. Review typically takes approximately 7 to 14 days.
+        </p>
+</div>
+</div>
+</section>
+
+<footer class="w-full max-w-4xl mt-6 border-t border-[#C89B3C]/40 bg-[#081B3A] p-5 text-[#C89B3C] font-sans text-sm text-center select-none">
+<address class="not-italic mb-1 font-semibold">
+      National Association of Black Defenders, Inc.<br/>
+      1717 Pennsylvania Avenue NW, Suite 1025<br/>
+      Washington, DC 20006<br/>
+      Phone: (202) 770-3962<br/>
+      Email: <a class="underline text-[#C89B3C] hover:text-white" href="mailto:info@nabd-justice.org">info@nabd-justice.org</a><br/>
+      Website: <a class="underline text-[#C89B3C] hover:text-white" href="https://www.nabd-justice.org">nabd-justice.org</a>
+</address>
+<p class="mt-3 leading-relaxed">
+      NABD is not a law firm. Submitting this intake does not create an attorney-client relationship.
+    </p>
+<p class="mt-3">
+<a class="underline text-[#C89B3C] hover:text-white" href="https://nabd-justice.org/privacy/">Privacy Statement</a>
+</p>
+</footer>
+</main>
+
+<script>
+    // ===== MULTI-STEP INTAKE NAVIGATION =====
+    // Purpose: Moves the user through the questionnaire one section at a time with progress feedback.
+    const form = document.getElementById('intakeForm');
+    const panels = Array.from(document.querySelectorAll('.step-panel'));
+    const backBtn = document.getElementById('backBtn');
+    const continueBtn = document.getElementById('continueBtn');
+    const submitBtn = document.getElementById('submitBtn');
+    const progressLabel = document.getElementById('progress-label');
+    const progressBar = document.getElementById('progress-bar');
+    const dots = Array.from(document.querySelectorAll('.progress-dot'));
+    const errorBox = document.getElementById('formError');
+    const successMessage = document.getElementById('successMessage');
+    let currentStep = 0;
+
+    function setStep(index){
+      currentStep = index;
+      panels.forEach((panel, i) => panel.classList.toggle('active', i === index));
+      backBtn.disabled = index === 0;
+      const isLast = index === panels.length - 1;
+      continueBtn.classList.toggle('hidden', isLast);
+      submitBtn.classList.toggle('hidden', !isLast);
+      progressLabel.textContent = `Step ${index + 1} of ${panels.length}`;
+      progressBar.style.width = `${((index + 1) / panels.length) * 100}%`;
+      dots.forEach((dot, i) => dot.classList.toggle('active', i <= index));
+      window.scrollTo({ top: form.getBoundingClientRect().top + window.scrollY - 12, behavior: 'smooth' });
+    }
+
+    function getStepFields(stepEl){
+      return Array.from(stepEl.querySelectorAll('input, select, textarea')).filter(el => el.id && !el.disabled);
+    }
+
+    function validateStep(index){
+      errorBox.classList.add('hidden');
+      const fields = getStepFields(panels[index]);
+      for (const field of fields) {
+        if (!field.checkValidity()) {
+          field.reportValidity();
+          return false;
+        }
+      }
+      if (index === 2) {
+        const conductChecked = form.querySelectorAll('input[name="conduct_types"]:checked').length;
+        if (!conductChecked) {
+          showError('Please select at least one conduct type before continuing.');
+          return false;
+        }
+      }
+      if (index === 3) {
+        const reportingChecked = form.querySelectorAll('input[name="reporting_channels"]:checked').length;
+        if (!reportingChecked) {
+          showError('Please select at least one reporting channel before continuing.');
+          return false;
+        }
+      }
+      return true;
+    }
+
+    function showError(message){
+      errorBox.textContent = message;
+      errorBox.classList.remove('hidden');
+    }
+
+    function serializeCheckboxGroup(name){
+      return Array.from(form.querySelectorAll(`input[name="${name}"]:checked`)).map(el => el.value);
+    }
+
+    backBtn.addEventListener('click', () => {
+      if (currentStep > 0) setStep(currentStep - 1);
+    });
+
+    continueBtn.addEventListener('click', () => {
+      if (validateStep(currentStep) && currentStep < panels.length - 1) setStep(currentStep + 1);
+    });
+
+    // ===== FORM SUBMISSION VIA WEBHOOK =====
+    // Purpose: Sends the complete intake to the required webhook and displays a confirmation on success.
+    // Triggers: On final form submit.
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      errorBox.classList.add('hidden');
+
+      if (!validateStep(currentStep)) return;
+
+      const submitters = [backBtn, continueBtn, submitBtn];
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending...';
+      submitters.forEach(btn => btn.disabled = true);
+
+      const fd = new FormData(form);
+      const data = {};
+      for (const [key, value] of fd.entries()) {
+        if (key === 'evidence_uploads') continue;
+        if (data[key] === undefined) data[key] = value;
+        else if (Array.isArray(data[key])) data[key].push(value);
+        else data[key] = [data[key], value];
+      }
+
+      data.conduct_types = serializeCheckboxGroup('conduct_types');
+      data.reporting_channels = serializeCheckboxGroup('reporting_channels');
+
+      const payload = {
+        contactEmail: fd.get('personal_email'),
+        contactName: fd.get('legal_name'),
+        data: {
+          ...data,
+          submission_id: `SUB-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
+          submission_date: new Date().toISOString()
+        }
+      };
+
+      try {
+        const res = await fetch('https://paymegpt.com/api/webhooks/flow/4510/fd8f7c255d3bc537975fdb1fbece4ece78a81280ea0f20ed77581a4387c5073b', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+
+        if (!res.ok) throw new Error('Submission failed');
+
+        form.classList.add('hidden');
+        successMessage.classList.remove('hidden');
+        window.scrollTo({ top: successMessage.getBoundingClientRect().top + window.scrollY - 12, behavior: 'smooth' });
+      } catch (err) {
+        showError('We could not submit your intake right now. Please check your connection and try again.');
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Submit Intake';
+        submitters.forEach(btn => btn.disabled = false);
+      }
+    });
+
+    // Initialize on load
+    setStep(0);
+  </script>
+</body>
+</html>
