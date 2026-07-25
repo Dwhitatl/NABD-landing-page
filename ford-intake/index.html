@@ -579,13 +579,16 @@
 
 <fieldset class="step-panel" data-step="5">
 <legend class="font-serif text-lg font-semibold text-[#071A36]">Evidence and Legal History</legend>
-<p class="mt-1 text-sm text-[#3B4252] font-sans">Upload supporting materials if available and share any prior legal involvement related to these issues.</p>
+<p class="mt-1 text-sm text-[#3B4252] font-sans">Read how to send supporting materials, and share any prior legal involvement related to these issues.</p>
 <div class="mt-5 grid gap-6">
 <div>
-<label class="block text-sm font-medium text-[#071A36]" for="evidence_uploads">Evidence uploads</label>
-<input accept=".pdf,.doc,.docx,.png,.jpg,.jpeg,.gif,.webp,.mp3,.wav,.m4a,.mp4,.mov,.avi,.mkv,.txt" class="file-chip gold-ring mt-1 w-full rounded-xl border-2 border-[#C89B3C] px-4 py-3 bg-white text-sm text-[#071A36] font-sans focus:outline-none focus:ring-2 focus:ring-[#C89B3C]" id="evidence_uploads" multiple="" name="evidence_uploads" type="file">
-<p class="mt-2 text-xs text-[#6B7280] font-sans">Common document, image, audio, and video file types are accepted if your device supports uploading them.</p>
-</input></div>
+<p class="block text-sm font-medium text-[#071A36]">Sending your evidence</p>
+<div class="mt-2 rounded-2xl border-2 border-[#C89B3C] bg-[#F5F3EB] p-4 text-sm leading-6 text-[#4A4A4A] font-sans">
+<p>NABD accepts supporting evidence <span class="font-semibold text-[#071A36]">by email only</span>. Please do not attach files to this questionnaire.</p>
+<p class="mt-2">When you submit this form, the confirmation screen will show your <span class="font-semibold text-[#071A36]">submission ID</span>. Email your documents, photographs, recordings, messages, pay records, or schedules to <a class="font-semibold text-[#071A36] underline" href="mailto:info@nabd-justice.org">info@nabd-justice.org</a> and put that submission ID in the subject line so your evidence is matched to this questionnaire.</p>
+<p class="mt-2">Keep your own copies of everything you send, and continue preserving all relevant evidence.</p>
+</div>
+</div>
 <div>
 <label class="block text-sm font-medium text-[#071A36]" for="prior_legal_representation">Prior legal representation *</label>
 <textarea class="gold-ring mt-1 w-full rounded-xl border-2 border-[#C89B3C] px-4 py-3 text-[#071A36] font-sans focus:outline-none focus:ring-2 focus:ring-[#C89B3C]" id="prior_legal_representation" name="prior_legal_representation" placeholder="State whether you have spoken with or been represented by any attorney about these issues." required="" rows="4"></textarea>
@@ -661,7 +664,12 @@
 <div class="hidden border-t border-[#C89B3C] p-5" id="successMessage">
 <div class="rounded-3xl border border-emerald-200 bg-emerald-50 p-5 text-emerald-900 font-sans">
 <h3 class="text-xl font-bold">Thank you. Your intake has been received.</h3>
-<p class="mt-2 text-sm leading-6">
+<div class="mt-3 rounded-2xl border-2 border-[#C89B3C] bg-white p-4 text-[#071A36]">
+<div class="text-xs font-semibold uppercase tracking-wider">Your submission ID</div>
+<div class="mt-1 text-lg font-bold tracking-wide" id="submissionIdValue"></div>
+<p class="mt-2 text-sm leading-6 text-[#4A4A4A]">Please write this down. To send supporting evidence, email <a class="font-semibold text-[#071A36] underline" href="mailto:info@nabd-justice.org">info@nabd-justice.org</a> with this submission ID in the subject line. Evidence is accepted by email only.</p>
+</div>
+<p class="mt-3 text-sm leading-6">
           Please preserve any relevant evidence, including messages, emails, documents, photos, recordings, and notes. NABD or authorized counsel may contact you if your submission is under review for potential participation. Review typically takes approximately 7 to 14 days.
         </p>
 </div>
@@ -778,7 +786,6 @@
       const fd = new FormData(form);
       const data = {};
       for (const [key, value] of fd.entries()) {
-        if (key === 'evidence_uploads') continue;
         if (data[key] === undefined) data[key] = value;
         else if (Array.isArray(data[key])) data[key].push(value);
         else data[key] = [data[key], value];
@@ -787,12 +794,14 @@
       data.conduct_types = serializeCheckboxGroup('conduct_types');
       data.reporting_channels = serializeCheckboxGroup('reporting_channels');
 
+      const submissionId = `SUB-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
+
       const payload = {
         contactEmail: fd.get('personal_email'),
         contactName: fd.get('legal_name'),
         data: {
           ...data,
-          submission_id: `SUB-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
+          submission_id: submissionId,
           submission_date: new Date().toISOString()
         }
       };
@@ -805,6 +814,9 @@
         });
 
         if (!res.ok) throw new Error('Submission failed');
+
+        const idEl = document.getElementById('submissionIdValue');
+        if (idEl) idEl.textContent = submissionId;
 
         form.classList.add('hidden');
         successMessage.classList.remove('hidden');
