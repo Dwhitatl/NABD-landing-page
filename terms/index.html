@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<meta name="robots" content="index,follow">
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+
+<!-- SEO Meta Tags -->
+<title>Terms of Use &amp;amp; Membership Terms | National Association of Black Defenders, Inc.</title>
+<meta name="description" content="Terms of Use and Membership Terms for the National Association of Black Defenders, Inc. — including annual membership dues, automatic renewal, and how to cancel." />
+<meta property="og:title" content="Terms of Use &amp;amp; Membership Terms | National Association of Black Defenders, Inc." />
+<meta property="og:description" content="Terms of Use and Membership Terms for the National Association of Black Defenders, Inc. — including annual membership dues, automatic renewal, and how to cancel." />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Terms of Use &amp;amp; Membership Terms | National Association of Black Defenders, Inc." />
+<meta name="twitter:description" content="Terms of Use and Membership Terms for the National Association of Black Defenders, Inc. — including annual membership dues, automatic renewal, and how to cancel." />
+<!-- End SEO Meta Tags -->
+<script data-lp-token-hydrate>
+(function(){try{
+  var slug="lp-ms1bf0s9-g9dgi";
+  var SK='lp_access_'+slug;
+  var map={access_token:'lp_pw_',allowlist_access_token:'lp_al_',pin_access_token:'lp_pin_',paywall_access_token:'lp_paid_'};
+  var u=new URL(location.href);var found=null;var changed=false;
+  Object.keys(map).forEach(function(p){var v=u.searchParams.get(p);if(v){found=v;try{localStorage.setItem(map[p]+slug,v);}catch(e){}u.searchParams.delete(p);changed=true;}});
+  if(found){try{sessionStorage.setItem(SK,found);}catch(e){}}
+  else{try{if(!sessionStorage.getItem(SK)){var t=localStorage.getItem('lp_pw_'+slug)||localStorage.getItem('lp_al_'+slug)||localStorage.getItem('lp_pin_'+slug)||localStorage.getItem('lp_paid_'+slug);if(t)sessionStorage.setItem(SK,t);}}catch(e){}}
+  if(changed){try{history.replaceState(null,'',u.toString());}catch(e){}}
+  function getTok(){try{return sessionStorage.getItem(SK)||localStorage.getItem('lp_pw_'+slug)||localStorage.getItem('lp_al_'+slug)||localStorage.getItem('lp_pin_'+slug)||localStorage.getItem('lp_paid_'+slug);}catch(e){return null;}}
+  function needsToken(url,method){if(!url)return false;var s=String(url);var m=(method||'GET').toUpperCase();var isSheetWrite=(m==='POST'||m==='PATCH'||m==='PUT'||m==='DELETE')&&/\/sheet-rows(\/|$|\?)/.test(s);var isSheetRead=/\/sheet-data(\/|$|\?)/.test(s);var isLlm=/\/api\/landing-pages\/public\/[^/]+\/(llm|llm-config)(\/|$|\?)/.test(s);return isSheetWrite||isSheetRead||isLlm;}
+  if(window.fetch){var _f=window.fetch;window.fetch=function(input,init){try{var url=typeof input==='string'?input:(input&&input.url)||'';var method=(init&&init.method)||(input&&input.method)||'GET';if(needsToken(url,method)){var tok=getTok();if(tok){init=init||{};var h=new Headers(init.headers||(typeof input!=='string'?input.headers:undefined)||{});if(!h.has('X-Landing-Page-Token'))h.set('X-Landing-Page-Token',tok);init.headers=h;}}}catch(e){}return _f.call(this,input,init);};}
+  if(window.XMLHttpRequest){var _o=XMLHttpRequest.prototype.open;var _s=XMLHttpRequest.prototype.send;XMLHttpRequest.prototype.open=function(m,u){this.__lpM=m;this.__lpU=u;return _o.apply(this,arguments);};XMLHttpRequest.prototype.send=function(){try{if(needsToken(this.__lpU,this.__lpM)){var tok=getTok();if(tok)this.setRequestHeader('X-Landing-Page-Token',tok);}}catch(e){}return _s.apply(this,arguments);};}
+}catch(e){}})();
+</script>
+
+<script data-field-replace>
+(function(){
+  var params=new URLSearchParams(window.location.search);
+  var fields={};
+  var paramMap={
+    'first_name':'firstName','last_name':'lastName','full_name':'fullName',
+    'email':'email','phone':'phone','company':'company',
+    'city':'city','state':'state','country':'country'
+  };
+  var skipTags={'SCRIPT':1,'STYLE':1,'NOSCRIPT':1,'TEXTAREA':1,'CODE':1,'PRE':1};
+  var hasUrlFields=false;
+  for(var p in paramMap){
+    var v=params.get(p);
+    if(v){fields[paramMap[p]]=v;hasUrlFields=true;}
+  }
+  var contactId=params.get('contact_id');
+  function esc(s){
+    if(!s)return s;
+    var d=document.createElement('div');
+    d.appendChild(document.createTextNode(s));
+    return d.innerHTML;
+  }
+  function doReplace(data){
+    var r={};
+    r['{{full_name}}']=esc(((data.firstName||'')+' '+(data.lastName||'')).trim()||((data.fullName||data.name)||''));
+    r['{{first_name}}']=esc(data.firstName||(data.name?data.name.split(' ')[0]:'')||'');
+    r['{{last_name}}']=esc(data.lastName||(data.name&&data.name.indexOf(' ')>-1?data.name.substring(data.name.indexOf(' ')+1):'')||'');
+    r['{{email}}']=esc(data.email||'');
+    r['{{phone}}']=esc(data.phone||'');
+    r['{{company}}']=esc(data.company||'');
+    r['{{city}}']=esc(data.city||'');
+    r['{{state}}']=esc(data.state||'');
+    r['{{country}}']=esc(data.country||'');
+    r['{{date}}']=new Date().toLocaleDateString();
+    r['{{time}}']=new Date().toLocaleTimeString();
+    r['{{location}}']=[data.city,data.state,data.country].filter(Boolean).join(', ');
+    r['{{tracking_id}}']=esc(data.trackingId||'');
+    r['{{lastClickedProduct}}']=esc(data.lastClickedProduct||'');
+    r['{{lastProductClickDate}}']=esc(data.lastProductClickDate||'');
+    r['{{lastClickedProductPrice}}']=esc(data.lastClickedProductPrice||'');
+    r['{{lastClickedProductURL}}']=esc(data.lastClickedProductURL||'');
+    r['{{productsClickedCount}}']=esc(data.productsClickedCount||'0');
+    r['{{ip_address}}']=esc(data.ipAddress||'');
+    r['{{ip}}']=esc(data.ipAddress||'');
+    if(data.customFields){
+      for(var k in data.customFields){
+        r['{{'+k+'}}']=esc(String(data.customFields[k]||''));
+      }
+    }
+    params.forEach(function(v,k){
+      if(!paramMap[k]&&k!=='contact_id'&&k!=='page_id'&&k.indexOf('utm_')!==0){
+        r['{{'+k+'}}']=esc(v);
+      }
+    });
+    var hasValues=false;
+    for(var key in r){if(r[key]){hasValues=true;break;}}
+    if(!hasValues)return;
+    var walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT,{
+      acceptNode:function(n){
+        var p=n.parentNode;
+        if(p&&skipTags[p.nodeName])return NodeFilter.FILTER_REJECT;
+        return NodeFilter.FILTER_ACCEPT;
+      }
+    });
+    var node;
+    while(node=walker.nextNode()){
+      var txt=node.nodeValue;
+      if(txt&&txt.indexOf('{{')>-1){
+        var changed=txt;
+        for(var ph in r){
+          if(r[ph]&&changed.indexOf(ph)>-1){
+            changed=changed.split(ph).join(r[ph]);
+          }
+        }
+        if(changed!==txt)node.nodeValue=changed;
+      }
+    }
+    var attrs=['value','placeholder','content','alt','title'];
+    attrs.forEach(function(attr){
+      var els=document.querySelectorAll('['+attr+'*="{{"]');
+      for(var i=0;i<els.length;i++){
+        var tag=els[i].tagName;
+        if(skipTags[tag])continue;
+        var val=els[i].getAttribute(attr);
+        if(val){
+          var nv=val;
+          for(var ph in r){
+            if(r[ph]&&nv.indexOf(ph)>-1){
+              nv=nv.split(ph).join(r[ph]);
+            }
+          }
+          if(nv!==val)els[i].setAttribute(attr,nv);
+        }
+      }
+    });
+  }
+  function run(){
+    if(contactId){
+      var xhr=new XMLHttpRequest();
+      xhr.open('GET','https://paymegpt.com/api/landing/context/'+encodeURIComponent(contactId)+'?page_id=5763');
+      xhr.onload=function(){
+        if(xhr.status===200){
+          try{
+            var resp=JSON.parse(xhr.responseText);
+            if(resp.success&&resp.contact){
+              var merged=resp.contact;
+              for(var k in fields){merged[k]=fields[k];}
+              doReplace(merged);
+              return;
+            }
+          }catch(e){}
+        }
+        if(hasUrlFields)doReplace(fields);
+      };
+      xhr.onerror=function(){if(hasUrlFields)doReplace(fields);};
+      xhr.send();
+    }else if(hasUrlFields){
+      doReplace(fields);
+    }
+  }
+  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',run);}
+  else{run();}
+})();
+</script>
+<script data-payment>
+(function(){
+  var slug='mxApeE';
+  var apiBase='https://paymegpt.com';
+  var successSubtext='';var successBtnLabel='Continue';var successBtnColor='#16a34a';var successRedirect='';
+  function findEmail(){
+    var ids=['email','emailAddress','buyer-email','buyerEmail','user-email','userEmail','checkout-email','customer-email','contact-email'];
+    for(var i=0;i<ids.length;i++){var el=document.getElementById(ids[i]);if(el&&el.value&&el.value.includes('@'))return el.value.trim();}
+    var inputs=document.querySelectorAll('input[type="email"],input[name*="email"],input[placeholder*="email"],input[placeholder*="Email"]');
+    for(var j=0;j<inputs.length;j++){if(inputs[j].value&&inputs[j].value.includes('@'))return inputs[j].value.trim();}
+    return '';
+  }
+  function findName(){
+    var ids=['name','fullName','full-name','buyer-name','buyerName','customer-name','userName','user-name'];
+    for(var i=0;i<ids.length;i++){var el=document.getElementById(ids[i]);if(el&&el.value)return el.value.trim();}
+    var inputs=document.querySelectorAll('input[name*="name"]:not([name*="email"]):not([type="email"]),input[placeholder*="name"]:not([placeholder*="email"]):not([type="email"]),input[placeholder*="Name"]:not([type="email"])');
+    for(var j=0;j<inputs.length;j++){if(inputs[j].value)return inputs[j].value.trim();}
+    return '';
+  }
+  function findPhone(){var ids=['phone','phoneNumber','phone-number','tel','telephone','mobile','mobileNumber','cell','contact-phone','buyer-phone'];for(var i=0;i<ids.length;i++){var el=document.getElementById(ids[i]);if(el&&el.value&&el.value.trim())return el.value.trim();}var inputs=document.querySelectorAll('input[type="tel"],input[name*="phone"],input[name*="tel"],input[name*="mobile"],input[placeholder*="phone"],input[placeholder*="Phone"]');for(var j=0;j<inputs.length;j++){if(inputs[j].value&&inputs[j].value.trim())return inputs[j].value.trim();}return '';}
+  var __realProcessPayment=function(a,b,c,d,e){
+    var amountCents,email,productName,productDescription,customerName,quantity;
+    if(a&&typeof a==='object'){
+      amountCents=a.amountCents;email=a.email;productName=a.productName;
+      productDescription=a.productDescription||'';customerName=a.name||'';quantity=a.quantity||1;
+    }else{
+      amountCents=typeof a==='number'?a:0;productName=typeof b==='string'?b:'';
+      productDescription=typeof c==='string'?c:'';email='';customerName='';quantity=1;
+    }
+    if(!email)email=findEmail();
+    if(!customerName)customerName=findName();
+    var phone=findPhone();
+    if(!productName){alert('Product name is required.');return Promise.reject('no_product_name');}
+    if(!amountCents||amountCents<100){alert('Amount must be at least $1.00');return Promise.reject('invalid_amount');}
+    if(!email){alert('Please enter your email address.');return Promise.reject('no_email');}
+    var successBase=window.location.href.split('?')[0];
+    var __pLoc=(document.documentElement.lang||navigator.language||'en');
+    return fetch(apiBase+'/api/landing-pages/public/'+slug+'/payment/checkout',{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({email:email,name:customerName,phone:phone||'',amountCents:amountCents,productName:productName,productDescription:productDescription,quantity:quantity,locale:__pLoc,successUrl:successBase+'?payment=success&product='+encodeURIComponent(productName)+'&session_id={CHECKOUT_SESSION_ID}',cancelUrl:successBase+'?payment=cancelled'})
+    }).then(function(r){return r.json();}).then(function(d){
+      if(d.checkoutUrl){window.location.href=d.checkoutUrl;}
+      else{alert(d.error||'Failed to process payment');throw new Error(d.error);}
+    });
+  };
+  Object.defineProperty(window,'__processPayment',{value:__realProcessPayment,writable:false,configurable:false});
+  document.addEventListener('DOMContentLoaded',function(){
+    var urlParams=new URLSearchParams(window.location.search);
+    if(urlParams.get('payment')==='success'){
+      var sidP=urlParams.get('session_id');
+      if(sidP){try{fetch(apiBase+'/api/landing-pages/public/'+slug+'/checkout/confirm',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({sessionId:sidP})}).catch(function(){});}catch(e){}}
+      var pName=urlParams.get('product')||'your item';
+      var overlay=document.createElement('div');overlay.id='payment-success-overlay';
+      overlay.style.cssText='position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;z-index:999999;font-family:system-ui,-apple-system,sans-serif;';
+      function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+      var subTxt=successSubtext||('Thank you for purchasing '+pName+'.');
+      overlay.innerHTML='<div style="background:white;border-radius:16px;padding:40px;max-width:420px;width:90%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.15);"><div style="width:64px;height:64px;border-radius:50%;background:#dcfce7;margin:0 auto 20px;display:flex;align-items:center;justify-content:center;"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><h2 style="margin:0 0 12px;font-size:24px;font-weight:700;color:#111827;">Payment Successful!</h2><p style="margin:0 0 24px;color:#6b7280;font-size:16px;">'+esc(subTxt)+'</p><button id="lp-pay-success-btn" style="padding:12px 32px;font-size:16px;font-weight:600;background:'+successBtnColor+';color:white;border:none;border-radius:8px;cursor:pointer;">'+esc(successBtnLabel)+'</button></div>';
+      document.body.appendChild(overlay);
+      var pBtn=document.getElementById('lp-pay-success-btn');
+      if(pBtn){pBtn.addEventListener('click',function(){if(successRedirect){window.location.href=successRedirect;}else{overlay.remove();window.history.replaceState({},'',window.location.pathname);}});}
+    }
+  });
+})();
+</script>
+<script data-cart>
+(function(){
+  var slug='mxApeE';
+  var apiBase='https://paymegpt.com';
+  var successSubtext='';var successBtnLabel='Continue';var successBtnColor='#16a34a';var successRedirect='';
+  function findCartEmail(){
+    var ids=['email','emailAddress','buyer-email','buyerEmail','user-email','userEmail','checkout-email','customer-email','contact-email'];
+    for(var i=0;i<ids.length;i++){var el=document.getElementById(ids[i]);if(el&&el.value&&el.value.includes('@'))return el.value.trim();}
+    var inputs=document.querySelectorAll('input[type="email"],input[name*="email"],input[placeholder*="email"],input[placeholder*="Email"]');
+    for(var j=0;j<inputs.length;j++){if(inputs[j].value&&inputs[j].value.includes('@'))return inputs[j].value.trim();}
+    return '';
+  }
+  function findCartName(){
+    var ids=['name','fullName','full-name','buyer-name','buyerName','customer-name','userName','user-name'];
+    for(var i=0;i<ids.length;i++){var el=document.getElementById(ids[i]);if(el&&el.value)return el.value.trim();}
+    var inputs=document.querySelectorAll('input[name*="name"]:not([name*="email"]):not([type="email"]),input[placeholder*="name"]:not([placeholder*="email"]):not([type="email"]),input[placeholder*="Name"]:not([type="email"])');
+    for(var j=0;j<inputs.length;j++){if(inputs[j].value)return inputs[j].value.trim();}
+    return '';
+  }
+  function findCartPhone(){var ids=['phone','phoneNumber','phone-number','tel','telephone','mobile','mobileNumber','cell','contact-phone','buyer-phone'];for(var i=0;i<ids.length;i++){var el=document.getElementById(ids[i]);if(el&&el.value&&el.value.trim())return el.value.trim();}var inputs=document.querySelectorAll('input[type="tel"],input[name*="phone"],input[name*="tel"],input[name*="mobile"],input[placeholder*="phone"],input[placeholder*="Phone"]');for(var j=0;j<inputs.length;j++){if(inputs[j].value&&inputs[j].value.trim())return inputs[j].value.trim();}return '';}
+  var __realCart=function(arg){
+    var items, email='', customerName='', successUrl, cancelUrl, currency;
+    if(Array.isArray(arg)){items=arg;}
+    else if(arg&&typeof arg==='object'){
+      items=arg.items;email=arg.email||'';customerName=arg.name||arg.customerName||'';
+      successUrl=arg.successUrl;cancelUrl=arg.cancelUrl;currency=arg.currency;
+    }
+    if(!Array.isArray(items)||items.length===0){alert('No items in cart.');return Promise.reject('no_items');}
+    var cleanItems=[];var totalCents=0;
+    for(var i=0;i<items.length;i++){
+      var it=items[i];if(!it||typeof it!=='object'){alert('Invalid item at position '+i);return Promise.reject('bad_item');}
+      var nm=typeof it.name==='string'?it.name.trim():'';
+      if(!nm){alert('Item '+(i+1)+' is missing a name.');return Promise.reject('no_name');}
+      var amt=typeof it.amountCents==='number'?it.amountCents:(typeof it.amount==='number'?Math.round(it.amount*100):NaN);
+      if(!isFinite(amt)||amt<1){alert('Item "'+nm+'" needs a valid amount in cents.');return Promise.reject('bad_amount');}
+      var qty=(typeof it.quantity==='number'&&it.quantity>0)?Math.floor(it.quantity):1;
+      cleanItems.push({name:nm,description:it.description||'',amountCents:amt,quantity:qty});
+      totalCents+=amt*qty;
+    }
+    if(totalCents<50){alert('Cart total must be at least $0.50');return Promise.reject('total_too_low');}
+    if(!email)email=findCartEmail();
+    if(!customerName)customerName=findCartName();
+    var cartPhone=findCartPhone();
+    if(!email){var p=window.prompt('Enter your email for the receipt:','');if(p&&p.indexOf('@')>-1){email=p.trim();}else{alert('An email address is required to complete checkout.');return Promise.reject('no_email');}}
+    var successBase=window.location.href.split('?')[0];
+    var body={email:email,name:customerName,items:cleanItems,locale:(document.documentElement.lang||navigator.language||'en')};
+    if(currency)body.currency=currency;
+    if(cartPhone)body.phone=cartPhone;
+    body.successUrl=successUrl||(successBase+'?cart=success&email='+encodeURIComponent(email)+'&session_id={CHECKOUT_SESSION_ID}');
+    body.cancelUrl=cancelUrl||(successBase+'?cart=cancelled');
+    return fetch(apiBase+'/api/landing-pages/public/'+slug+'/cart/checkout',{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify(body)
+    }).then(function(r){return r.json();}).then(function(d){
+      if(d.checkoutUrl){window.location.href=d.checkoutUrl;}
+      else{alert(d.error||'Failed to process checkout');throw new Error(d.error);}
+    });
+  };
+  try{Object.defineProperty(window,'__processCart',{value:__realCart,writable:false,configurable:false});}catch(e){window.__processCart=__realCart;}
+  document.addEventListener('DOMContentLoaded',function(){
+    var urlParams=new URLSearchParams(window.location.search);
+    if(urlParams.get('cart')==='success'){
+      var sidC=urlParams.get('session_id');
+      if(sidC){try{fetch(apiBase+'/api/landing-pages/public/'+slug+'/checkout/confirm',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({sessionId:sidC})}).catch(function(){});}catch(e){}}
+      if(document.getElementById('payment-success-overlay')||document.getElementById('donation-success-overlay')||document.getElementById('cart-success-overlay'))return;
+      var overlay=document.createElement('div');overlay.id='cart-success-overlay';
+      overlay.style.cssText='position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;z-index:999999;font-family:system-ui,-apple-system,sans-serif;';
+      function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+      var subTxt=successSubtext||'Thank you for your order.';
+      overlay.innerHTML='<div style="background:white;border-radius:16px;padding:40px;max-width:420px;width:90%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.15);"><div style="width:64px;height:64px;border-radius:50%;background:#dcfce7;margin:0 auto 20px;display:flex;align-items:center;justify-content:center;"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><h2 style="margin:0 0 12px;font-size:24px;font-weight:700;color:#111827;">Order Confirmed!</h2><p style="margin:0 0 24px;color:#6b7280;font-size:16px;">'+esc(subTxt)+'</p><button id="lp-cart-success-btn" style="padding:12px 32px;font-size:16px;font-weight:600;background:'+successBtnColor+';color:white;border:none;border-radius:8px;cursor:pointer;">'+esc(successBtnLabel)+'</button></div>';
+      document.body.appendChild(overlay);
+      var cBtn=document.getElementById('lp-cart-success-btn');
+      if(cBtn){cBtn.addEventListener('click',function(){if(successRedirect){window.location.href=successRedirect;}else{overlay.remove();window.history.replaceState({},'',window.location.pathname);}});}
+    }
+  });
+})();
+</script>  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<nav data-section="navbar">
+  <div class="nav-inner">
+    <a href="https://www.nabd-justice.org" class="nav-brand">
+      <img src="https://storage.googleapis.com/wttus/assets/1605006/images/NABD_newlogo.jpg" alt="NABD Logo">
+      <span>
+        <span class="org-abbr">NABD</span>
+        <span class="org-full">National Association of Black Defenders</span>
+      </span>
+    </a>
+    <a href="https://www.nabd-justice.org" class="nav-back">← Back to Main Site</a>
+  </div>
+</nav>
+
+<header class="doc-head" data-section="doc-header">
+  <div class="container">
+    <div class="eyebrow">Legal</div>
+    <h1>Terms of Use &amp; Membership Terms</h1>
+    <div class="doc-meta">Effective Date: <span>July 26, 2026</span> &nbsp;·&nbsp; Last Updated: <span>July 26, 2026</span></div>
+    <p class="doc-intro">These Terms govern your use of the website of the National Association of Black Defenders, Inc. ("NABD," "we," "us," or "our") and your NABD membership. Please read them before joining, donating, or submitting information.</p>
+
+    <div class="keybox">
+      <div class="keybox-title">The short version — membership at a glance</div>
+      <ul>
+        <li>NABD Adult Membership costs <strong>$175.00 per year</strong>. It is the only membership tier offered.</li>
+        <li>Your membership <strong>renews automatically every 12 months</strong> and your card is charged <strong>$175.00 each year</strong> until you cancel.</li>
+        <li>You can <strong>cancel at any time</strong>, and you keep your benefits through the end of the year you have already paid for.</li>
+        <li>NABD will <strong>email you before each renewal charge</strong> so it is never a surprise.</li>
+        <li>NABD is <strong>not a law firm</strong>. Membership does not give you a lawyer and does not create an attorney-client relationship.</li>
+      </ul>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+  <div class="toc">
+    <div class="toc-title">Contents</div>
+    <ol>
+      <li><a href="#acceptance">Acceptance of These Terms</a></li>
+      <li><a href="#who">Who We Are</a></li>
+      <li><a href="#notlaw">NABD Is Not a Law Firm</a></li>
+      <li><a href="#eligibility">Eligibility</a></li>
+      <li><a href="#membership">Membership, Dues, and Automatic Renewal</a></li>
+      <li><a href="#cancel">How to Cancel</a></li>
+      <li><a href="#refunds">Refunds</a></li>
+      <li><a href="#changes-dues">Changes to Dues or Benefits</a></li>
+      <li><a href="#payments">Payment Processing</a></li>
+      <li><a href="#donations">Donations</a></li>
+      <li><a href="#intake">Matter Intake Submissions</a></li>
+      <li><a href="#acceptable">Acceptable Use</a></li>
+      <li><a href="#ip">Intellectual Property</a></li>
+      <li><a href="#thirdparty">Third-Party Services</a></li>
+      <li><a href="#ai">AI Concierge</a></li>
+      <li><a href="#disclaimer">Disclaimers</a></li>
+      <li><a href="#liability">Limitation of Liability</a></li>
+      <li><a href="#privacy">Privacy</a></li>
+      <li><a href="#changes">Changes to These Terms</a></li>
+      <li><a href="#law">Governing Law</a></li>
+      <li><a href="#contact">Contact Us</a></li>
+    </ol>
+  </div>
+</div>
+
+<main class="container" data-section="terms-body">
+
+<section class="clause" id="acceptance">
+  <div class="clause-num">Section 1</div>
+  <h2>Acceptance of These Terms</h2>
+  <p>By using the NABD website, joining as a member, making a donation, submitting a form, or using the AI Concierge, you agree to these Terms. If you do not agree, please do not use the site or enroll in membership.</p>
+  <p>If you are agreeing on behalf of an organization, you confirm that you have authority to bind that organization.</p>
+</section>
+
+<section class="clause" id="who">
+  <div class="clause-num">Section 2</div>
+  <h2>Who We Are</h2>
+  <p>The National Association of Black Defenders, Inc. is a nonprofit organization headquartered at 1717 Pennsylvania Avenue NW, Suite 1025, Washington, DC 20006. NABD advances human rights, civil rights protections, legal advocacy, voting rights awareness, environmental justice, and public education.</p>
+</section>
+
+<section class="clause" id="notlaw">
+  <div class="clause-num">Section 3</div>
+  <h2>NABD Is Not a Law Firm</h2>
+  <div class="notice">
+    <span class="notice-label">⚖ Please Read Carefully</span>
+    NABD is <strong>not a law firm</strong>, does not practice law, and does not provide legal advice or legal representation. Nothing on this website, in any NABD communication, in the AI Concierge, or in any membership benefit creates an <strong>attorney-client relationship</strong> between you and NABD. Information you send NABD is <strong>not protected by the attorney-client privilege</strong> unless and until you separately sign a representation agreement with an attorney.
+  </div>
+  <p>NABD partners with civil rights and human rights attorneys and may refer members and members of the public to those attorneys. Any attorney you engage through a referral is independent of NABD, sets their own fees and terms, and is solely responsible for the legal services they provide. NABD does not guarantee that any referral will result in representation, participation in any legal action, or any particular outcome.</p>
+  <p>Legal deadlines, including statutes of limitation, can be strict. Contacting NABD does not pause, extend, or preserve any deadline that may apply to you. If you believe a deadline may be approaching, consult a licensed attorney promptly.</p>
+</section>
+
+<section class="clause" id="eligibility">
+  <div class="clause-num">Section 4</div>
+  <h2>Eligibility</h2>
+  <p>NABD membership is available to individuals aged <strong>18 and over</strong>. The website and membership program are directed to adults, and NABD does not knowingly enroll or collect information from children under 13. See the <a href="https://nabd-justice.org/privacy/">Privacy Statement</a> for more.</p>
+  <p>By enrolling you confirm that the information you provide is accurate and that you are authorized to use the payment method you supply.</p>
+</section>
+
+<section class="clause" id="membership">
+  <div class="clause-num">Section 5</div>
+  <h2>Membership, Dues, and Automatic Renewal</h2>
+
+  <h3>5.1 What membership costs</h3>
+  <p>NABD offers a single membership tier: <strong>Adult Membership at $175.00 per United States dollar year</strong>, for individuals aged 18 and over. There is no youth, student, senior, or discounted tier.</p>
+
+  <h3>5.2 Automatic renewal — please read before you enroll</h3>
+  <div class="keybox">
+    <div class="keybox-title">Automatic renewal terms</div>
+    <ul>
+      <li><strong>Recurring charge.</strong> Your membership is an <strong>automatically renewing annual subscription</strong>.</li>
+      <li><strong>Amount.</strong> $175.00 per year.</li>
+      <li><strong>Frequency.</strong> Once every 12 months, on the anniversary of your enrolment date.</li>
+      <li><strong>Duration.</strong> Renewals continue <strong>indefinitely until you cancel</strong>.</li>
+      <li><strong>Payment method.</strong> The card or payment method you provide at checkout will be charged automatically each year without further action by you.</li>
+      <li><strong>How to stop it.</strong> Cancel at any time using the methods in Section 6. Cancelling before your renewal date prevents the next charge.</li>
+    </ul>
+  </div>
+  <p>Your membership year begins on the date your first payment is successfully processed and runs for twelve months. Unless you cancel before the end of that period, NABD will charge the payment method on file $175.00 to begin a new twelve-month term, and will continue to do so each year.</p>
+
+  <h3>5.3 Renewal reminders</h3>
+  <p>NABD will send a reminder to the email address associated with your membership <strong>before each annual renewal charge</strong>. The reminder will state the renewal amount, the date the charge will be made, and how to cancel. It is your responsibility to keep your email address and payment details current so that you receive these notices.</p>
+
+  <h3>5.4 Failed payments</h3>
+  <p>If a renewal payment fails, NABD or its payment processor may attempt the charge again. If payment cannot be collected, your membership and its benefits may be suspended or ended. NABD will make reasonable efforts to notify you before that happens.</p>
+</section>
+
+<section class="clause" id="cancel">
+  <div class="clause-num">Section 6</div>
+  <h2>How to Cancel</h2>
+  <p>You may cancel your membership <strong>at any time and for any reason</strong>. Cancellation is straightforward and NABD will not require you to explain your decision or speak with anyone to complete it.</p>
+  <p>To cancel, use any of the following:</p>
+  <ul>
+    <li><strong>Email</strong> — <a href="mailto:info@nabd-justice.org">info@nabd-justice.org</a> with the subject line "Cancel Membership". Include the name and email address on the membership.</li>
+    <li><strong>Telephone</strong> — <a href="tel:2027703962">(202) 770-3962</a>.</li>
+    <li><strong>Mail</strong> — NABD, Attn: Membership, 1717 Pennsylvania Avenue NW, Suite 1025, Washington, DC 20006.</li>
+  </ul>
+  <p>NABD will process a cancellation request <strong>promptly, and in any event within five business days</strong>, and will confirm in writing to the email address on the membership. Once cancelled, no further annual charges will be made.</p>
+  <p><strong>What happens to your benefits.</strong> Cancelling stops future renewals. It does not end the membership year you have already paid for — you keep your benefits through the end of that term.</p>
+</section>
+
+<section class="clause" id="refunds">
+  <div class="clause-num">Section 7</div>
+  <h2>Refunds</h2>
+  <p>Membership dues are generally <strong>non-refundable</strong>, and cancelling mid-year does not entitle you to a partial refund, because your benefits continue through the end of the paid term.</p>
+  <p>NABD will, however, refund a renewal charge where you cancelled before the renewal date but were charged anyway, where a charge was made in error or was duplicated, or where a refund is required by law. Contact NABD using Section 21 and we will review the request.</p>
+  <p>Nothing in this section limits any right you may have under the consumer protection laws of your state.</p>
+</section>
+
+<section class="clause" id="changes-dues">
+  <div class="clause-num">Section 8</div>
+  <h2>Changes to Dues or Benefits</h2>
+  <p>NABD may change membership dues or the benefits included in membership. If dues increase, NABD will notify you by email <strong>before the increase takes effect and before any charge at the new amount</strong>, and you will have the opportunity to cancel before being charged.</p>
+  <p>Membership benefits — including workshops, conferences, publications, podcast access, and referral pathways — depend on NABD's programming and on the availability of partner attorneys. NABD does not guarantee that any specific benefit, event, or publication will be offered in any given year.</p>
+</section>
+
+<section class="clause" id="payments">
+  <div class="clause-num">Section 9</div>
+  <h2>Payment Processing</h2>
+  <p>Membership dues and other payments are processed by <strong>Stripe, Inc.</strong> through Stripe's own secure hosted checkout. NABD does not collect, receive, or store your full payment card number, security code, or bank account credentials. Your use of Stripe's checkout is subject to Stripe's own terms and privacy policy.</p>
+  <p>You are responsible for any charges your bank or card issuer applies, such as foreign transaction fees.</p>
+</section>
+
+<section class="clause" id="donations">
+  <div class="clause-num">Section 10</div>
+  <h2>Donations</h2>
+  <p>Donations to NABD are voluntary and, unless expressly stated otherwise at the time of the donation, are <strong>one-time and non-recurring</strong>. Donations are generally non-refundable. NABD will acknowledge donations as required for its records and will not sell, rent, or trade donor information — see the <a href="https://nabd-justice.org/privacy/">Privacy Statement</a>.</p>
+  <p>NABD does not provide tax advice. Whether a contribution is deductible depends on your circumstances and on NABD's tax status at the time of the gift; consult your own tax advisor.</p>
+</section>
+
+<section class="clause" id="intake">
+  <div class="clause-num">Section 11</div>
+  <h2>Matter Intake Submissions</h2>
+  <p>If you complete an NABD matter intake questionnaire, additional terms apply. Submitting an intake does not create an attorney-client relationship, does not guarantee review within any particular timeframe, and does not guarantee referral, participation in any legal action, or recovery of any kind.</p>
+  <p>You agree that the information you submit is accurate to the best of your knowledge. Supporting evidence is accepted <strong>by email only</strong> and not through the questionnaire itself. How intake information is handled is described in the <a href="https://nabd-justice.org/intake-privacy/">Matter Intake Privacy Supplement</a>.</p>
+</section>
+
+<section class="clause" id="acceptable">
+  <div class="clause-num">Section 12</div>
+  <h2>Acceptable Use</h2>
+  <p>When using the NABD website you agree not to:</p>
+  <ul>
+    <li>Submit information you know to be false, or impersonate another person;</li>
+    <li>Upload or transmit malicious code, or attempt to gain unauthorized access to NABD systems, accounts, or data;</li>
+    <li>Interfere with the operation of the site, or use automated means to scrape or harvest content or personal information;</li>
+    <li>Use the site or any NABD communication channel to harass, threaten, or defame any person; or</li>
+    <li>Use NABD content or membership benefits for any unlawful purpose.</li>
+  </ul>
+  <p>NABD may suspend or end access, and may end a membership, where these Terms are breached. Where a membership is ended by NABD for breach, dues already paid are not refunded.</p>
+</section>
+
+<section class="clause" id="ip">
+  <div class="clause-num">Section 13</div>
+  <h2>Intellectual Property</h2>
+  <p>The NABD name, logo, website content, publications, workshop materials, and podcast are owned by NABD or its licensors and are protected by intellectual property law. You may view and share content for personal, non-commercial purposes with attribution. You may not reproduce, distribute, or create derivative works for commercial purposes without NABD's written permission.</p>
+  <p>If you submit content to NABD — other than matter intake information, which is governed by Section 11 and the Matter Intake Privacy Supplement — you grant NABD a non-exclusive right to use it for its organizational and educational purposes.</p>
+</section>
+
+<section class="clause" id="thirdparty">
+  <div class="clause-num">Section 14</div>
+  <h2>Third-Party Services</h2>
+  <p>The NABD website relies on third-party services, including a payment processor, a website and form platform, cloud storage, and a chat provider, and links to third-party websites. NABD does not control those services and is not responsible for their content, availability, or practices. Your use of them is governed by their own terms.</p>
+</section>
+
+<section class="clause" id="ai">
+  <div class="clause-num">Section 15</div>
+  <h2>AI Concierge</h2>
+  <p>The NABD AI Concierge is an automated assistant. It is provided for general information and navigation only. It is <strong>not a lawyer</strong>, its responses are not legal advice, and it may be inaccurate or incomplete. Do not rely on it for any decision affecting your legal rights, and do not share information in the chat that you would not want retained in a written record.</p>
+  <p>Conversations with the AI Concierge are collected and retained as described in the <a href="https://nabd-justice.org/privacy/">Privacy Statement</a>.</p>
+</section>
+
+<section class="clause" id="disclaimer">
+  <div class="clause-num">Section 16</div>
+  <h2>Disclaimers</h2>
+  <p>The NABD website, its content, and membership benefits are provided <strong>"as is" and "as available"</strong>. To the fullest extent permitted by law, NABD disclaims all warranties, express or implied, including warranties of merchantability, fitness for a particular purpose, and non-infringement.</p>
+  <p>NABD does not warrant that the site will be uninterrupted or error-free, that information on it is complete or current, or that any particular result will follow from membership, an intake submission, or an attorney referral.</p>
+</section>
+
+<section class="clause" id="liability">
+  <div class="clause-num">Section 17</div>
+  <h2>Limitation of Liability</h2>
+  <p>To the fullest extent permitted by law, NABD and its officers, directors, employees, and volunteers will not be liable for indirect, incidental, consequential, special, or punitive damages, or for lost profits or lost opportunities, arising from your use of the website or your membership.</p>
+  <p>To the fullest extent permitted by law, NABD's total liability arising out of or relating to these Terms will not exceed the amount of membership dues you paid to NABD in the twelve months before the claim arose.</p>
+  <p>NABD is not responsible for the acts, omissions, advice, or fees of any independent attorney to whom you are referred.</p>
+  <p>Some states do not allow certain limitations of liability, so parts of this section may not apply to you. Nothing here limits liability that cannot be limited by law.</p>
+</section>
+
+<section class="clause" id="privacy">
+  <div class="clause-num">Section 18</div>
+  <h2>Privacy</h2>
+  <p>NABD's handling of personal information is described in the <a href="https://nabd-justice.org/privacy/">NABD Privacy Statement</a>, and for intake questionnaires in the <a href="https://nabd-justice.org/intake-privacy/">Matter Intake Privacy Supplement</a>. Those documents form part of your agreement with NABD.</p>
+</section>
+
+<section class="clause" id="changes">
+  <div class="clause-num">Section 19</div>
+  <h2>Changes to These Terms</h2>
+  <p>NABD may update these Terms to reflect changes in its programs, practices, or applicable law. The "Last Updated" date at the top of this page will change when it does. Where a change materially affects your membership — particularly dues, renewal terms, or cancellation rights — NABD will notify members by email before the change takes effect.</p>
+  <p>Continuing to use the website or maintain your membership after a change takes effect means you accept the revised Terms.</p>
+</section>
+
+<section class="clause" id="law">
+  <div class="clause-num">Section 20</div>
+  <h2>Governing Law</h2>
+  <p>These Terms are governed by the laws of the District of Columbia, without regard to its conflict of laws rules. Any dispute will be brought in the state or federal courts located in the District of Columbia, and you and NABD consent to the jurisdiction of those courts.</p>
+  <p>If any provision of these Terms is found unenforceable, the remainder continues in effect. NABD's failure to enforce a provision is not a waiver of it.</p>
+  <p>Nothing in these Terms deprives you of the protection of mandatory consumer laws of the state in which you live, including your right to bring a complaint to your state Attorney General or consumer protection agency.</p>
+</section>
+
+<section class="clause" id="contact">
+  <div class="clause-num">Section 21</div>
+  <h2>Contact Us</h2>
+  <p>Questions about these Terms, membership, renewals, cancellation, or refunds:</p>
+  <div class="contact-block">
+    <strong style="color:var(--gold);">National Association of Black Defenders, Inc.</strong><br>
+    Attn: Membership<br>
+    1717 Pennsylvania Avenue NW, Suite 1025<br>
+    Washington, DC 20006<br>
+    Telephone: <a href="tel:2027703962">(202) 770-3962</a><br>
+    Email: <a href="mailto:info@nabd-justice.org">info@nabd-justice.org</a><br>
+    Website: <a href="https://www.nabd-justice.org">nabd-justice.org</a>
+  </div>
+</section>
+
+</main>
+
+<footer data-section="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <div class="logo-text">NABD Inc.</div>
+        <div class="tagline">National Association of Black Defenders</div>
+      </div>
+      <div class="footer-links">
+        <a href="https://www.nabd-justice.org">Main Site</a>
+        <a href="https://nabd-justice.org/privacy/">Privacy Statement</a>
+        <a href="https://nabd-justice.org/intake-privacy/">Intake Privacy Supplement</a>
+        <a href="mailto:info@nabd-justice.org">info@nabd-justice.org</a>
+      </div>
+    </div>
+    <div class="footer-copy">
+      <div style="display:inline-block;background:rgba(201,151,58,0.07);border:1px solid rgba(201,151,58,0.2);border-radius:6px;padding:0.65rem 1rem;margin-bottom:1rem;max-width:700px;font-size:0.72rem;color:var(--ivory-dim);line-height:1.7;text-align:left;">
+        <strong style="color:var(--gold);font-size:0.62rem;letter-spacing:0.14em;text-transform:uppercase;display:block;margin-bottom:0.25rem;">⚠ Legal Disclaimer</strong>
+        The National Association of Black Defenders, Inc. is not a law firm and does not provide legal representation. We partner with civil rights and human rights attorneys nationwide to connect individuals with qualified legal support.
+      </div><br>
+      © 2026 National Association of Black Defenders, Inc. · Washington, DC · <a href="mailto:info@nabd-justice.org" style="color:var(--muted);text-decoration:none;">info@nabd-justice.org</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
