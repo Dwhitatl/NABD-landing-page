@@ -1,8 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://nabd-justice.org/privacy/</loc>
+    <lastmod>2026-07-27T12:05:56.990Z</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
     <loc>https://nabd-justice.org/</loc>
-    <lastmod>2026-07-26T05:00:39.302Z</lastmod>
+    <lastmod>2026-07-27T11:57:53.588Z</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://nabd-justice.org/ford-intake/</loc>
+    <lastmod>2026-07-27T10:46:46.635Z</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
@@ -11,18 +21,8 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://nabd-justice.org/ford-intake/</loc>
-    <lastmod>2026-07-25T17:14:36.834Z</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
     <loc>https://nabd-justice.org/intake-privacy/</loc>
     <lastmod>2026-07-25T14:45:58.091Z</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://nabd-justice.org/privacy/</loc>
-    <lastmod>2026-07-25T14:03:36.928Z</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
