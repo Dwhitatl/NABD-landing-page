@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://nabd-justice.org/privacy/</loc>
-    <lastmod>2026-07-27T12:05:56.990Z</lastmod>
+    <loc>https://nabd-justice.org/intake-privacy/</loc>
+    <lastmod>2026-07-27T12:07:32.804Z</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://nabd-justice.org/</loc>
-    <lastmod>2026-07-27T11:57:53.588Z</lastmod>
+    <lastmod>2026-07-27T12:06:58.363Z</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://nabd-justice.org/privacy/</loc>
+    <lastmod>2026-07-27T12:05:56.990Z</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
@@ -18,11 +23,6 @@
   <url>
     <loc>https://nabd-justice.org/terms/</loc>
     <lastmod>2026-07-26T04:46:05.423Z</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://nabd-justice.org/intake-privacy/</loc>
-    <lastmod>2026-07-25T14:45:58.091Z</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
