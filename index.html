@@ -352,14 +352,18 @@
 <script data-lp-token-hydrate>
 (function(){try{
   var slug="lp-mo7o8lzx-po1a6";
+  var SITEK="";
   var SK='lp_access_'+slug;
   var map={access_token:'lp_pw_',allowlist_access_token:'lp_al_',pin_access_token:'lp_pin_',paywall_access_token:'lp_paid_'};
+  function siteTok(){try{return SITEK?localStorage.getItem(SITEK):null;}catch(e){return null;}}
   var u=new URL(location.href);var found=null;var changed=false;
-  Object.keys(map).forEach(function(p){var v=u.searchParams.get(p);if(v){found=v;try{localStorage.setItem(map[p]+slug,v);}catch(e){}u.searchParams.delete(p);changed=true;}});
+  var PINP=true;
+  if(!PINP){try{localStorage.removeItem('lp_pin_'+slug);if(SITEK)localStorage.removeItem(SITEK);}catch(e){}}
+  Object.keys(map).forEach(function(p){var v=u.searchParams.get(p);if(v){found=v;try{if(PINP||p!=='pin_access_token'){localStorage.setItem(map[p]+slug,v);if(SITEK&&p==='pin_access_token')localStorage.setItem(SITEK,v);}}catch(e){}if(p==='pin_access_token'){try{sessionStorage.setItem('lp_fresh_'+slug,'1');}catch(e){}}u.searchParams.delete(p);changed=true;}});
   if(found){try{sessionStorage.setItem(SK,found);}catch(e){}}
-  else{try{if(!sessionStorage.getItem(SK)){var t=localStorage.getItem('lp_pw_'+slug)||localStorage.getItem('lp_al_'+slug)||localStorage.getItem('lp_pin_'+slug)||localStorage.getItem('lp_paid_'+slug);if(t)sessionStorage.setItem(SK,t);}}catch(e){}}
+  else{try{if(!sessionStorage.getItem(SK)){var t=localStorage.getItem('lp_pw_'+slug)||localStorage.getItem('lp_al_'+slug)||localStorage.getItem('lp_pin_'+slug)||localStorage.getItem('lp_paid_'+slug)||siteTok();if(t)sessionStorage.setItem(SK,t);}}catch(e){}}
   if(changed){try{history.replaceState(null,'',u.toString());}catch(e){}}
-  function getTok(){try{return sessionStorage.getItem(SK)||localStorage.getItem('lp_pw_'+slug)||localStorage.getItem('lp_al_'+slug)||localStorage.getItem('lp_pin_'+slug)||localStorage.getItem('lp_paid_'+slug);}catch(e){return null;}}
+  function getTok(){try{return sessionStorage.getItem(SK)||localStorage.getItem('lp_pw_'+slug)||localStorage.getItem('lp_al_'+slug)||localStorage.getItem('lp_pin_'+slug)||localStorage.getItem('lp_paid_'+slug)||siteTok();}catch(e){return null;}}
   function needsToken(url,method){if(!url)return false;var s=String(url);var m=(method||'GET').toUpperCase();var isSheetWrite=(m==='POST'||m==='PATCH'||m==='PUT'||m==='DELETE')&&/\/sheet-rows(\/|$|\?)/.test(s);var isSheetRead=/\/sheet-data(\/|$|\?)/.test(s);var isLlm=/\/api\/landing-pages\/public\/[^/]+\/(llm|llm-config)(\/|$|\?)/.test(s);return isSheetWrite||isSheetRead||isLlm;}
   if(window.fetch){var _f=window.fetch;window.fetch=function(input,init){try{var url=typeof input==='string'?input:(input&&input.url)||'';var method=(init&&init.method)||(input&&input.method)||'GET';if(needsToken(url,method)){var tok=getTok();if(tok){init=init||{};var h=new Headers(init.headers||(typeof input!=='string'?input.headers:undefined)||{});if(!h.has('X-Landing-Page-Token'))h.set('X-Landing-Page-Token',tok);init.headers=h;}}}catch(e){}return _f.call(this,input,init);};}
   if(window.XMLHttpRequest){var _o=XMLHttpRequest.prototype.open;var _s=XMLHttpRequest.prototype.send;XMLHttpRequest.prototype.open=function(m,u){this.__lpM=m;this.__lpU=u;return _o.apply(this,arguments);};XMLHttpRequest.prototype.send=function(){try{if(needsToken(this.__lpU,this.__lpM)){var tok=getTok();if(tok)this.setRequestHeader('X-Landing-Page-Token',tok);}}catch(e){}return _s.apply(this,arguments);};}
@@ -648,7 +652,7 @@
       <a href="#appointments">Appointments</a><a href="#support">Support</a><a href="#contact">Contact</a>
     </div>
     <div style="display:flex;align-items:center;">
-      <span class="nav-phone phone-display" data-phone="2027703962">(202) 770-3962</span>
+      <span class="nav-phone phone-display" data-phone="2023015494">(202) 301-5494</span>
       <a href="#contact" class="btn btn-gold" style="font-size:12px;padding:8px 16px;">Get In Touch</a>
     </div>
   </div>
@@ -678,6 +682,7 @@
         <div class="hero-actions">
           <a href="#contact" class="btn btn-gold">Connect With NABD</a>
           <a href="#services" class="btn btn-outline">Explore Our Work</a>
+          <a href="#" class="btn btn-gold" id="stateOfficesBtn">State Offices</a>
         </div>
         
       </div>
@@ -687,7 +692,7 @@
           <div class="card-org">National Association of Black Defenders, Inc.</div>
         </div>
         <div class="contact-list">
-          <div class="contact-item"><div class="contact-icon">📞</div><div><div class="contact-item-label">Phone</div><div class="contact-item-value"><span class="phone-display" data-phone="2027703962">(202) 770-3962</span></div></div></div>
+          <div class="contact-item"><div class="contact-icon">📞</div><div><div class="contact-item-label">Phone</div><div class="contact-item-value"><span class="phone-display" data-phone="2023015494">(202) 301-5494</span></div></div></div>
           <div class="contact-item"><div class="contact-icon">✉️</div><div><div class="contact-item-label">Email</div><div class="contact-item-value"><a href="mailto:info@nabd-justice.org">info@nabd-justice.org</a></div></div></div>
           <div class="contact-item"><div class="contact-icon">📍</div><div><div class="contact-item-label">Office</div><div class="contact-item-value">1717 Pennsylvania Ave NW, Suite 1025<br>Washington, DC 20006</div></div></div>
           <div class="contact-item"><div class="contact-icon">👤</div><div><div class="contact-item-label">Leadership</div><div class="contact-item-value">Dr. Michael McCorvey, CEO &amp; Founder</div></div></div>
@@ -802,6 +807,46 @@
   </div>
 </section>
 
+<div class="modal-overlay" id="stateOfficesModal" aria-hidden="true">
+  <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="stateOfficesTitle">
+    <div class="modal-header">
+      <div>
+        <div class="modal-title" id="stateOfficesTitle">State Offices</div>
+        <div class="modal-subtitle">Contact NABD's state office representatives below.</div>
+      </div>
+      <button type="button" class="modal-close" id="stateOfficesClose" aria-label="Close modal">×</button>
+    </div>
+    <div class="modal-body">
+      <div class="office-list">
+        <div class="office-item">
+          <div class="office-state">Georgia</div>
+          <div class="office-meta"><strong>Phone:</strong> 678-673-1450<br><strong>Contact:</strong> Tina Dixon</div>
+        </div>
+        <div class="office-item">
+          <div class="office-state">Illinois</div>
+          <div class="office-meta"><strong>Phone:</strong> 312-300-2576<br><strong>Contact:</strong> Tasha Myrick</div>
+        </div>
+        <div class="office-item">
+          <div class="office-state">Louisiana</div>
+          <div class="office-meta"><strong>Phone:</strong> 318-904-6796<br><strong>Contact:</strong> Robin Barron</div>
+        </div>
+        <div class="office-item">
+          <div class="office-state">Mississippi</div>
+          <div class="office-meta"><strong>Phone:</strong> 202-297-5305<br><strong>Contact:</strong> Priscilla Till</div>
+        </div>
+        <div class="office-item">
+          <div class="office-state">South Carolina</div>
+          <div class="office-meta"><strong>Phone:</strong> 864-567-3926<br><strong>Contact:</strong> Carolyn Truesdale</div>
+        </div>
+        <div class="office-item">
+          <div class="office-state">Texas</div>
+          <div class="office-meta"><strong>Phone:</strong> 903-277-9392<br><strong>Contact:</strong> Bess William Gamble</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <section data-section="membership" class="section" id="membership" style="background:var(--bg2);">
   <div class="container">
     <div class="reveal" style="max-width:640px;margin:0 auto;">
@@ -871,7 +916,7 @@
       <div style="background:rgba(201,151,58,0.09);border:2px solid var(--gold);border-radius:10px;padding:1.15rem 1.3rem;margin-bottom:1.25rem;">
         <div style="font-size:0.62rem;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--gold);margin-bottom:0.55rem;">⟳ Automatic Renewal — Please Read Before You Pay</div>
         <p style="font-size:0.83rem;color:var(--ivory);line-height:1.7;margin-bottom:0.6rem;">This is an <strong style="color:var(--gold-light);">automatically renewing annual membership</strong>. Your payment method will be charged <strong style="color:var(--gold-light);">$175.00 today</strong>, and <strong style="color:var(--gold-light);">$175.00 again every 12 months</strong> on the anniversary of today's date, <strong style="color:var(--gold-light);">until you cancel</strong>.</p>
-        <p style="font-size:0.8rem;color:var(--ivory-dim);line-height:1.7;margin:0;">Cancel at any time by emailing <a href="mailto:info@nabd-justice.org" style="color:var(--gold);">info@nabd-justice.org</a> or calling <a href="tel:2027703962" style="color:var(--gold);">(202) 770-3962</a>. Cancelling stops all future charges, and you keep your benefits through the end of the year you have already paid for. NABD will email you before each renewal charge. Full details are in the <a href="https://nabd-justice.org/terms/" target="_blank" style="color:var(--gold);">Membership Terms</a>.</p>
+        <p style="font-size:0.8rem;color:var(--ivory-dim);line-height:1.7;margin:0;">          Cancel at any time by emailing <a href="mailto:info@nabd-justice.org" style="color:var(--gold);">info@nabd-justice.org</a> or calling <a href="tel:2023015494" style="color:var(--gold);">(202) 301-5494</a>. Cancelling stops all future charges, and you keep your benefits through the end of the year you have already paid for. NABD will email you before each renewal charge. Full details are in the <a href="https://nabd-justice.org/terms/" target="_blank" style="color:var(--gold);">Membership Terms</a>.</p>
       </div>
       <label for="memConsent" style="display:flex;gap:0.8rem;align-items:flex-start;background:var(--bg2);border:1px solid var(--border2);border-radius:8px;padding:0.95rem 1.1rem;margin-bottom:1rem;cursor:pointer;">
         <input type="checkbox" id="memConsent" style="margin-top:3px;width:18px;height:18px;accent-color:var(--gold);flex-shrink:0;cursor:pointer;">
@@ -997,7 +1042,7 @@
         <h2>Reach the organization directly.</h2>
         <p>For questions about NABD's mission, advocacy work, public education, legal support pathways, environmental justice concerns, voting rights awareness, or attorney referrals — contact us directly.</p>
         <div class="contact-details">
-          <div class="contact-detail"><div class="contact-detail-icon">📞</div><div><div class="contact-detail-label">Phone</div><div class="contact-detail-value"><span class="phone-display" data-phone="2027703962">(202) 770-3962</span></div></div></div>
+          <div class="contact-detail"><div class="contact-detail-icon">📞</div><div><div class="contact-detail-label">Phone</div><div class="contact-detail-value"><span class="phone-display" data-phone="2023015494">(202) 301-5494</span></div></div></div>
           <div class="contact-detail"><div class="contact-detail-icon">✉️</div><div><div class="contact-detail-label">Email</div><div class="contact-detail-value"><a href="mailto:info@nabd-justice.org">info@nabd-justice.org</a></div></div></div>
           <div class="contact-detail"><div class="contact-detail-icon">📍</div><div><div class="contact-detail-label">Office</div><div class="contact-detail-value">1717 Pennsylvania Avenue NW, Suite 1025<br>Washington, DC 20006</div></div></div>
           <div class="contact-detail"><div class="contact-detail-icon">👤</div><div><div class="contact-detail-label">Leadership</div><div class="contact-detail-value">Dr. Michael McCorvey, CEO &amp; Founder</div></div></div>
@@ -1032,7 +1077,7 @@
       <div class="footer-links">
         <a href="#mission">Mission</a><a href="#services">Services</a><a href="#membership">Membership</a>
         <a href="#appointments">Appointments</a><a href="#support">Support</a><a href="#contact">Contact</a>
-        <a href="#contact" class="footer-links" style="display:inline;"><span class="phone-display" data-phone="2027703962">(202) 770-3962</span></a>
+        <a href="#contact" class="footer-links" style="display:inline;"><span class="phone-display" data-phone="2023015494">(202) 301-5494</span></a>
       </div>
     </div>
     <div class="footer-copy">
@@ -1062,6 +1107,18 @@
         el.parentNode.replaceChild(a, el);
       }
     });
+  })();
+
+  (function(){
+    var btn=document.getElementById('stateOfficesBtn');
+    var modal=document.getElementById('stateOfficesModal');
+    var closeBtn=document.getElementById('stateOfficesClose');
+    function openModal(e){if(e)e.preventDefault();if(modal){modal.classList.add('visible');modal.setAttribute('aria-hidden','false');}}
+    function closeModal(){if(modal){modal.classList.remove('visible');modal.setAttribute('aria-hidden','true');}}
+    if(btn)btn.addEventListener('click',openModal);
+    if(closeBtn)closeBtn.addEventListener('click',closeModal);
+    if(modal)modal.addEventListener('click',function(e){if(e.target===modal)closeModal();});
+    document.addEventListener('keydown',function(e){if(e.key==='Escape')closeModal();});
   })();
 
   var reveals = document.querySelectorAll('.reveal');
