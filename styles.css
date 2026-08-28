@@ -204,10 +204,6 @@
   .footer-links a:hover{color:var(--gold);}
   .footer-copy{font-size:0.72rem;color:var(--muted);line-height:1.8;text-align:center;border-top:1px solid var(--border);padding-top:1.5rem;}
 
-  /* MEM TIER */
-  .mem-tier-card{cursor:pointer;transition:border-color 0.2s;}
-  .mem-tier-card:hover{border-color:var(--gold-light)!important;}
-
   @media(max-width:900px){
     .hero-grid,.mission-grid,.services-grid,.appt-grid,.support-grid,.contact-grid,.chat-feature-grid{grid-template-columns:1fr;}
     .services-grid{grid-template-columns:1fr 1fr;}
