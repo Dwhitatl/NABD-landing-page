@@ -550,7 +550,7 @@
       overlay.style.cssText='position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;z-index:999999;font-family:system-ui,-apple-system,sans-serif;';
       function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
       var subTxt=successSubtext||('Thank you for purchasing '+pName+'.');
-      overlay.innerHTML='<div style="background:white;border-radius:16px;padding:40px;max-width:420px;width:90%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.15);"><div style="width:64px;height:64px;border-radius:50%;background:#dcfce7;margin:0 auto 20px;display:flex;align-items:center;justify-content:center;"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><h2 style="margin:0 0 12px;font-size:24px;font-weight:700;color:#111827;">Payment Successful!</h2><p style="margin:0 0 24px;color:#6b7280;font-size:16px;">'+esc(subTxt)+'</p><button id="lp-pay-success-btn" style="padding:12px 32px;font-size:16px;font-weight:600;background:'+successBtnColor+';color:white;border:none;border-radius:8px;cursor:pointer;">'+esc(successBtnLabel)+'</button></div>';
+      overlay.innerHTML='<div style="background:white;border-radius:16px;padding:40px;max-width:420px;width:90%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.15);"><div style="width:64px;height:64px;border-radius:50%;background:#dcfce7;background:color-mix(in srgb,'+successBtnColor+' 12%,white);margin:0 auto 20px;display:flex;align-items:center;justify-content:center;"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="'+successBtnColor+'" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><h2 style="margin:0 0 12px;font-size:24px;font-weight:700;color:#111827;">Payment Successful!</h2><p style="margin:0 0 24px;color:#6b7280;font-size:16px;">'+esc(subTxt)+'</p><button id="lp-pay-success-btn" style="padding:12px 32px;font-size:16px;font-weight:600;background:'+successBtnColor+';color:white;border:none;border-radius:8px;cursor:pointer;">'+esc(successBtnLabel)+'</button></div>';
       document.body.appendChild(overlay);
       var pBtn=document.getElementById('lp-pay-success-btn');
       if(pBtn){pBtn.addEventListener('click',function(){if(successRedirect){window.location.href=successRedirect;}else{overlay.remove();window.history.replaceState({},'',window.location.pathname);}});}
@@ -627,14 +627,15 @@
       overlay.style.cssText='position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;z-index:999999;font-family:system-ui,-apple-system,sans-serif;';
       function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
       var subTxt=successSubtext||'Thank you for your order.';
-      overlay.innerHTML='<div style="background:white;border-radius:16px;padding:40px;max-width:420px;width:90%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.15);"><div style="width:64px;height:64px;border-radius:50%;background:#dcfce7;margin:0 auto 20px;display:flex;align-items:center;justify-content:center;"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><h2 style="margin:0 0 12px;font-size:24px;font-weight:700;color:#111827;">Order Confirmed!</h2><p style="margin:0 0 24px;color:#6b7280;font-size:16px;">'+esc(subTxt)+'</p><button id="lp-cart-success-btn" style="padding:12px 32px;font-size:16px;font-weight:600;background:'+successBtnColor+';color:white;border:none;border-radius:8px;cursor:pointer;">'+esc(successBtnLabel)+'</button></div>';
+      overlay.innerHTML='<div style="background:white;border-radius:16px;padding:40px;max-width:420px;width:90%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.15);"><div style="width:64px;height:64px;border-radius:50%;background:#dcfce7;background:color-mix(in srgb,'+successBtnColor+' 12%,white);margin:0 auto 20px;display:flex;align-items:center;justify-content:center;"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="'+successBtnColor+'" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><h2 style="margin:0 0 12px;font-size:24px;font-weight:700;color:#111827;">Order Confirmed!</h2><p style="margin:0 0 24px;color:#6b7280;font-size:16px;">'+esc(subTxt)+'</p><button id="lp-cart-success-btn" style="padding:12px 32px;font-size:16px;font-weight:600;background:'+successBtnColor+';color:white;border:none;border-radius:8px;cursor:pointer;">'+esc(successBtnLabel)+'</button></div>';
       document.body.appendChild(overlay);
       var cBtn=document.getElementById('lp-cart-success-btn');
       if(cBtn){cBtn.addEventListener('click',function(){if(successRedirect){window.location.href=successRedirect;}else{overlay.remove();window.history.replaceState({},'',window.location.pathname);}});}
     }
   });
 })();
-</script>  <link rel="stylesheet" href="styles.css">
+</script>
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
 <nav data-section="navbar" style="z-index:9999;">
@@ -651,7 +652,7 @@
       <a href="#appointments">Appointments</a><a href="#support">Support</a><a href="#contact">Contact</a>
     </div>
     <div style="display:flex;align-items:center;">
-      <span class="nav-phone phone-display" data-phone="2023015494">(202) 301-5494</span>
+      <span class="nav-phone phone-display" data-phone="8323902769">(832) 390-2769</span>
       <a href="#contact" class="btn btn-gold" style="font-size:12px;padding:8px 16px;">Get In Touch</a>
     </div>
   </div>
@@ -691,7 +692,7 @@
           <div class="card-org">National Association of Black Defenders, Inc.</div>
         </div>
         <div class="contact-list">
-          <div class="contact-item"><div class="contact-icon">📞</div><div><div class="contact-item-label">Phone</div><div class="contact-item-value"><span class="phone-display" data-phone="2023015494">(202) 301-5494</span></div></div></div>
+          <div class="contact-item"><div class="contact-icon">📞</div><div><div class="contact-item-label">Phone</div><div class="contact-item-value"><span class="phone-display" data-phone="8323902769">(832) 390-2769</span></div></div></div>
           <div class="contact-item"><div class="contact-icon">✉️</div><div><div class="contact-item-label">Email</div><div class="contact-item-value"><a href="mailto:info@nabd-justice.org">info@nabd-justice.org</a></div></div></div>
           <div class="contact-item"><div class="contact-icon">📍</div><div><div class="contact-item-label">Office</div><div class="contact-item-value">1717 Pennsylvania Ave NW, Suite 1025<br>Washington, DC 20006</div></div></div>
           <div class="contact-item"><div class="contact-icon">👤</div><div><div class="contact-item-label">Leadership</div><div class="contact-item-value">Dr. Michael McCorvey, CEO &amp; Founder</div></div></div>
@@ -948,7 +949,7 @@
         <h2>Reach the organization directly.</h2>
         <p>For questions about NABD's mission, advocacy work, public education, legal support pathways, environmental justice concerns, voting rights awareness, or attorney referrals — contact us directly.</p>
         <div class="contact-details">
-          <div class="contact-detail"><div class="contact-detail-icon">📞</div><div><div class="contact-detail-label">Phone</div><div class="contact-detail-value"><span class="phone-display" data-phone="2023015494">(202) 301-5494</span></div></div></div>
+          <div class="contact-detail"><div class="contact-detail-icon">📞</div><div><div class="contact-detail-label">Phone</div><div class="contact-detail-value"><span class="phone-display" data-phone="8323902769">(832) 390-2769</span></div></div></div>
           <div class="contact-detail"><div class="contact-detail-icon">✉️</div><div><div class="contact-detail-label">Email</div><div class="contact-detail-value"><a href="mailto:info@nabd-justice.org">info@nabd-justice.org</a></div></div></div>
           <div class="contact-detail"><div class="contact-detail-icon">📍</div><div><div class="contact-detail-label">Office</div><div class="contact-detail-value">1717 Pennsylvania Avenue NW, Suite 1025<br>Washington, DC 20006</div></div></div>
           <div class="contact-detail"><div class="contact-detail-icon">👤</div><div><div class="contact-detail-label">Leadership</div><div class="contact-detail-value">Dr. Michael McCorvey, CEO &amp; Founder</div></div></div>
@@ -983,7 +984,7 @@
       <div class="footer-links">
         <a href="#mission">Mission</a><a href="#services">Services</a>
         <a href="#appointments">Appointments</a><a href="#support">Support</a><a href="#contact">Contact</a>
-        <a href="#contact" class="footer-links" style="display:inline;"><span class="phone-display" data-phone="2023015494">(202) 301-5494</span></a>
+        <a href="#contact" class="footer-links" style="display:inline;"><span class="phone-display" data-phone="8323902769">(832) 390-2769</span></a>
       </div>
     </div>
     <div class="footer-copy">
