@@ -2,7 +2,12 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://nabd-justice.org/</loc>
-    <lastmod>2026-09-15T00:00:50.909Z</lastmod>
+    <lastmod>2026-11-06T22:49:56.974Z</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://nabd-justice.org/ford-intake/</loc>
+    <lastmod>2026-10-04T18:30:49.019Z</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
