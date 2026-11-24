@@ -16,24 +16,28 @@
 <!-- SEO Meta Tags -->
 <title>Privacy Statement | National Association of Black Defenders, Inc.</title>
 <meta name="description" content="Privacy Statement of the National Association of Black Defenders, Inc. — how NABD collects, uses, shares, retains, and protects personal information, and the privacy rights available to you." />
-<meta property="og:title" content="Privacy Statement | National Association of Black Defenders, Inc." />
+<meta property="og:title" content="NABD Privacy Statement" />
 <meta property="og:description" content="Privacy Statement of the National Association of Black Defenders, Inc. — how NABD collects, uses, shares, retains, and protects personal information, and the privacy rights available to you." />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Privacy Statement | National Association of Black Defenders, Inc." />
+<meta name="twitter:title" content="NABD Privacy Statement" />
 <meta name="twitter:description" content="Privacy Statement of the National Association of Black Defenders, Inc. — how NABD collects, uses, shares, retains, and protects personal information, and the privacy rights available to you." />
 <!-- End SEO Meta Tags -->
 <script data-lp-token-hydrate>
 (function(){try{
   var slug="lp-ms0duolt-z52lx";
+  var SITEK="";
   var SK='lp_access_'+slug;
   var map={access_token:'lp_pw_',allowlist_access_token:'lp_al_',pin_access_token:'lp_pin_',paywall_access_token:'lp_paid_'};
+  function siteTok(){try{return SITEK?localStorage.getItem(SITEK):null;}catch(e){return null;}}
   var u=new URL(location.href);var found=null;var changed=false;
-  Object.keys(map).forEach(function(p){var v=u.searchParams.get(p);if(v){found=v;try{localStorage.setItem(map[p]+slug,v);}catch(e){}u.searchParams.delete(p);changed=true;}});
+  var PINP=true;
+  if(!PINP){try{localStorage.removeItem('lp_pin_'+slug);if(SITEK)localStorage.removeItem(SITEK);}catch(e){}}
+  Object.keys(map).forEach(function(p){var v=u.searchParams.get(p);if(v){found=v;try{if(PINP||p!=='pin_access_token'){localStorage.setItem(map[p]+slug,v);if(SITEK&&p==='pin_access_token')localStorage.setItem(SITEK,v);}}catch(e){}if(p==='pin_access_token'){try{sessionStorage.setItem('lp_fresh_'+slug,'1');}catch(e){}}u.searchParams.delete(p);changed=true;}});
   if(found){try{sessionStorage.setItem(SK,found);}catch(e){}}
-  else{try{if(!sessionStorage.getItem(SK)){var t=localStorage.getItem('lp_pw_'+slug)||localStorage.getItem('lp_al_'+slug)||localStorage.getItem('lp_pin_'+slug)||localStorage.getItem('lp_paid_'+slug);if(t)sessionStorage.setItem(SK,t);}}catch(e){}}
+  else{try{if(!sessionStorage.getItem(SK)){var t=localStorage.getItem('lp_pw_'+slug)||localStorage.getItem('lp_al_'+slug)||localStorage.getItem('lp_pin_'+slug)||localStorage.getItem('lp_paid_'+slug)||siteTok();if(t)sessionStorage.setItem(SK,t);}}catch(e){}}
   if(changed){try{history.replaceState(null,'',u.toString());}catch(e){}}
-  function getTok(){try{return sessionStorage.getItem(SK)||localStorage.getItem('lp_pw_'+slug)||localStorage.getItem('lp_al_'+slug)||localStorage.getItem('lp_pin_'+slug)||localStorage.getItem('lp_paid_'+slug);}catch(e){return null;}}
+  function getTok(){try{return sessionStorage.getItem(SK)||localStorage.getItem('lp_pw_'+slug)||localStorage.getItem('lp_al_'+slug)||localStorage.getItem('lp_pin_'+slug)||localStorage.getItem('lp_paid_'+slug)||siteTok();}catch(e){return null;}}
   function needsToken(url,method){if(!url)return false;var s=String(url);var m=(method||'GET').toUpperCase();var isSheetWrite=(m==='POST'||m==='PATCH'||m==='PUT'||m==='DELETE')&&/\/sheet-rows(\/|$|\?)/.test(s);var isSheetRead=/\/sheet-data(\/|$|\?)/.test(s);var isLlm=/\/api\/landing-pages\/public\/[^/]+\/(llm|llm-config)(\/|$|\?)/.test(s);return isSheetWrite||isSheetRead||isLlm;}
   if(window.fetch){var _f=window.fetch;window.fetch=function(input,init){try{var url=typeof input==='string'?input:(input&&input.url)||'';var method=(init&&init.method)||(input&&input.method)||'GET';if(needsToken(url,method)){var tok=getTok();if(tok){init=init||{};var h=new Headers(init.headers||(typeof input!=='string'?input.headers:undefined)||{});if(!h.has('X-Landing-Page-Token'))h.set('X-Landing-Page-Token',tok);init.headers=h;}}}catch(e){}return _f.call(this,input,init);};}
   if(window.XMLHttpRequest){var _o=XMLHttpRequest.prototype.open;var _s=XMLHttpRequest.prototype.send;XMLHttpRequest.prototype.open=function(m,u){this.__lpM=m;this.__lpU=u;return _o.apply(this,arguments);};XMLHttpRequest.prototype.send=function(){try{if(needsToken(this.__lpU,this.__lpM)){var tok=getTok();if(tok)this.setRequestHeader('X-Landing-Page-Token',tok);}}catch(e){}return _s.apply(this,arguments);};}
@@ -220,7 +224,7 @@
       overlay.style.cssText='position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;z-index:999999;font-family:system-ui,-apple-system,sans-serif;';
       function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
       var subTxt=successSubtext||('Thank you for purchasing '+pName+'.');
-      overlay.innerHTML='<div style="background:white;border-radius:16px;padding:40px;max-width:420px;width:90%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.15);"><div style="width:64px;height:64px;border-radius:50%;background:#dcfce7;margin:0 auto 20px;display:flex;align-items:center;justify-content:center;"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><h2 style="margin:0 0 12px;font-size:24px;font-weight:700;color:#111827;">Payment Successful!</h2><p style="margin:0 0 24px;color:#6b7280;font-size:16px;">'+esc(subTxt)+'</p><button id="lp-pay-success-btn" style="padding:12px 32px;font-size:16px;font-weight:600;background:'+successBtnColor+';color:white;border:none;border-radius:8px;cursor:pointer;">'+esc(successBtnLabel)+'</button></div>';
+      overlay.innerHTML='<div style="background:white;border-radius:16px;padding:40px;max-width:420px;width:90%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.15);"><div style="width:64px;height:64px;border-radius:50%;background:#dcfce7;background:color-mix(in srgb,'+successBtnColor+' 12%,white);margin:0 auto 20px;display:flex;align-items:center;justify-content:center;"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="'+successBtnColor+'" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><h2 style="margin:0 0 12px;font-size:24px;font-weight:700;color:#111827;">Payment Successful!</h2><p style="margin:0 0 24px;color:#6b7280;font-size:16px;">'+esc(subTxt)+'</p><button id="lp-pay-success-btn" style="padding:12px 32px;font-size:16px;font-weight:600;background:'+successBtnColor+';color:white;border:none;border-radius:8px;cursor:pointer;">'+esc(successBtnLabel)+'</button></div>';
       document.body.appendChild(overlay);
       var pBtn=document.getElementById('lp-pay-success-btn');
       if(pBtn){pBtn.addEventListener('click',function(){if(successRedirect){window.location.href=successRedirect;}else{overlay.remove();window.history.replaceState({},'',window.location.pathname);}});}
@@ -297,14 +301,15 @@
       overlay.style.cssText='position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;z-index:999999;font-family:system-ui,-apple-system,sans-serif;';
       function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
       var subTxt=successSubtext||'Thank you for your order.';
-      overlay.innerHTML='<div style="background:white;border-radius:16px;padding:40px;max-width:420px;width:90%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.15);"><div style="width:64px;height:64px;border-radius:50%;background:#dcfce7;margin:0 auto 20px;display:flex;align-items:center;justify-content:center;"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><h2 style="margin:0 0 12px;font-size:24px;font-weight:700;color:#111827;">Order Confirmed!</h2><p style="margin:0 0 24px;color:#6b7280;font-size:16px;">'+esc(subTxt)+'</p><button id="lp-cart-success-btn" style="padding:12px 32px;font-size:16px;font-weight:600;background:'+successBtnColor+';color:white;border:none;border-radius:8px;cursor:pointer;">'+esc(successBtnLabel)+'</button></div>';
+      overlay.innerHTML='<div style="background:white;border-radius:16px;padding:40px;max-width:420px;width:90%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.15);"><div style="width:64px;height:64px;border-radius:50%;background:#dcfce7;background:color-mix(in srgb,'+successBtnColor+' 12%,white);margin:0 auto 20px;display:flex;align-items:center;justify-content:center;"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="'+successBtnColor+'" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div><h2 style="margin:0 0 12px;font-size:24px;font-weight:700;color:#111827;">Order Confirmed!</h2><p style="margin:0 0 24px;color:#6b7280;font-size:16px;">'+esc(subTxt)+'</p><button id="lp-cart-success-btn" style="padding:12px 32px;font-size:16px;font-weight:600;background:'+successBtnColor+';color:white;border:none;border-radius:8px;cursor:pointer;">'+esc(successBtnLabel)+'</button></div>';
       document.body.appendChild(overlay);
       var cBtn=document.getElementById('lp-cart-success-btn');
       if(cBtn){cBtn.addEventListener('click',function(){if(successRedirect){window.location.href=successRedirect;}else{overlay.remove();window.history.replaceState({},'',window.location.pathname);}});}
     }
   });
 })();
-</script>  <link rel="stylesheet" href="styles.css">
+</script>
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
@@ -536,7 +541,7 @@
 <section class="clause" id="exercise">
   <div class="clause-num">Section 14</div>
   <h2>How to Exercise Your Rights</h2>
-  <p>To submit a privacy request, contact NABD by email at <a href="mailto:info@nabd-justice.org">info@nabd-justice.org</a> with the subject line "Privacy Request," by telephone at <a href="tel:2027703962">(202) 770-3962</a>, or by mail at the address in Section 22.</p>
+  <p>To submit a privacy request, contact NABD by email at <a href="mailto:info@nabd-justice.org">info@nabd-justice.org</a> with the subject line "Privacy Request," by telephone at <a href="tel:18446236323">(844) 623-6323</a>, or by mail at the address in Section 22.</p>
   <p>Please describe the right you wish to exercise and provide enough information for NABD to locate your records — typically the name, email address, and telephone number you used when you contacted us. NABD will take reasonable steps to verify your identity before acting on a request; the verification required will be proportionate to the sensitivity of the information involved. NABD will not use verification information for any other purpose.</p>
   <p>NABD will respond within <strong>45 days</strong> of receiving a verifiable request. Where reasonably necessary, NABD may extend that period by an additional 45 days and will notify you of the extension and the reason for it.</p>
   <h3>Authorized agents</h3>
@@ -600,7 +605,7 @@
     Attn: Privacy<br>
     1717 Pennsylvania Avenue NW, Suite 1025<br>
     Washington, DC 20006<br>
-    Telephone: <a href="tel:2027703962">(202) 770-3962</a><br>
+    Telephone: <a href="tel:18446236323">(844) 623-6323</a><br>
     Email: <a href="mailto:info@nabd-justice.org">info@nabd-justice.org</a><br>
     Website: <a href="https://www.nabd-justice.org">nabd-justice.org</a>
   </div>
